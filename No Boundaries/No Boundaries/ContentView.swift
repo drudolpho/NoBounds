@@ -10,8 +10,36 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        GeometryReader { geometry in
+            VStack {
+                Text("No Boundaries")
+                    .font(.title)
+                    .bold()
+                    .padding()
+                
+                MapView()
+                    .cornerRadius(20)
+                    .padding(.bottom)
+                    
+                    .frame(width: geometry.size.width, height: geometry.size.height / 2.2)
+                    
+                
+                
+                Button(action: self.buttonTapped) {
+                    Text("Start")
+                        .padding()
+                        .background(Color.green)
+                        .foregroundColor(Color.white)
+                        .cornerRadius(15)
+                }
+            }
+        }
     }
+    
+    func buttonTapped() {
+        print("Start")
+    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
