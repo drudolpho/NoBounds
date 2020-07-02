@@ -10,6 +10,8 @@
 		6879B9DD24AA829B007A9A0D /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */; };
 		6879B9DF24AA856D007A9A0D /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 6879B9DE24AA856D007A9A0D /* style.json */; };
 		6879B9E124AA9C9E007A9A0D /* states.json in Resources */ = {isa = PBXBuildFile; fileRef = 6879B9E024AA9C9E007A9A0D /* states.json */; };
+		68926E3524AE361000DD16F1 /* StatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68926E3424AE361000DD16F1 /* StatesViewModel.swift */; };
+		68940DFC24AE38BB00181045 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68940DFB24AE38BB00181045 /* Models.swift */; };
 		68BB272A24A3A4A00076BBE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB272924A3A4A00076BBE0 /* AppDelegate.swift */; };
 		68BB272C24A3A4A00076BBE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB272B24A3A4A00076BBE0 /* SceneDelegate.swift */; };
 		68BB272E24A3A4A00076BBE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB272D24A3A4A00076BBE0 /* ContentView.swift */; };
@@ -25,6 +27,8 @@
 		6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		6879B9DE24AA856D007A9A0D /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
 		6879B9E024AA9C9E007A9A0D /* states.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = states.json; sourceTree = "<group>"; };
+		68926E3424AE361000DD16F1 /* StatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesViewModel.swift; sourceTree = "<group>"; };
+		68940DFB24AE38BB00181045 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		68BB272624A3A4A00076BBE0 /* No Boundaries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No Boundaries.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BB272924A3A4A00076BBE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68BB272B24A3A4A00076BBE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +52,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68926E3624AE365400DD16F1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				68BB272D24A3A4A00076BBE0 /* ContentView.swift */,
+				6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		68926E3724AE365C00DD16F1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				68926E3424AE361000DD16F1 /* StatesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		68940DFD24AE38D300181045 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				68940DFB24AE38BB00181045 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		68BB271D24A3A4A00076BBE0 = {
 			isa = PBXGroup;
 			children = (
@@ -71,8 +100,9 @@
 			children = (
 				68BB272924A3A4A00076BBE0 /* AppDelegate.swift */,
 				68BB272B24A3A4A00076BBE0 /* SceneDelegate.swift */,
-				68BB272D24A3A4A00076BBE0 /* ContentView.swift */,
-				6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */,
+				68940DFD24AE38D300181045 /* Models */,
+				68926E3624AE365400DD16F1 /* Views */,
+				68926E3724AE365C00DD16F1 /* ViewModels */,
 				68EA3FC624ABED6B00185A6B /* Resources */,
 				68BB272F24A3A4A10076BBE0 /* Assets.xcassets */,
 				68BB273424A3A4A10076BBE0 /* LaunchScreen.storyboard */,
@@ -235,6 +265,8 @@
 			files = (
 				6879B9DD24AA829B007A9A0D /* GoogleMapsView.swift in Sources */,
 				68BB272A24A3A4A00076BBE0 /* AppDelegate.swift in Sources */,
+				68926E3524AE361000DD16F1 /* StatesViewModel.swift in Sources */,
+				68940DFC24AE38BB00181045 /* Models.swift in Sources */,
 				68BB272C24A3A4A00076BBE0 /* SceneDelegate.swift in Sources */,
 				68BB272E24A3A4A00076BBE0 /* ContentView.swift in Sources */,
 			);
