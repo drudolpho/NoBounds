@@ -36,8 +36,8 @@ struct GoogleMapsView: UIViewRepresentable {
                 //erase all polygons
             } else if self.statesVM.highlightedStates.count < 50 {
                 //draw state
-                let data = self.statesVM.getCoordListforLastStateAdded()
-                self.createStateBorderPolygon(borderData: data, mapView: mapView)
+                guard let state = self.statesVM.highlightedStates.last else { return }
+                self.createStateBorderPolygon(borderData: state.borders, mapView: mapView)
             } else {
                 //win
             }

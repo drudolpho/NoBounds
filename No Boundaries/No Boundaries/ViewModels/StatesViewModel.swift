@@ -10,16 +10,21 @@ import Foundation
 import SwiftUI
 import GoogleMaps
 
+struct USState {
+    var name: String
+    var borders: [CoordData]
+}
+
 class StatesViewModel: ObservableObject {
     
-    @Published var highlightedStates: [String] = []
+    @Published var highlightedStates: [USState] = []
     
-    var coordData: [String: [CoordData]]?
+    var stateList: [String: USState] = [:]
     
-    let statesDictionary: [String: String] = ["NM": "New Mexico", "SD": "South Dakota", "TN": "Tennessee", "VT": "Vermont", "WY": "Wyoming", "OR": "Oregon", "MI": "Michigan", "MS": "Mississippi", "WA": "Washington", "ID": "Idaho", "ND": "North Dakota", "GA": "Georgia", "UT": "Utah", "OH": "Ohio", "DE": "Delaware", "NC": "North Carolina", "NJ": "New Jersey", "IN": "Indiana", "IL": "Illinois", "HI": "Hawaii", "NH": "New Hampshire", "MO": "Missouri", "MD": "Maryland", "WV": "West Virginia", "MA": "Massachusetts", "IA": "Iowa", "KY": "Kentucky", "NE": "Nebraska", "SC": "South Carolina", "AZ": "Arizona", "KS": "Kansas", "NV": "Nevada", "WI": "Wisconsin", "RI": "Rhode Island", "FL": "Florida", "TX": "Texas", "AL": "Alabama", "CO": "Colorado", "AK": "Alaska", "VA": "Virginia", "AR": "Arkansas", "CA": "California", "LA": "Louisiana", "CT": "Connecticut", "NY": "New York", "MN": "Minnesota", "MT": "Montana", "OK": "Oklahoma", "PA": "Pennsylvania", "ME": "Maine"]
+    let initialsDictionary: [String: String] = ["NM": "New Mexico", "SD": "South Dakota", "TN": "Tennessee", "VT": "Vermont", "WY": "Wyoming", "OR": "Oregon", "MI": "Michigan", "MS": "Mississippi", "WA": "Washington", "ID": "Idaho", "ND": "North Dakota", "GA": "Georgia", "UT": "Utah", "OH": "Ohio", "DE": "Delaware", "NC": "North Carolina", "NJ": "New Jersey", "IN": "Indiana", "IL": "Illinois", "HI": "Hawaii", "NH": "New Hampshire", "MO": "Missouri", "MD": "Maryland", "WV": "West Virginia", "MA": "Massachusetts", "IA": "Iowa", "KY": "Kentucky", "NE": "Nebraska", "SC": "South Carolina", "AZ": "Arizona", "KS": "Kansas", "NV": "Nevada", "WI": "Wisconsin", "RI": "Rhode Island", "FL": "Florida", "TX": "Texas", "AL": "Alabama", "CO": "Colorado", "AK": "Alaska", "VA": "Virginia", "AR": "Arkansas", "CA": "California", "LA": "Louisiana", "CT": "Connecticut", "NY": "New York", "MN": "Minnesota", "MT": "Montana", "OK": "Oklahoma", "PA": "Pennsylvania", "ME": "Maine"]
     
     init() {
-        self.coordData = parseCoordData()
+        initializeStates()
     }
     
     func addState(coordinate: CLLocationCoordinate2D) {
@@ -32,38 +37,31 @@ class StatesViewModel: ObservableObject {
             } else {
                 let pm = placemarks! as [CLPlacemark]
                 if pm.count > 0 {
-                    guard let stateInitials = pm[0].administrativeArea else { return }
+                    guard let stateInitials = pm[0].administrativeArea,
+                        let state = self.stateList[self.initialsDictionary[stateInitials] ?? ""] else { return }
                     
-                    self.highlightedStates.append(self.statesDictionary[stateInitials] ?? "")
+                    self.highlightedStates.append(state)
                 }
             }
         }
     }
     
-    func getCoordListforLastStateAdded() -> [CoordData] {
-        guard let last = highlightedStates.last, let array = coordData?[last] else { return [] }
-        
-        return array
-    }
-    
-    func parseCoordData() -> [String: [CoordData]]{
+    func initializeStates() {
         if let url = Bundle.main.url(forResource: "states", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(StateData.self, from: data)
                 
-                var allStatesDictData: [String: [CoordData]] = [:]
                 for state in jsonData.state {
-                    allStatesDictData[state._name] = state.point
+                    let temp = USState(name: state._name, borders: state.point)
+                    stateList[temp.name] = temp
                 }
-                
-                return allStatesDictData
-                
+                return
             } catch {
                 print("error:\(error)")
             }
         }
-        return [:]
+        return
     }
 }
