@@ -21,3 +21,8 @@ struct CoordData: Codable {
     var _lat: String
     var _lng: String
 }
+
+struct USState {
+    var name: String
+    var borders: [CoordData]
+}

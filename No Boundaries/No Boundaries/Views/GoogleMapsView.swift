@@ -34,6 +34,7 @@ struct GoogleMapsView: UIViewRepresentable {
             
             if self.statesVM.highlightedStates.count == 0 {
                 //erase all polygons
+                mapView.clear()
             } else if self.statesVM.highlightedStates.count < 50 {
                 //draw state
                 guard let state = self.statesVM.highlightedStates.last else { return }

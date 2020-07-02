@@ -12,6 +12,9 @@ import GoogleMaps
 struct ContentView: View {
     
     @ObservedObject var statesVM = StatesViewModel()
+//    @State var hasStarted = false
+    @State var time = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         GeometryReader { geometry in
@@ -22,11 +25,11 @@ struct ContentView: View {
                     .padding()
                 
                 HStack {
-                    Text("Illinois")
+                    Text(self.statesVM.currentState?.name ?? "")
                         .bold()
                         .font(.title)
                     Spacer()
-                    Text("0/50")
+                    Text("\(self.statesVM.highlightedStates.count)/50")
                     Spacer()
                 }.padding(.horizontal, 70.0)
 
@@ -37,19 +40,32 @@ struct ContentView: View {
                 
                 Button(action: self.buttonTapped) {
                     
-                    Text("Start")
+                    Text(self.statesVM.hasStarted ? "Restart" : "Start")
                         .frame(width: geometry.size.width/2)
                         .padding()
                         .background(Color.green)
                         .foregroundColor(Color.white)
                         .cornerRadius(15)
                 }
+                Text("\(self.time)")
+                    .padding()
+                    .onReceive(self.timer) { _ in
+                        if self.statesVM.hasStarted {
+                            self.time += 1
+                        } else {
+                            self.time = 0
+                        }
+                }
             }
         }
     }
     
     func buttonTapped() {
-        //Start
+        statesVM.setCurrentState()
+        self.statesVM.hasStarted.toggle()
+    }
+    func resetTimer() {
+        time = 0
     }
 }
 
@@ -58,3 +74,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
