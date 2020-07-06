@@ -18,52 +18,62 @@ struct ContentView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                Text("No Boundaries")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding()
-                
-                HStack {
-                    Text(self.statesVM.currentState?.name ?? "")
-                        .bold()
-                        .font(.title)
-                    Spacer()
-                    Text("\(self.statesVM.highlightedStates.count)/50")
-                    Spacer()
-                }.padding(.horizontal, 70.0)
-
+            ZStack {
                 GoogleMapsView(statesVM: self.statesVM)
-                    .cornerRadius(20)
-                    .padding(.bottom)
-                    .frame(width: geometry.size.width, height: geometry.size.height / 2.2)
+                    .edgesIgnoringSafeArea(.all)
+//                    .cornerRadius(20)
+//                    .padding(.bottom)
+//                    .frame(width: geometry.size.width, height: geometry.size.height / 2.2)
                 
-                Button(action: self.buttonTapped) {
-                    
-                    Text(self.statesVM.hasStarted ? "Restart" : "Start")
-                        .frame(width: geometry.size.width/2)
+                VStack {
+                    Spacer()
+                    Text("No Boundaries")
+                        .font(.largeTitle)
+                        .bold()
                         .padding()
-                        .background(Color.green)
-                        .foregroundColor(Color.white)
-                        .cornerRadius(15)
-                }
-                Text("\(self.time)")
-                    .padding()
-                    .onReceive(self.timer) { _ in
-                        if self.statesVM.hasStarted {
-                            self.time += 1
-                        } else {
-                            self.time = 0
-                        }
+                    HStack {
+                        Text(self.statesVM.currentState?.name ?? "")
+                            .bold()
+                            .font(.title)
+                        Spacer()
+                        Text("\(self.statesVM.highlightedStates.count)/50")
+                        Spacer()
+                    }.padding(.horizontal, 70.0)
+                    Button(action: self.buttonTapped) {
+                        
+                        Text(self.statesVM.hasStarted ? "Restart" : "Start")
+                            .frame(width: geometry.size.width/2)
+                            .padding()
+                            .background(Color.green)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(15)
+                    }
+                    
+//                    Timer seems to update every view each time
+                    Text("\(self.time)")
+                        .padding()
+                        .onReceive(self.timer) { _ in
+                            if self.statesVM.hasStarted {
+                                self.time += 1
+                            } else {
+                                self.time = 0
+                            }
+                    }
                 }
             }
         }
     }
     
     func buttonTapped() {
-        statesVM.setCurrentState()
-        self.statesVM.hasStarted.toggle()
+        if statesVM.hasStarted {
+            statesVM.resetGameData()
+            self.statesVM.hasStarted = false
+        } else {
+            statesVM.setCurrentState()
+            self.statesVM.hasStarted = true
+        }
     }
+    
     func resetTimer() {
         time = 0
     }

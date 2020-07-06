@@ -12,6 +12,7 @@ import GoogleMaps
 struct GoogleMapsView: UIViewRepresentable {
     
     @ObservedObject var statesVM: StatesViewModel
+    var num = 0
     
     func makeUIView(context: Self.Context) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: 40, longitude: -95.5, zoom: 3.0)
@@ -35,12 +36,15 @@ struct GoogleMapsView: UIViewRepresentable {
             if self.statesVM.highlightedStates.count == 0 {
                 //erase all polygons
                 mapView.clear()
-            } else if self.statesVM.highlightedStates.count < 50 {
-                //draw state
+            } else if self.statesVM.highlightedStates.count == 50 {
+                //win
+                
+            } else if self.statesVM.highlightedStates.count > 0
+                && self.statesVM.highlightedStates.count < 50
+                && self.statesVM.needToDrawState {
                 guard let state = self.statesVM.highlightedStates.last else { return }
                 self.createStateBorderPolygon(borderData: state.borders, mapView: mapView)
-            } else {
-                //win
+                self.statesVM.needToDrawState = false
             }
         }
     }
@@ -56,7 +60,7 @@ struct GoogleMapsView: UIViewRepresentable {
         }
         
         let polygon = GMSPolygon(path: rect)
-        polygon.fillColor = UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.5);
+        polygon.fillColor = UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5);
         polygon.strokeColor = .black
         polygon.strokeWidth = 2
         polygon.map = mapView

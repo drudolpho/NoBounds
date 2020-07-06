@@ -15,6 +15,7 @@ class StatesViewModel: ObservableObject {
     @Published var highlightedStates: [USState] = []
     @Published var currentState: USState?
     @Published var hasStarted = false
+    var needToDrawState = false
     var remainingStates: [USState] = []
     var stateList: [String: USState] = [:]
     
@@ -30,6 +31,8 @@ class StatesViewModel: ObservableObject {
     }
     
     func resetGameData() {
+        self.hasStarted = false
+        needToDrawState = false
         remainingStates = []
         for (_, state) in stateList {
             remainingStates.append(state)
@@ -52,9 +55,9 @@ class StatesViewModel: ObservableObject {
                         let state = self.stateList[self.initialsDictionary[stateInitials] ?? ""] else { return }
                     if state.name == self.currentState?.name {
                         self.highlightedStates.append(state)
+                        self.needToDrawState = true
                         self.setCurrentState()
                     } else {
-                        self.hasStarted = false
                         self.resetGameData()
                     }
                 }
