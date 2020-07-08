@@ -36,20 +36,25 @@ struct GoogleMapsView: UIViewRepresentable {
             if self.statesVM.highlightedStates.count == 0 {
                 //erase all polygons
                 mapView.clear()
-            } else if self.statesVM.highlightedStates.count == 50 {
+            } else if self.statesVM.highlightedStates.count == 50  && self.statesVM.gameStatus == .during {
                 //win
                 
+                
             } else if self.statesVM.highlightedStates.count > 0
-                && self.statesVM.highlightedStates.count < 50
+                && self.statesVM.highlightedStates.count < 51
                 && self.statesVM.needToDrawState {
+                var color = UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5)
+                if self.statesVM.gameStatus == .lost {
+                    color = UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.5);
+                }
                 guard let state = self.statesVM.highlightedStates.last else { return }
-                self.createStateBorderPolygon(borderData: state.borders, mapView: mapView)
+                self.createStateBorderPolygon(borderData: state.borders, color: color, mapView: mapView)
                 self.statesVM.needToDrawState = false
             }
         }
     }
     
-    func createStateBorderPolygon(borderData: [CoordData], mapView: GMSMapView) {
+    func createStateBorderPolygon(borderData: [CoordData], color: UIColor, mapView: GMSMapView) {
         let rect = GMSMutablePath()
         for coord in borderData {
             guard let lat = CLLocationDegrees(exactly: Double(coord._lat) ?? 0), let lon = CLLocationDegrees(exactly: Double(coord._lng) ?? 0) else {
@@ -60,7 +65,7 @@ struct GoogleMapsView: UIViewRepresentable {
         }
         
         let polygon = GMSPolygon(path: rect)
-        polygon.fillColor = UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5);
+        polygon.fillColor = color
         polygon.strokeColor = .black
         polygon.strokeWidth = 2
         polygon.map = mapView

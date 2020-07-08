@@ -14,7 +14,7 @@ class StatesViewModel: ObservableObject {
     
     @Published var highlightedStates: [USState] = []
     @Published var currentState: USState?
-    @Published var hasStarted = false
+    @Published var gameStatus: GameStatus = .before
     var needToDrawState = false
     var remainingStates: [USState] = []
     var stateList: [String: USState] = [:]
@@ -31,7 +31,7 @@ class StatesViewModel: ObservableObject {
     }
     
     func resetGameData() {
-        self.hasStarted = false
+        self.gameStatus = .before
         needToDrawState = false
         remainingStates = []
         for (_, state) in stateList {
@@ -56,9 +56,15 @@ class StatesViewModel: ObservableObject {
                     if state.name == self.currentState?.name {
                         self.highlightedStates.append(state)
                         self.needToDrawState = true
-                        self.setCurrentState()
+                        if self.highlightedStates.count < 50 {
+                            self.setCurrentState()
+                        }
                     } else {
-                        self.resetGameData()
+                        //highlight red state
+                        self.gameStatus = .lost
+                        self.highlightedStates.append(state)
+                        self.needToDrawState = true
+//                        self.resetGameData()
                     }
                 }
             }
@@ -84,5 +90,14 @@ class StatesViewModel: ObservableObject {
             }
         }
         return
+    }
+    
+    func getButtonText() -> String {
+        switch self.gameStatus {
+        case .before:
+            return "Start"
+        default:
+            return "Restart"
+        }
     }
 }
