@@ -24,21 +24,19 @@ struct ControlView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer()
                 HStack {
                     
                     if self.statesVM.gameStatus == .during {
                         
                         Text(self.statesVM.currentState?.name ?? "")
+                            
                             .bold()
                             .font(.title)
-                        Spacer()
+                            .minimumScaleFactor(0.1)
                         
-                        //                        Text("\(self.statesVM.highlightedStates.count)/50")
-                        //                            .foregroundColor(.gray)
-                        //                            .font(.headline)
-                        //                        Spacer()
+                        Spacer()
                         Text("\(self.time) sec.")
+                            .minimumScaleFactor(0.1)
                             .foregroundColor(.gray)
                             .font(.headline)
                             .padding()
@@ -46,7 +44,9 @@ struct ControlView: View {
                                 if self.time < 999 {
                                     self.time += 1
                                 }
+                                
                         }
+                        
                     } else if self.statesVM.gameStatus == .before {
                         HStack {
                             Text("No Bounds")
@@ -82,7 +82,7 @@ struct ControlView: View {
                         }
                     }
                 }.padding(.horizontal, 35.0)
-                Spacer()
+                
                 Button(action: self.buttonTapped) {
                     Text(self.statesVM.getButtonText())
                         .font(.title)
@@ -92,8 +92,7 @@ struct ControlView: View {
                         .foregroundColor(Color.white)
                         .cornerRadius(15)
                         .shadow(radius: 0)
-                }
-                .padding(.bottom, 30.0)
+                }.padding(.vertical, 20.0)
             }
         }
     }

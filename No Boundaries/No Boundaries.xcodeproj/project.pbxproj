@@ -19,7 +19,7 @@
 		68BB273324A3A4A10076BBE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68BB273224A3A4A10076BBE0 /* Preview Assets.xcassets */; };
 		68BB273624A3A4A10076BBE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BB273424A3A4A10076BBE0 /* LaunchScreen.storyboard */; };
 		68F719DB24B4CC9D005D3388 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F719DA24B4CC9D005D3388 /* ControlView.swift */; };
-		68F719DD24B52CF5005D3388 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F719DC24B52CF5005D3388 /* GuideView.swift */; };
+		68F719DD24B52CF5005D3388 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F719DC24B52CF5005D3388 /* BottomView.swift */; };
 		A027C4FA884389529AB0BBCF /* Pods_No_Boundaries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4322F1A370A1500DDBE1180C /* Pods_No_Boundaries.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +40,7 @@
 		68BB273524A3A4A10076BBE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68BB273724A3A4A10076BBE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68F719DA24B4CC9D005D3388 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
-		68F719DC24B52CF5005D3388 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		68F719DC24B52CF5005D3388 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		8DC0DD85A15C0A45AD1C6D71 /* Pods-No Boundaries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-No Boundaries.release.xcconfig"; path = "Target Support Files/Pods-No Boundaries/Pods-No Boundaries.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,7 +62,7 @@
 				68BB272D24A3A4A00076BBE0 /* ContentView.swift */,
 				6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */,
 				68F719DA24B4CC9D005D3388 /* ControlView.swift */,
-				68F719DC24B52CF5005D3388 /* GuideView.swift */,
+				68F719DC24B52CF5005D3388 /* BottomView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -270,7 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6879B9DD24AA829B007A9A0D /* GoogleMapsView.swift in Sources */,
-				68F719DD24B52CF5005D3388 /* GuideView.swift in Sources */,
+				68F719DD24B52CF5005D3388 /* BottomView.swift in Sources */,
 				68BB272A24A3A4A00076BBE0 /* AppDelegate.swift in Sources */,
 				68926E3524AE361000DD16F1 /* StatesViewModel.swift in Sources */,
 				68940DFC24AE38BB00181045 /* Models.swift in Sources */,

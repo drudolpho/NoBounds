@@ -49,7 +49,7 @@ struct GoogleMapsView: UIViewRepresentable {
                 if self.statesVM.highlightedStates[currentState.name] == false {
                     self.createStateBorderPolygon(borderData: currentState.borders, color: color, mapView: mapView)
                     self.statesVM.stateHasBeenDrawn(state: currentState)
-                    if self.statesVM.highlightedStates.count == 50 { //Should be 50 but 3 for testing
+                    if self.statesVM.highlightedStates.count == 50 { //3 for testing
                         //Win
                         self.statesVM.gameStatus = .win
                     } else {
