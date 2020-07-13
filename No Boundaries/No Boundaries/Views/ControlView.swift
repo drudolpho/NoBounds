@@ -53,7 +53,7 @@ struct ControlView: View {
                                 .bold()
                                 .font(.title)
                             Spacer()
-                            Text("highscore: 122")
+                            Text("highscore: \(UserDefaults.standard.integer(forKey: "score"))")
                                 .foregroundColor(.gray)
                                 .font(.headline)
                             Spacer()
@@ -64,7 +64,7 @@ struct ControlView: View {
                                 .bold()
                                 .font(.title)
                             Spacer()
-                            Text("\(self.statesVM.highlightedStates.count - 1)/50 States")
+                            Text("\(self.statesVM.scoreState)/50 States")
                                 .foregroundColor(.gray)
                                 .font(.headline)
                             Spacer()
@@ -75,7 +75,7 @@ struct ControlView: View {
                                 .bold()
                                 .font(.title)
                             Spacer()
-                            Text("Your score was: \(self.time)")
+                            Text("Your score was: \(self.statesVM.getSetScore(time: self.time))")
                                 .foregroundColor(.gray)
                                 .font(.headline)
                             Spacer()
@@ -124,3 +124,20 @@ struct ControlView_Previews: PreviewProvider {
 }
 
 
+//For Rounding specific corners
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
+    }
+}
+
+struct RoundedCorner: Shape {
+
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}

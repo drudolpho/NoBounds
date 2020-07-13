@@ -29,9 +29,9 @@ struct ContentView: View {
                     ControlView(statesVM: self.statesVM)
                         
                         .background(Color(red: 230/255, green: 240/255, blue: 240/255, opacity: 1))
-                        .cornerRadius(40)
-                        .edgesIgnoringSafeArea(.bottom)
                         
+                        .edgesIgnoringSafeArea(.bottom)
+                        .cornerRadius(20, corners: [.topLeft, .topRight])
                         .shadow(radius: 40)
                         .frame(width: geometry.size.width, height: geometry.size.height / 6)
 //                        .overlay(

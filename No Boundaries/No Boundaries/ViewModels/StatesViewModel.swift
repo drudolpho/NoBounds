@@ -12,12 +12,12 @@ import GoogleMaps
 
 class StatesViewModel: ObservableObject {
     
-    @Published var highlightedStates: [USState] = []
+    @Published var highlightedStates: [String: Bool] = [:]
     @Published var currentState: USState?
     @Published var gameStatus: GameStatus = .before
-    var needToDrawState = false
-    var remainingStates: [USState] = []
+    var remainingStates: [String: USState] = [:]
     var stateList: [String: USState] = [:]
+    var scoreState: Int = 0
     
     let initialsDictionary: [String: String] = ["NM": "New Mexico", "SD": "South Dakota", "TN": "Tennessee", "VT": "Vermont", "WY": "Wyoming", "OR": "Oregon", "MI": "Michigan", "MS": "Mississippi", "WA": "Washington", "ID": "Idaho", "ND": "North Dakota", "GA": "Georgia", "UT": "Utah", "OH": "Ohio", "DE": "Delaware", "NC": "North Carolina", "NJ": "New Jersey", "IN": "Indiana", "IL": "Illinois", "HI": "Hawaii", "NH": "New Hampshire", "MO": "Missouri", "MD": "Maryland", "WV": "West Virginia", "MA": "Massachusetts", "IA": "Iowa", "KY": "Kentucky", "NE": "Nebraska", "SC": "South Carolina", "AZ": "Arizona", "KS": "Kansas", "NV": "Nevada", "WI": "Wisconsin", "RI": "Rhode Island", "FL": "Florida", "TX": "Texas", "AL": "Alabama", "CO": "Colorado", "AK": "Alaska", "VA": "Virginia", "AR": "Arkansas", "CA": "California", "LA": "Louisiana", "CT": "Connecticut", "NY": "New York", "MN": "Minnesota", "MT": "Montana", "OK": "Oklahoma", "PA": "Pennsylvania", "ME": "Maine"]
     
@@ -26,19 +26,39 @@ class StatesViewModel: ObservableObject {
     }
     
     func setCurrentState() {
-        let randomIndex = Int.random(in: 0...remainingStates.count - 1)
-        currentState = remainingStates.remove(at: randomIndex)
+        let randomState = remainingStates.values.randomElement()
+        currentState = randomState
+        let stateName = randomState?.name
+        remainingStates[stateName ?? ""] = nil
+    }
+    
+    func stateHasBeenDrawn(state: USState) {
+        highlightedStates[state.name] = true
     }
     
     func resetGameData() {
         self.gameStatus = .before
-        needToDrawState = false
-        remainingStates = []
-        for (_, state) in stateList {
-            remainingStates.append(state)
-        }
-        highlightedStates = []
+        scoreState = 0
+        remainingStates = [:]
+        //old
+//        for (_, state) in stateList {
+//            remainingStates.append(state)
+//        }
+        
+        remainingStates = stateList
+        highlightedStates = [:]
         currentState = nil
+    }
+    
+    func getSetScore(time: Int) -> Int {
+        let highscore = UserDefaults.standard.integer(forKey: "score")
+        
+        if highscore == 0 || time < highscore {
+            UserDefaults.standard.set(time, forKey: "score")
+            return time
+        } else {
+            return highscore
+        }
     }
     
     func addState(coordinate: CLLocationCoordinate2D) {
@@ -53,18 +73,22 @@ class StatesViewModel: ObservableObject {
                 if pm.count > 0 {
                     guard let stateInitials = pm[0].administrativeArea,
                         let state = self.stateList[self.initialsDictionary[stateInitials] ?? ""] else { return }
-                    if state.name == self.currentState?.name {
-                        self.highlightedStates.append(state)
-                        self.needToDrawState = true
-                        if self.highlightedStates.count < 50 {
-                            self.setCurrentState()
-                        }
+                    
+                    //If game hasnt started yet (at start screen)
+                    if self.gameStatus == .before {
+                        
                     } else {
-                        //highlight red state
-                        self.gameStatus = .lost
-                        self.highlightedStates.append(state)
-                        self.needToDrawState = true
-//                        self.resetGameData()
+                        if state.name == self.currentState?.name {
+                            self.highlightedStates[state.name] = false
+                            self.scoreState += 1
+                        } else {
+                            //highlight red state
+                            if self.highlightedStates[state.name] == nil {
+                                self.gameStatus = .lost
+                                self.highlightedStates[state.name] = false
+                                self.currentState = state
+                            }
+                        }
                     }
                 }
             }
@@ -82,7 +106,7 @@ class StatesViewModel: ObservableObject {
                     let temp = USState(name: state._name, borders: state.point)
                     stateList[temp.name] = temp
                     print(temp.name)
-                    remainingStates.append(temp)
+                    self.remainingStates[temp.name] = temp
                 }
                 return
             } catch {
