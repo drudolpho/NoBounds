@@ -25,7 +25,7 @@ struct ControlView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                HStack {
+                HStack(alignment: .lastTextBaseline) {
                     
                     if self.statesVM.gameStatus == .during {
                         
@@ -33,34 +33,37 @@ struct ControlView: View {
                             
                             .bold()
                             .font(.title)
-                            .minimumScaleFactor(0.1)
+                            .transition(.opacity)
+                            .id(self.statesVM.currentState?.name ?? "")
                         
                         Spacer()
-                        Text("\(self.time) sec.")
-                            .minimumScaleFactor(0.1)
+                        Text("\(self.time)")
                             .foregroundColor(.gray)
                             .font(.headline)
-                            .padding()
+                            .padding([.leading])
+                            .transition(.opacity)
+                            .id("\(self.time)")
                             .onReceive(self.timer) { _ in
                                 if self.time < 999 {
                                     self.time += 1
                                 }
-                                
-                        }
+                            }
+                        Text("sec")
+                            .foregroundColor(.gray)
+                            .font(.headline)
+                            .padding(.trailing)
                         
                     } else if self.statesVM.gameStatus == .before {
-                        HStack {
-                            Text("No Bounds")
+                            Text("United States")
                                 .bold()
                                 .font(.title)
                             Spacer()
-                            Text("highscore: \(UserDefaults.standard.integer(forKey: "score"))")
+                            Text("best: \(UserDefaults.standard.integer(forKey: "score")) sec")
                                 .foregroundColor(.gray)
                                 .font(.headline)
                             Spacer()
-                        }
+                        
                     } else if self.statesVM.gameStatus == .lost {
-                        HStack {
                             Text("Game Over")
                                 .bold()
                                 .font(.title)
@@ -69,18 +72,17 @@ struct ControlView: View {
                                 .foregroundColor(.gray)
                                 .font(.headline)
                             Spacer()
-                        }
+                        
                     } else if self.statesVM.gameStatus == .win {
-                        HStack {
                             Text("Bingo!")
                                 .bold()
                                 .font(.title)
                             Spacer()
-                            Text("Your score was: \(self.statesVM.getSetScore(time: self.time))")
+                            Text("Your time was: \(self.statesVM.getSetScore(time: self.time))")
                                 .foregroundColor(.gray)
                                 .font(.headline)
                             Spacer()
-                        }
+                        
                     }
                 }.padding(.horizontal, 35.0)
                 
@@ -93,6 +95,8 @@ struct ControlView: View {
                         .foregroundColor(Color.white)
                         .cornerRadius(15)
                         .shadow(radius: 0)
+                        .transition(.opacity)
+                        .id(self.statesVM.getButtonText())
                 }.padding(.vertical, 20.0)
             }
         }

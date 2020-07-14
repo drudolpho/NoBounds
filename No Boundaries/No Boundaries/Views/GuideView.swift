@@ -12,12 +12,13 @@ struct GuideView: View {
     var body: some View {
         VStack {
             HStack {
-                Image("USA")
+                Image("walk")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30.0, height: 30)
                     .padding(.horizontal)
                 Text("Tap Start to begin the game")
+                    .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2, opacity: 0.9))
                     .padding(.horizontal)
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer()
@@ -25,12 +26,13 @@ struct GuideView: View {
             Divider()
                 .frame(width: 300, height: 2)
             HStack {
-                Image("USA")
+                Image("bus")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30.0, height: 30)
                     .padding(.horizontal)
                 Text("Touch within the boundaries of the prompted state")
+                    .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2, opacity: 0.9))
                     .padding(.horizontal)
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer()
@@ -38,16 +40,18 @@ struct GuideView: View {
             Divider()
                 .frame(width: 300, height: 2)
             HStack {
-                Image("USA")
+                Image("plane")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30.0, height: 30)
                     .padding(.horizontal)
-                Text("Complete all states with \nrecord time!")
+                Text("Complete all states within record time!")
+                    .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2, opacity: 0.9))
                     .padding(.horizontal)
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer()
             }
+            Spacer()
         }
     }
 }

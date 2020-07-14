@@ -31,7 +31,11 @@ struct ContentView: View {
                         VStack{
                             ControlView(statesVM: self.statesVM, bottomSheetShown: self.$bottomSheetShown)
                                 .frame(width: geometry.size.width, height: geometry.size.height * 0.18)
+//                                .background(Color.blue)
                             GuideView()
+                                .frame(width: geometry.size.width, height: geometry.size.height * 0.25)
+//                                .background(Color.red)
+                            Spacer()
                         }
                     }
                 }.edgesIgnoringSafeArea(.all)

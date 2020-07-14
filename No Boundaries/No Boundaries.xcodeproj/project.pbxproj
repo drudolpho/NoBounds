@@ -63,9 +63,9 @@
 			children = (
 				68BB272D24A3A4A00076BBE0 /* ContentView.swift */,
 				6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */,
+				68F719DC24B52CF5005D3388 /* BottomView.swift */,
 				68F719DA24B4CC9D005D3388 /* ControlView.swift */,
 				682A965424BE1D3C00703EFD /* GuideView.swift */,
-				68F719DC24B52CF5005D3388 /* BottomView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
