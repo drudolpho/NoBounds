@@ -41,7 +41,7 @@ struct BottomSheetView<Content: View>: View {
     }
 
     init(isOpen: Binding<Bool>, maxHeight: CGFloat, @ViewBuilder content: () -> Content) {
-        self.minHeight = maxHeight * 0.3
+        self.minHeight = maxHeight * 0.42
         self.maxHeight = maxHeight
         self.content = content()
         self._isOpen = isOpen
@@ -58,7 +58,7 @@ struct BottomSheetView<Content: View>: View {
             
             .frame(width: geometry.size.width, height: self.maxHeight, alignment: .top)
             .background(Color(.white))
-            .cornerRadius(40)
+            .cornerRadius(20, corners: [.topLeft, .topRight])
             .frame(height: geometry.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
             .animation(.interactiveSpring())
@@ -67,7 +67,7 @@ struct BottomSheetView<Content: View>: View {
                 DragGesture().updating(self.$translation) { value, state, _ in
                     state = value.translation.height
                 }.onEnded { value in
-                    let snapDistance = self.maxHeight * 0.25
+                    let snapDistance = self.maxHeight * 0.20
                     guard abs(value.translation.height) > snapDistance else {
                         return
                     }

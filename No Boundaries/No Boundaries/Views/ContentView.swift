@@ -23,23 +23,15 @@ struct ContentView: View {
                 
                 VStack {
                     Spacer()
-                    //                    ControlView(statesVM: self.statesVM)
-                    //
-                    //                        .background(Color(red: 230/255, green: 240/255, blue: 240/255, opacity: 1))
-                    //                        .cornerRadius(20, corners: [.topLeft, .topRight])
-                    //                        .edgesIgnoringSafeArea(.bottom)
-                    //                        .shadow(radius: 40)
-                    //                        .frame(width: geometry.size.width, height: geometry.size.height / 6)
                     
                     BottomSheetView(
                         isOpen: self.$bottomSheetShown,
-                        maxHeight: geometry.size.height * 0.7
+                        maxHeight: geometry.size.height * 0.5
                     ) {
-                        ZStack{
-                            ControlView(statesVM: self.statesVM)
+                        VStack{
+                            ControlView(statesVM: self.statesVM, bottomSheetShown: self.$bottomSheetShown)
                                 .frame(width: geometry.size.width, height: geometry.size.height * 0.18)
-//                                .background(Color.orange)
-                            Spacer()
+                            GuideView()
                         }
                     }
                 }.edgesIgnoringSafeArea(.all)

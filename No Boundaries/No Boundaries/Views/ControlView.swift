@@ -19,6 +19,7 @@ struct ControlView: View {
     
     @ObservedObject var statesVM: StatesViewModel
     @State var time = 0
+    @Binding var bottomSheetShown: Bool
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -103,6 +104,7 @@ struct ControlView: View {
     
     func buttonTapped() {
         if statesVM.gameStatus == .before {
+            self.bottomSheetShown = false
             statesVM.setCurrentState()
             self.statesVM.gameStatus = .during
         } else {
@@ -113,14 +115,14 @@ struct ControlView: View {
     }
 }
 
-struct ControlView_Previews: PreviewProvider {
-    static var previews: some View {
-        let statesvm = StatesViewModel()
-        statesvm.currentState = USState(name: "West Virginia", borders: [])
-        statesvm.gameStatus = .during
-        return ControlView(statesVM: statesvm)
-    }
-}
+//struct ControlView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let statesvm = StatesViewModel()
+//        statesvm.currentState = USState(name: "West Virginia", borders: [])
+//        statesvm.gameStatus = .during
+//        return ControlView(statesVM: statesvm)
+//    }
+//}
 
 
 //For Rounding specific corners
