@@ -8,14 +8,6 @@
 
 import SwiftUI
 
-//fileprivate enum Constants {
-//    static let radius: CGFloat = 16
-//    static let indicatorHeight: CGFloat = 6
-//    static let indicatorWidth: CGFloat = 60
-//    static let snapRatio: CGFloat = 0.25
-//    static let minHeightRatio: CGFloat = 0.3
-//}
-
 struct BottomSheetView<Content: View>: View {
     
     @Binding var isOpen: Bool

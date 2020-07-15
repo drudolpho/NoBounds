@@ -66,9 +66,7 @@
 				68BB272D24A3A4A00076BBE0 /* ContentView.swift */,
 				6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */,
 				68F719DC24B52CF5005D3388 /* BottomView.swift */,
-				68F719DA24B4CC9D005D3388 /* ControlView.swift */,
-				682A965424BE1D3C00703EFD /* GuideView.swift */,
-				68D9D1B324BF8DE900318717 /* PreferenceView.swift */,
+				68D9D1B524BFBA1500318717 /* SlideViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -130,6 +128,16 @@
 				68BB273224A3A4A10076BBE0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		68D9D1B524BFBA1500318717 /* SlideViews */ = {
+			isa = PBXGroup;
+			children = (
+				68F719DA24B4CC9D005D3388 /* ControlView.swift */,
+				68D9D1B324BF8DE900318717 /* PreferenceView.swift */,
+				682A965424BE1D3C00703EFD /* GuideView.swift */,
+			);
+			path = SlideViews;
 			sourceTree = "<group>";
 		};
 		68EA3FC624ABED6B00185A6B /* Resources */ = {
