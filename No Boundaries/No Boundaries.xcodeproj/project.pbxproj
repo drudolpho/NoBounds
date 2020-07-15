@@ -19,6 +19,7 @@
 		68BB273024A3A4A10076BBE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68BB272F24A3A4A10076BBE0 /* Assets.xcassets */; };
 		68BB273324A3A4A10076BBE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68BB273224A3A4A10076BBE0 /* Preview Assets.xcassets */; };
 		68BB273624A3A4A10076BBE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BB273424A3A4A10076BBE0 /* LaunchScreen.storyboard */; };
+		68D9D1B424BF8DE900318717 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9D1B324BF8DE900318717 /* PreferenceView.swift */; };
 		68F719DB24B4CC9D005D3388 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F719DA24B4CC9D005D3388 /* ControlView.swift */; };
 		68F719DD24B52CF5005D3388 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F719DC24B52CF5005D3388 /* BottomView.swift */; };
 		A027C4FA884389529AB0BBCF /* Pods_No_Boundaries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4322F1A370A1500DDBE1180C /* Pods_No_Boundaries.framework */; };
@@ -41,6 +42,7 @@
 		68BB273224A3A4A10076BBE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		68BB273524A3A4A10076BBE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68BB273724A3A4A10076BBE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68D9D1B324BF8DE900318717 /* PreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
 		68F719DA24B4CC9D005D3388 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		68F719DC24B52CF5005D3388 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		8DC0DD85A15C0A45AD1C6D71 /* Pods-No Boundaries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-No Boundaries.release.xcconfig"; path = "Target Support Files/Pods-No Boundaries/Pods-No Boundaries.release.xcconfig"; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				68F719DC24B52CF5005D3388 /* BottomView.swift */,
 				68F719DA24B4CC9D005D3388 /* ControlView.swift */,
 				682A965424BE1D3C00703EFD /* GuideView.swift */,
+				68D9D1B324BF8DE900318717 /* PreferenceView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				68926E3524AE361000DD16F1 /* StatesViewModel.swift in Sources */,
 				68940DFC24AE38BB00181045 /* Models.swift in Sources */,
 				68BB272C24A3A4A00076BBE0 /* SceneDelegate.swift in Sources */,
+				68D9D1B424BF8DE900318717 /* PreferenceView.swift in Sources */,
 				68F719DB24B4CC9D005D3388 /* ControlView.swift in Sources */,
 				68BB272E24A3A4A00076BBE0 /* ContentView.swift in Sources */,
 			);

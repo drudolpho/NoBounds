@@ -12,6 +12,7 @@ import GoogleMaps
 struct GoogleMapsView: UIViewRepresentable {
     
     @ObservedObject var statesVM: StatesViewModel
+    @Binding var currentMode: Int
     var num = 0
     
     func makeUIView(context: Self.Context) -> GMSMapView {

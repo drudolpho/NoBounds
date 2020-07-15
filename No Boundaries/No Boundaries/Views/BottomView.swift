@@ -17,8 +17,9 @@ import SwiftUI
 //}
 
 struct BottomSheetView<Content: View>: View {
+    
     @Binding var isOpen: Bool
-
+    
     let maxHeight: CGFloat
     let minHeight: CGFloat
     let content: Content
@@ -41,7 +42,7 @@ struct BottomSheetView<Content: View>: View {
     }
 
     init(isOpen: Binding<Bool>, maxHeight: CGFloat, @ViewBuilder content: () -> Content) {
-        self.minHeight = maxHeight * 0.42
+        self.minHeight = maxHeight * 0.30
         self.maxHeight = maxHeight
         self.content = content()
         self._isOpen = isOpen
@@ -78,10 +79,10 @@ struct BottomSheetView<Content: View>: View {
     }
 }
 
-struct BottomSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        BottomSheetView(isOpen: .constant(false), maxHeight: 600) {
-            Rectangle().fill(Color(.systemFill))
-        }.edgesIgnoringSafeArea(.all)
-    }
-}
+//struct BottomSheetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BottomSheetView(isOpen: .constant(false), maxHeight: 600) {
+//            Rectangle().fill(Color(.systemFill))
+//        }.edgesIgnoringSafeArea(.all)
+//    }
+//}

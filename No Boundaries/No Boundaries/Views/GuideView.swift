@@ -23,8 +23,10 @@ struct GuideView: View {
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer()
             }
+            Spacer()
             Divider()
                 .frame(width: 300, height: 2)
+            Spacer()
             HStack {
                 Image("bus")
                     .resizable()
@@ -37,8 +39,10 @@ struct GuideView: View {
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer()
             }
+            Spacer()
             Divider()
                 .frame(width: 300, height: 2)
+            Spacer()
             HStack {
                 Image("plane")
                     .resizable()
