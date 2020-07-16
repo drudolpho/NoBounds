@@ -9,10 +9,13 @@
 import SwiftUI
 import GoogleMaps
 
+
 struct ContentView: View {
     
     @ObservedObject var statesVM = StatesViewModel()
     @State private var bottomSheetShown = false
+//    @State private var showingSubmitView = true
+    @State var time = 0
     @State private var currentMode = 0
    
     
@@ -23,6 +26,7 @@ struct ContentView: View {
             ZStack {
                 GoogleMapsView(statesVM: self.statesVM, currentMode: self.$currentMode)
                     .edgesIgnoringSafeArea(.all)
+                    .zIndex(0)
                 
                 VStack {
                     Spacer()
@@ -32,17 +36,26 @@ struct ContentView: View {
                         maxHeight: geometry.size.height * 0.7
                     ) {
                         VStack{
-                            ControlView(statesVM: self.statesVM, bottomSheetShown: self.$bottomSheetShown, gameMode: self.$currentMode)
+                            ControlView(statesVM: self.statesVM, time: self.$time, bottomSheetShown: self.$bottomSheetShown, gameMode: self.$currentMode)
                                 .frame(width: geometry.size.width, height: geometry.size.height * 0.18)
                             
                             PreferenceView(currentMode: self.$currentMode)
-
+                            
                             GuideView()
-
+                            
                             Spacer()
                         }
                     }
-                }.edgesIgnoringSafeArea(.all)
+                }.edgesIgnoringSafeArea(.all).zIndex(1)
+                
+                if self.statesVM.gameStatus == .win {
+                    SubmitView(statesVM: self.statesVM, time: self.$time, submitting: false)
+                        .frame(width: 300, height: 200, alignment: .center)
+                        .background(Color.white)
+                        .cornerRadius(20)
+                        .transition(AnyTransition.scale.animation(.spring()))
+                        .zIndex(2)
+                }
             }
         }
     }

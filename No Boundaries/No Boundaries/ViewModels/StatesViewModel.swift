@@ -14,7 +14,7 @@ class StatesViewModel: ObservableObject {
     
     var tabbedStates: [String: Bool] = [:]
     @Published var promptedState: USState?
-    @Published var selectedState: (USState, Bool)?
+    @Published var selectedState: (USState, Bool)? //Bool indicates correctness of tap
     @Published var gameStatus: GameStatus = .before
     var remainingStates: [String: USState] = [:]
     var stateList: [String: USState] = [:]
@@ -70,7 +70,7 @@ class StatesViewModel: ObservableObject {
     }
     
     func handleState(coordinate: CLLocationCoordinate2D) {
-        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
+//        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
@@ -91,7 +91,7 @@ class StatesViewModel: ObservableObject {
                             self.tabbedStates[tappedState.name] = false
                             if self.gameStatus == .during {
                                 self.scoredStates += 1
-                                if self.scoredStates == 3 { //should be 50, lower for testing
+                                if self.scoredStates == 3 { //should be self.stateList.count, lower for testing
                                     //win
                                     self.gameStatus = .win
                                 } else {
@@ -133,7 +133,7 @@ class StatesViewModel: ObservableObject {
                 for state in jsonData.state {
                     let temp = USState(name: state._name, borders: state.point)
                     stateList[temp.name] = temp
-                    print(temp.name)
+//                    print(temp.name)
                     self.remainingStates[temp.name] = temp
                 }
                 return

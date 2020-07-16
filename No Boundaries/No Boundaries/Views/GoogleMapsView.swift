@@ -65,7 +65,6 @@ struct GoogleMapsView: UIViewRepresentable {
         }
         
         if let borderData = statesVM.selectedState?.0.borders {
-            print(borderData.count)
             let color = (statesVM.selectedState?.1 == true) ? UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5) : UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.5)
 
             self.createStateBorderPolygon(borderData: borderData, color: color, mapView: mapView)

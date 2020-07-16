@@ -11,7 +11,7 @@ import SwiftUI
 struct ControlView: View {
     
     @ObservedObject var statesVM: StatesViewModel
-    @State var time = 0
+    @Binding var time: Int
     @Binding var bottomSheetShown: Bool
     @Binding var gameMode: Int
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -41,41 +41,42 @@ struct ControlView: View {
                                 if self.time < 999 {
                                     self.time += 1
                                 }
-                            }
+                        }
                         Text("sec")
                             .foregroundColor(.gray)
                             .font(.headline)
                             .padding(.trailing)
                         
                     } else if self.statesVM.gameStatus == .before {
-                            Text("United States")
-                                .bold()
-                                .font(.title)
-                            Spacer()
-                            Text("best: \(UserDefaults.standard.integer(forKey: "score")) sec")
-                                .foregroundColor(.gray)
-                                .font(.headline)
-                            Spacer()
+                        Text("United States")
+                            .bold()
+                            .font(.title)
+                        Spacer()
+                        Text("best: \(UserDefaults.standard.integer(forKey: "score")) sec")
+                            .foregroundColor(.gray)
+                            .font(.headline)
+                        Spacer()
                         
                     } else if self.statesVM.gameStatus == .lost {
-                            Text("Game Over")
-                                .bold()
-                                .font(.title)
-                            Spacer()
-                            Text("\(self.statesVM.scoredStates)/50 States")
-                                .foregroundColor(.gray)
-                                .font(.headline)
-                            Spacer()
+                        Text("Game Over")
+                            .bold()
+                            .font(.title)
+                        Spacer()
+                        Text("\(self.statesVM.scoredStates)/50 States")
+                            .foregroundColor(.gray)
+                            .font(.headline)
+                        Spacer()
                         
                     } else if self.statesVM.gameStatus == .win {
-                            Text("Bingo!")
-                                .bold()
-                                .font(.title)
-                            Spacer()
+                        Text("Bingo!")
+                            .bold()
+                            .font(.title)
+                        Spacer()
                         Text("\(self.statesVM.getSetScore(time: self.time, mode: self.gameMode)) sec")
-                                .foregroundColor(.gray)
-                                .font(.headline)
-                            Spacer()
+                            .foregroundColor(.gray)
+                            .font(.headline)
+                            .padding(.trailing)
+//                        Spacer()
                         
                     }
                 }.padding(.horizontal, 35.0)
