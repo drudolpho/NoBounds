@@ -55,33 +55,59 @@ struct GoogleMapsView: UIViewRepresentable {
             }
         }
         
-        guard let currentState = self.statesVM.currentState else {
+        
+        //New
+        
+        //Clears board on on reset
+        guard let _ = self.statesVM.promptedState else {
             mapView.clear()
             return
         }
-        DispatchQueue.main.async {
+        
+        if let borderData = statesVM.selectedState?.0.borders {
+            print(borderData.count)
+            let color = (statesVM.selectedState?.1 == true) ? UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5) : UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.5)
+
+            self.createStateBorderPolygon(borderData: borderData, color: color, mapView: mapView)
             
-            if self.statesVM.highlightedStates == [:] {
-                //erase all polygons
-                mapView.clear()
-            } else if self.statesVM.highlightedStates.count > 0
-                && self.statesVM.highlightedStates.count < 51 {
-                var color = UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5)
-                if self.statesVM.gameStatus == .lost {
-                    color = UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.5);
-                }
-                if self.statesVM.highlightedStates[currentState.name] == false {
-                    self.createStateBorderPolygon(borderData: currentState.borders, color: color, mapView: mapView)
-                    self.statesVM.stateHasBeenDrawn(state: currentState)
-                    if self.statesVM.highlightedStates.count == 3 && self.statesVM.gameStatus != .lost { //3 for testing
-                        //Win
-                        self.statesVM.gameStatus = .win
-                    } else {
-                        self.statesVM.setCurrentState()
-                    }
-                }
-            }
+            self.statesVM.selectedStateHasBeenDrawn()
+            //checkGameStatus()
         }
+        
+        
+        
+        
+        
+        
+        
+//        guard let promptedState = self.statesVM.promptedState else {
+//            mapView.clear()
+//            return
+//        }
+//        DispatchQueue.main.async {
+//
+//            if self.statesVM.tabbedStates == [:] {
+//                //erase all polygons
+//                mapView.clear()
+//            } else if self.statesVM.tabbedStates.count > 0
+//                && self.statesVM.tabbedStates.count < 51 {
+//                var color = UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5)
+//                if self.statesVM.gameStatus == .lost {
+//                    color = UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.5);
+//                }
+        
+//                if self.statesVM.tabbedStates[promptedState.name] == false {
+//                    self.createStateBorderPolygon(borderData: promptedState.borders, color: color, mapView: mapView)
+//                    self.statesVM.stateHasBeenDrawn(state: promptedState)
+//                    if self.statesVM.tabbedStates.count == 3 && self.statesVM.gameStatus != .lost { //3 for testing
+//                        //Win
+//                        self.statesVM.gameStatus = .win
+//                    } else {
+//                        self.statesVM.setPromptedState()
+//                    }
+//                }
+//            }
+//        }
     }
     
     func createStateBorderPolygon(borderData: [CoordData], color: UIColor, mapView: GMSMapView) {
@@ -112,7 +138,7 @@ struct GoogleMapsView: UIViewRepresentable {
         }
         
         func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-            statesVM.addState(coordinate: coordinate)
+            statesVM.handleState(coordinate: coordinate)
         }
     }
     

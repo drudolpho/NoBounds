@@ -23,12 +23,12 @@ struct ControlView: View {
                     
                     if self.statesVM.gameStatus == .during {
                         
-                        Text(self.statesVM.currentState?.name ?? "")
+                        Text(self.statesVM.promptedState?.name ?? "")
                             
                             .bold()
                             .font(.title)
                             .transition(.opacity)
-                            .id(self.statesVM.currentState?.name ?? "")
+                            .id(self.statesVM.promptedState?.name ?? "")
                         
                         Spacer()
                         Text("\(self.time)")
@@ -103,7 +103,7 @@ struct ControlView: View {
     func buttonTapped() {
         if statesVM.gameStatus == .before {
             self.bottomSheetShown = false
-            statesVM.setCurrentState()
+            statesVM.setPromptedState()
             self.statesVM.gameStatus = .during
         } else {
             statesVM.resetGameData()

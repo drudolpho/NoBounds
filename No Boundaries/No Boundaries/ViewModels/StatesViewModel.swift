@@ -12,8 +12,9 @@ import GoogleMaps
 
 class StatesViewModel: ObservableObject {
     
-    @Published var highlightedStates: [String: Bool] = [:]
-    @Published var currentState: USState?
+    var tabbedStates: [String: Bool] = [:]
+    @Published var promptedState: USState?
+    @Published var selectedState: (USState, Bool)?
     @Published var gameStatus: GameStatus = .before
     var remainingStates: [String: USState] = [:]
     var stateList: [String: USState] = [:]
@@ -25,15 +26,16 @@ class StatesViewModel: ObservableObject {
         initializeStates()
     }
     
-    func setCurrentState() {
+    func setPromptedState() {
         let randomState = remainingStates.values.randomElement()
-        currentState = randomState
+        promptedState = randomState
         let stateName = randomState?.name
         remainingStates[stateName ?? ""] = nil
     }
     
-    func stateHasBeenDrawn(state: USState) {
-        highlightedStates[state.name] = true
+    func selectedStateHasBeenDrawn() {
+        guard let name = selectedState?.0.name else { return }
+        tabbedStates[name] = true
     }
     
     func resetGameData() {
@@ -42,8 +44,9 @@ class StatesViewModel: ObservableObject {
         remainingStates = [:]
   
         remainingStates = stateList
-        highlightedStates = [:]
-        currentState = nil
+        tabbedStates = [:]
+        promptedState = nil
+        selectedState = nil
     }
     
     func getSetScore(time: Int, mode: Int) -> Int {
@@ -55,7 +58,18 @@ class StatesViewModel: ObservableObject {
         return time
     }
     
-    func addState(coordinate: CLLocationCoordinate2D) {
+    func checkStateCorrectness() -> Bool {
+        if selectedState?.0.name == promptedState?.name {
+            return true
+        } else {
+            if gameStatus == .during{
+                gameStatus = .lost
+            }
+            return false
+        }
+    }
+    
+    func handleState(coordinate: CLLocationCoordinate2D) {
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
@@ -66,24 +80,44 @@ class StatesViewModel: ObservableObject {
                 let pm = placemarks! as [CLPlacemark]
                 if pm.count > 0 {
                     guard let stateInitials = pm[0].administrativeArea,
-                        let state = self.stateList[self.initialsDictionary[stateInitials] ?? ""] else { return }
+                        let tappedState = self.stateList[self.initialsDictionary[stateInitials] ?? ""] else { return }
                     
-                    //If game hasnt started yet (at start screen)
-                    if self.gameStatus == .before {
-                        
-                    } else {
-                        if state.name == self.currentState?.name {
-                            self.highlightedStates[state.name] = false
-                            self.scoredStates += 1
-                        } else {
-                            //highlight red state
-                            if self.highlightedStates[state.name] == nil {
-                                self.gameStatus = .lost
-                                self.highlightedStates[state.name] = false
-                                self.currentState = state
+                    
+                    if self.gameStatus == .during || self.gameStatus == .lost {
+                        if self.tabbedStates[tappedState.name] == nil {
+                            self.selectedState = (tappedState, false)
+                            let status = self.checkStateCorrectness()
+                            self.selectedState?.1 = status
+                            self.tabbedStates[tappedState.name] = false
+                            if self.gameStatus == .during {
+                                self.scoredStates += 1
+                                if self.scoredStates == 3 { //should be 50, lower for testing
+                                    //win
+                                    self.gameStatus = .win
+                                } else {
+                                    self.setPromptedState()
+                                }
                             }
                         }
                     }
+                    
+                    
+                    //If game hasnt started yet (at start screen)
+//                    if self.gameStatus == .before {
+//
+//                    } else {
+//                        if tappedState.name == self.promptedState?.name {
+//                            self.tabbedStates[tappedState.name] = false
+//                            self.scoredStates += 1
+//                        } else {
+//                            //highlight red state
+//                            if self.tabbedStates[tappedState.name] == nil {
+//                                self.gameStatus = .lost
+//                                self.tabbedStates[tappedState.name] = false
+//                                self.promptedState = tappedState
+//                            }
+//                        }
+//                    }
                 }
             }
         }

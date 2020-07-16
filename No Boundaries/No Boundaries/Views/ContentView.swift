@@ -53,7 +53,7 @@ struct ContentView_Previews: PreviewProvider {
         var view = ContentView()
         
         let statesvm = StatesViewModel()
-        statesvm.currentState = USState(name: "Kansas", borders: [])
+        statesvm.promptedState = USState(name: "Kansas", borders: [])
         view.statesVM = statesvm
         return view
     }
