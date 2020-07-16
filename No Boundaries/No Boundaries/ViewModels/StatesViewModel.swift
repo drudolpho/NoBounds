@@ -17,7 +17,7 @@ class StatesViewModel: ObservableObject {
     @Published var gameStatus: GameStatus = .before
     var remainingStates: [String: USState] = [:]
     var stateList: [String: USState] = [:]
-    var scoreState: Int = 0
+    var scoredStates: Int = 0
     
     let initialsDictionary: [String: String] = ["NM": "New Mexico", "SD": "South Dakota", "TN": "Tennessee", "VT": "Vermont", "WY": "Wyoming", "OR": "Oregon", "MI": "Michigan", "MS": "Mississippi", "WA": "Washington", "ID": "Idaho", "ND": "North Dakota", "GA": "Georgia", "UT": "Utah", "OH": "Ohio", "DE": "Delaware", "NC": "North Carolina", "NJ": "New Jersey", "IN": "Indiana", "IL": "Illinois", "HI": "Hawaii", "NH": "New Hampshire", "MO": "Missouri", "MD": "Maryland", "WV": "West Virginia", "MA": "Massachusetts", "IA": "Iowa", "KY": "Kentucky", "NE": "Nebraska", "SC": "South Carolina", "AZ": "Arizona", "KS": "Kansas", "NV": "Nevada", "WI": "Wisconsin", "RI": "Rhode Island", "FL": "Florida", "TX": "Texas", "AL": "Alabama", "CO": "Colorado", "AK": "Alaska", "VA": "Virginia", "AR": "Arkansas", "CA": "California", "LA": "Louisiana", "CT": "Connecticut", "NY": "New York", "MN": "Minnesota", "MT": "Montana", "OK": "Oklahoma", "PA": "Pennsylvania", "ME": "Maine"]
     
@@ -38,27 +38,21 @@ class StatesViewModel: ObservableObject {
     
     func resetGameData() {
         self.gameStatus = .before
-        scoreState = 0
+        scoredStates = 0
         remainingStates = [:]
-        //old
-//        for (_, state) in stateList {
-//            remainingStates.append(state)
-//        }
-        
+  
         remainingStates = stateList
         highlightedStates = [:]
         currentState = nil
     }
     
-    func getSetScore(time: Int) -> Int {
+    func getSetScore(time: Int, mode: Int) -> Int {
         let highscore = UserDefaults.standard.integer(forKey: "score")
         
-        if highscore == 0 || time < highscore {
+        if mode == 0 && (highscore == 0 || time < highscore) {
             UserDefaults.standard.set(time, forKey: "score")
-            return time
-        } else {
-            return highscore
         }
+        return time
     }
     
     func addState(coordinate: CLLocationCoordinate2D) {
@@ -80,7 +74,7 @@ class StatesViewModel: ObservableObject {
                     } else {
                         if state.name == self.currentState?.name {
                             self.highlightedStates[state.name] = false
-                            self.scoreState += 1
+                            self.scoredStates += 1
                         } else {
                             //highlight red state
                             if self.highlightedStates[state.name] == nil {

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		682A965524BE1D3C00703EFD /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A965424BE1D3C00703EFD /* GuideView.swift */; };
 		6879B9DD24AA829B007A9A0D /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */; };
-		6879B9DF24AA856D007A9A0D /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 6879B9DE24AA856D007A9A0D /* style.json */; };
+		6879B9DF24AA856D007A9A0D /* teststyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 6879B9DE24AA856D007A9A0D /* teststyle.json */; };
 		6879B9E124AA9C9E007A9A0D /* states.json in Resources */ = {isa = PBXBuildFile; fileRef = 6879B9E024AA9C9E007A9A0D /* states.json */; };
 		68926E3524AE361000DD16F1 /* StatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68926E3424AE361000DD16F1 /* StatesViewModel.swift */; };
 		68940DFC24AE38BB00181045 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68940DFB24AE38BB00181045 /* Models.swift */; };
@@ -20,6 +20,8 @@
 		68BB273324A3A4A10076BBE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68BB273224A3A4A10076BBE0 /* Preview Assets.xcassets */; };
 		68BB273624A3A4A10076BBE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BB273424A3A4A10076BBE0 /* LaunchScreen.storyboard */; };
 		68D9D1B424BF8DE900318717 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9D1B324BF8DE900318717 /* PreferenceView.swift */; };
+		68D9D1B724C0901300318717 /* practicestyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 68D9D1B624C0901300318717 /* practicestyle.json */; };
+		68D9D1B924C091B500318717 /* studystyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 68D9D1B824C091B500318717 /* studystyle.json */; };
 		68F719DB24B4CC9D005D3388 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F719DA24B4CC9D005D3388 /* ControlView.swift */; };
 		68F719DD24B52CF5005D3388 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F719DC24B52CF5005D3388 /* BottomView.swift */; };
 		A027C4FA884389529AB0BBCF /* Pods_No_Boundaries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4322F1A370A1500DDBE1180C /* Pods_No_Boundaries.framework */; };
@@ -30,7 +32,7 @@
 		5B5574CAEB14989801475DFB /* Pods-No Boundaries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-No Boundaries.debug.xcconfig"; path = "Target Support Files/Pods-No Boundaries/Pods-No Boundaries.debug.xcconfig"; sourceTree = "<group>"; };
 		682A965424BE1D3C00703EFD /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
-		6879B9DE24AA856D007A9A0D /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
+		6879B9DE24AA856D007A9A0D /* teststyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = teststyle.json; sourceTree = "<group>"; };
 		6879B9E024AA9C9E007A9A0D /* states.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = states.json; sourceTree = "<group>"; };
 		68926E3424AE361000DD16F1 /* StatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesViewModel.swift; sourceTree = "<group>"; };
 		68940DFB24AE38BB00181045 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -43,6 +45,8 @@
 		68BB273524A3A4A10076BBE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68BB273724A3A4A10076BBE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68D9D1B324BF8DE900318717 /* PreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
+		68D9D1B624C0901300318717 /* practicestyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = practicestyle.json; sourceTree = "<group>"; };
+		68D9D1B824C091B500318717 /* studystyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = studystyle.json; sourceTree = "<group>"; };
 		68F719DA24B4CC9D005D3388 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		68F719DC24B52CF5005D3388 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		8DC0DD85A15C0A45AD1C6D71 /* Pods-No Boundaries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-No Boundaries.release.xcconfig"; path = "Target Support Files/Pods-No Boundaries/Pods-No Boundaries.release.xcconfig"; sourceTree = "<group>"; };
@@ -111,8 +115,8 @@
 				68BB272924A3A4A00076BBE0 /* AppDelegate.swift */,
 				68BB272B24A3A4A00076BBE0 /* SceneDelegate.swift */,
 				68940DFD24AE38D300181045 /* Models */,
-				68926E3624AE365400DD16F1 /* Views */,
 				68926E3724AE365C00DD16F1 /* ViewModels */,
+				68926E3624AE365400DD16F1 /* Views */,
 				68EA3FC624ABED6B00185A6B /* Resources */,
 				68BB272F24A3A4A10076BBE0 /* Assets.xcassets */,
 				68BB273424A3A4A10076BBE0 /* LaunchScreen.storyboard */,
@@ -143,7 +147,9 @@
 		68EA3FC624ABED6B00185A6B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6879B9DE24AA856D007A9A0D /* style.json */,
+				6879B9DE24AA856D007A9A0D /* teststyle.json */,
+				68D9D1B624C0901300318717 /* practicestyle.json */,
+				68D9D1B824C091B500318717 /* studystyle.json */,
 				6879B9E024AA9C9E007A9A0D /* states.json */,
 			);
 			path = Resources;
@@ -228,9 +234,11 @@
 			files = (
 				6879B9E124AA9C9E007A9A0D /* states.json in Resources */,
 				68BB273624A3A4A10076BBE0 /* LaunchScreen.storyboard in Resources */,
+				68D9D1B924C091B500318717 /* studystyle.json in Resources */,
+				68D9D1B724C0901300318717 /* practicestyle.json in Resources */,
 				68BB273324A3A4A10076BBE0 /* Preview Assets.xcassets in Resources */,
 				68BB273024A3A4A10076BBE0 /* Assets.xcassets in Resources */,
-				6879B9DF24AA856D007A9A0D /* style.json in Resources */,
+				6879B9DF24AA856D007A9A0D /* teststyle.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

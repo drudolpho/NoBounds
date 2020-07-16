@@ -32,7 +32,7 @@ struct ContentView: View {
                         maxHeight: geometry.size.height * 0.7
                     ) {
                         VStack{
-                            ControlView(statesVM: self.statesVM, bottomSheetShown: self.$bottomSheetShown)
+                            ControlView(statesVM: self.statesVM, bottomSheetShown: self.$bottomSheetShown, gameMode: self.$currentMode)
                                 .frame(width: geometry.size.width, height: geometry.size.height * 0.18)
                             
                             PreferenceView(currentMode: self.$currentMode)

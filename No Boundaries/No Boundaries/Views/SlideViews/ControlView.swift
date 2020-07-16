@@ -13,6 +13,7 @@ struct ControlView: View {
     @ObservedObject var statesVM: StatesViewModel
     @State var time = 0
     @Binding var bottomSheetShown: Bool
+    @Binding var gameMode: Int
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -61,7 +62,7 @@ struct ControlView: View {
                                 .bold()
                                 .font(.title)
                             Spacer()
-                            Text("\(self.statesVM.scoreState)/50 States")
+                            Text("\(self.statesVM.scoredStates)/50 States")
                                 .foregroundColor(.gray)
                                 .font(.headline)
                             Spacer()
@@ -71,7 +72,7 @@ struct ControlView: View {
                                 .bold()
                                 .font(.title)
                             Spacer()
-                            Text("Your time was: \(self.statesVM.getSetScore(time: self.time))")
+                        Text("\(self.statesVM.getSetScore(time: self.time, mode: self.gameMode)) sec")
                                 .foregroundColor(.gray)
                                 .font(.headline)
                             Spacer()

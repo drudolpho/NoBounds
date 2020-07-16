@@ -12,14 +12,16 @@ import SwiftUI
 import SwiftUI
 
 struct PreferenceView: View {
-
+    
     @Binding var currentMode: Int
     var mode = ["Test", "Practice", "Study"]
-
-//    init(mode: Int) {
-//        UISegmentedControl.appearance().selectedSegmentTintColor = .systemBlue
-//    }
-
+    
+    init(currentMode: Binding<Int>) {
+        self._currentMode = currentMode
+        UISegmentedControl.appearance().selectedSegmentTintColor = .systemBlue
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+    }
+    
     var body: some View {
         Picker(selection: self.$currentMode, label: Text("Mode")) {
             ForEach(0..<self.mode.count) { index in

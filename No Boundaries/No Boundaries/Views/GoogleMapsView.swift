@@ -13,14 +13,14 @@ struct GoogleMapsView: UIViewRepresentable {
     
     @ObservedObject var statesVM: StatesViewModel
     @Binding var currentMode: Int
-    var num = 0
+//    var num = 0 //dont know what this does
     
     func makeUIView(context: Self.Context) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: 40, longitude: -95.5, zoom: 3.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = context.coordinator
         do {
-          if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
+          if let styleURL = Bundle.main.url(forResource: "teststyle", withExtension: "json") {
             mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
           } else {
             NSLog("Unable to find style.json")
@@ -32,6 +32,29 @@ struct GoogleMapsView: UIViewRepresentable {
     }
     
     func updateUIView(_ mapView: GMSMapView, context: Context) {
+        if statesVM.gameStatus == .before {
+            var styleFileName = "teststyle"
+            
+            switch currentMode {
+            case 1:
+                styleFileName = "practicestyle"
+            case 2:
+                styleFileName = "studystyle"
+            default:
+                styleFileName = "teststyle"
+            }
+            
+            do {
+                if let styleURL = Bundle.main.url(forResource: styleFileName, withExtension: "json") {
+                    mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+                } else {
+                    NSLog("Unable to find style.json")
+                }
+            } catch {
+                NSLog("One or more of the map styles failed to load. \(error)")
+            }
+        }
+        
         guard let currentState = self.statesVM.currentState else {
             mapView.clear()
             return
@@ -50,7 +73,7 @@ struct GoogleMapsView: UIViewRepresentable {
                 if self.statesVM.highlightedStates[currentState.name] == false {
                     self.createStateBorderPolygon(borderData: currentState.borders, color: color, mapView: mapView)
                     self.statesVM.stateHasBeenDrawn(state: currentState)
-                    if self.statesVM.highlightedStates.count == 50 { //3 for testing
+                    if self.statesVM.highlightedStates.count == 3 { //3 for testing
                         //Win
                         self.statesVM.gameStatus = .win
                     } else {
