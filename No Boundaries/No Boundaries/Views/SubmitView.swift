@@ -10,13 +10,15 @@ import SwiftUI
 
 struct SubmitView: View {
     
-//    @Binding var showingSubmitView: Bool
     @ObservedObject var statesVM: StatesViewModel
     @Binding var time: Int
+    @State var width: CGFloat
+    @State var height: CGFloat
     @State var submitting: Bool
-    @State var selection1: Int = 0
-    @State var selection2: Int = 0
-    @State var selection3: Int = 0
+    @State var selection1: Int = UserDefaults.standard.integer(forKey: "initial1")
+    @State var selection2: Int = UserDefaults.standard.integer(forKey: "initial2")
+    @State var selection3: Int = UserDefaults.standard.integer(forKey: "initial3")
+    
     var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
     var body: some View {
@@ -24,28 +26,44 @@ struct SubmitView: View {
         VStack {
             if self.submitting {
                 GeometryReader { geometry in
-                    VStack {
-                        HStack(spacing: 0) {
+                    VStack(spacing: 0) {
+                        HStack {
+                            Spacer()
+                            Text("🌎")
+                                .font(.system(size: 50))
+                                .alignmentGuide(.bottom) { d in d[.bottom] + 60 }
+                            Spacer()
+                            Text("Time: \(self.time)")
+                                .foregroundColor(.gray)
+                                .font(.title)
+                            Spacer()
+                        }.padding(.top, 8.0)
+                        
+                        HStack(spacing: 0)  {
+                            Text("Your initials:")
+                                .font(.headline)
+                                .padding(.horizontal, 8.0)
                             Picker(selection: self.$selection1, label: Text("Numbers")) {
-                               ForEach(0 ..< self.letters.count) {
+                                ForEach(0 ..< self.letters.count) {
                                     Text("\(self.letters[$0])")
                                 }
-                            }.frame(maxWidth: geometry.size.width / 6, maxHeight: geometry.size.width / 4).clipped()
+                            }.frame(maxWidth: geometry.size.width/6, maxHeight: geometry.size.height/2.3).clipped()
                             
                             Picker(selection: self.$selection2, label: Text("Numbers")) {
                                 ForEach(0 ..< self.letters.count) {
                                     Text("\(self.letters[$0])")
                                 }
-                            }.frame(maxWidth: geometry.size.width / 6, maxHeight: geometry.size.width / 4).clipped()
+                            }.frame(maxWidth: geometry.size.width/6, maxHeight: geometry.size.height/2.3).clipped()
                             
                             Picker(selection: self.$selection3, label: Text("Numbers")) {
                                 ForEach(0 ..< self.letters.count) {
                                     Text("\(self.letters[$0])")
                                 }
-                            }.frame(maxWidth: geometry.size.width / 6, maxHeight: geometry.size.width / 4).clipped()
-                        }.padding()
+                            }.frame(maxWidth: geometry.size.width/6, maxHeight: geometry.size.height/2.3).clipped()
+                        }.padding([.leading, .trailing]).compositingGroup()
                         
                         HStack {
+                            Spacer()
                             Button(action: {
                                 self.statesVM.gameStatus = .before
                                 self.statesVM.resetGameData()
@@ -56,10 +74,15 @@ struct SubmitView: View {
                                     .frame(width: 80, height: 40, alignment: .center)
                                 
                             }.background(Color.white).cornerRadius(10)
+                            Spacer()
                             Button(action: {
                                 
                                 //handle the submission
                                 print(self.letters[self.selection1] + self.letters[self.selection2] + self.letters[self.selection3])
+                                
+                                UserDefaults.standard.set(self.selection1, forKey: "initial1")
+                                UserDefaults.standard.set(self.selection2, forKey: "initial2")
+                                UserDefaults.standard.set(self.selection3, forKey: "initial3")
                                 
                                 self.statesVM.gameStatus = .before
                                 self.statesVM.resetGameData()
@@ -70,11 +93,12 @@ struct SubmitView: View {
                                     .frame(width: 80, height: 40, alignment: .center)
                                 
                             }.background(Color.white).cornerRadius(10)
+                            Spacer()
                         }
                     }
                 }
             } else {
-                Text("Congratulations!")
+                Text("Congrats! 🎉")
                     .padding([.top, .leading, .trailing])
                     .font(.title)
                 Text("Would you like to submit your score to the leaderboards?")
@@ -93,6 +117,10 @@ struct SubmitView: View {
                     }.background(Color.white).cornerRadius(10)
                     Button(action: {
                         self.submitting = true
+                        withAnimation {
+                            self.height *= 1.3
+                        }
+                        
                     }) {
                         Text("Yes")
                             .font(.headline)
@@ -102,9 +130,10 @@ struct SubmitView: View {
                 }
                 Spacer()
             }
-        }
+        }.frame(width: self.width, height: self.height).background(Color.white).cornerRadius(20)
     }
 }
+
 //
 //struct SubmitView_Previews: PreviewProvider {
 //    static var previews: some View {

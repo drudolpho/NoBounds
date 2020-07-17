@@ -100,24 +100,6 @@ class StatesViewModel: ObservableObject {
                             }
                         }
                     }
-                    
-                    
-                    //If game hasnt started yet (at start screen)
-//                    if self.gameStatus == .before {
-//
-//                    } else {
-//                        if tappedState.name == self.promptedState?.name {
-//                            self.tabbedStates[tappedState.name] = false
-//                            self.scoredStates += 1
-//                        } else {
-//                            //highlight red state
-//                            if self.tabbedStates[tappedState.name] == nil {
-//                                self.gameStatus = .lost
-//                                self.tabbedStates[tappedState.name] = false
-//                                self.promptedState = tappedState
-//                            }
-//                        }
-//                    }
                 }
             }
         }

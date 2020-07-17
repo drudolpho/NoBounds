@@ -52,10 +52,14 @@ struct ControlView: View {
                             .bold()
                             .font(.title)
                         Spacer()
-                        Text("best: \(UserDefaults.standard.integer(forKey: "score")) sec")
+                        Text("\(UserDefaults.standard.integer(forKey: "score"))")
                             .foregroundColor(.gray)
                             .font(.headline)
-                        Spacer()
+                            .padding([.leading])
+                        Text("sec")
+                            .foregroundColor(.gray)
+                            .font(.headline)
+                            .padding(.trailing)
                         
                     } else if self.statesVM.gameStatus == .lost {
                         Text("Game Over")
@@ -65,19 +69,26 @@ struct ControlView: View {
                         Text("\(self.statesVM.scoredStates)/50 States")
                             .foregroundColor(.gray)
                             .font(.headline)
-                        Spacer()
+                            .padding([.leading, .trailing])
                         
                     } else if self.statesVM.gameStatus == .win {
-                        Text("Bingo!")
+                        Text(self.statesVM.promptedState?.name ?? "")
+                            
                             .bold()
                             .font(.title)
+                            .transition(.opacity)
+                            .id(self.statesVM.promptedState?.name ?? "")
+                        
                         Spacer()
-                        Text("\(self.statesVM.getSetScore(time: self.time, mode: self.gameMode)) sec")
+                        Text("\(self.statesVM.getSetScore(time: self.time, mode: self.gameMode))")
+                            .foregroundColor(.gray)
+                            .font(.headline)
+                            .padding([.leading])
+                            
+                        Text("sec")
                             .foregroundColor(.gray)
                             .font(.headline)
                             .padding(.trailing)
-//                        Spacer()
-                        
                     }
                 }.padding(.horizontal, 35.0)
                 

@@ -13,7 +13,6 @@ struct GoogleMapsView: UIViewRepresentable {
     
     @ObservedObject var statesVM: StatesViewModel
     @Binding var currentMode: Int
-//    var num = 0 //dont know what this does
     
     func makeUIView(context: Self.Context) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: 40, longitude: -95.5, zoom: 3.0)
@@ -70,43 +69,7 @@ struct GoogleMapsView: UIViewRepresentable {
             self.createStateBorderPolygon(borderData: borderData, color: color, mapView: mapView)
             
             self.statesVM.selectedStateHasBeenDrawn()
-            //checkGameStatus()
         }
-        
-        
-        
-        
-        
-        
-        
-//        guard let promptedState = self.statesVM.promptedState else {
-//            mapView.clear()
-//            return
-//        }
-//        DispatchQueue.main.async {
-//
-//            if self.statesVM.tabbedStates == [:] {
-//                //erase all polygons
-//                mapView.clear()
-//            } else if self.statesVM.tabbedStates.count > 0
-//                && self.statesVM.tabbedStates.count < 51 {
-//                var color = UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5)
-//                if self.statesVM.gameStatus == .lost {
-//                    color = UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.5);
-//                }
-        
-//                if self.statesVM.tabbedStates[promptedState.name] == false {
-//                    self.createStateBorderPolygon(borderData: promptedState.borders, color: color, mapView: mapView)
-//                    self.statesVM.stateHasBeenDrawn(state: promptedState)
-//                    if self.statesVM.tabbedStates.count == 3 && self.statesVM.gameStatus != .lost { //3 for testing
-//                        //Win
-//                        self.statesVM.gameStatus = .win
-//                    } else {
-//                        self.statesVM.setPromptedState()
-//                    }
-//                }
-//            }
-//        }
     }
     
     func createStateBorderPolygon(borderData: [CoordData], color: UIColor, mapView: GMSMapView) {

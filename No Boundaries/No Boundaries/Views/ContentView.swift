@@ -14,10 +14,9 @@ struct ContentView: View {
     
     @ObservedObject var statesVM = StatesViewModel()
     @State private var bottomSheetShown = false
-//    @State private var showingSubmitView = true
     @State var time = 0
     @State private var currentMode = 0
-   
+    
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -49,10 +48,7 @@ struct ContentView: View {
                 }.edgesIgnoringSafeArea(.all).zIndex(1)
                 
                 if self.statesVM.gameStatus == .win {
-                    SubmitView(statesVM: self.statesVM, time: self.$time, submitting: false)
-                        .frame(width: 300, height: 200, alignment: .center)
-                        .background(Color.white)
-                        .cornerRadius(20)
+                    SubmitView(statesVM: self.statesVM, time: self.$time, width: geometry.size.width * 0.85 , height: geometry.size.height * 0.24, submitting: false)
                         .transition(AnyTransition.scale.animation(.spring()))
                         .zIndex(2)
                 }
@@ -66,6 +62,7 @@ struct ContentView_Previews: PreviewProvider {
         var view = ContentView()
         
         let statesvm = StatesViewModel()
+        statesvm.gameStatus = .win
         statesvm.promptedState = USState(name: "Kansas", borders: [])
         view.statesVM = statesvm
         return view
