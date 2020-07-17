@@ -7,5 +7,7 @@ target 'No Boundaries' do
 
   # Pods for No Boundaries
 pod 'GoogleMaps'
-
+pod 'Firebase'
+pod 'Firebase/Core'
+pod 'Firebase/Database'
 end

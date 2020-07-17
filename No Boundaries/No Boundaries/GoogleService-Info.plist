@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>296549645184-utokqqnk53l8eggbu700ektrtdi4bmqr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.296549645184-utokqqnk53l8eggbu700ektrtdi4bmqr</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAEK6htjQGOJZuvDFSKLb6MBIkIEo4SNYo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>296549645184</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.DennisRudolph.NoBounds</string>
+	<key>PROJECT_ID</key>
+	<string>noboundaries-281820</string>
+	<key>STORAGE_BUCKET</key>
+	<string>noboundaries-281820.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:296549645184:ios:a499fbe55516405a94df65</string>
+	<key>DATABASE_URL</key>
+	<string>https://noboundaries-281820.firebaseio.com</string>
+</dict>
+</plist>
