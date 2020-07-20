@@ -92,7 +92,6 @@ class StatesViewModel: ObservableObject {
                             if self.gameStatus == .during {
                                 self.scoredStates += 1
                                 if self.scoredStates == 3 { //should be self.stateList.count, lower for testing
-                                    //win
                                     self.gameStatus = .win
                                 } else {
                                     self.setPromptedState()

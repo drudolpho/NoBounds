@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
 
 struct SubmitView: View {
     
@@ -18,6 +19,7 @@ struct SubmitView: View {
     @State var selection1: Int = UserDefaults.standard.integer(forKey: "initial1")
     @State var selection2: Int = UserDefaults.standard.integer(forKey: "initial2")
     @State var selection3: Int = UserDefaults.standard.integer(forKey: "initial3")
+    var ref: DatabaseReference = Database.database().reference()
     
     var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
@@ -78,7 +80,10 @@ struct SubmitView: View {
                             Button(action: {
                                 
                                 //handle the submission
-                                print(self.letters[self.selection1] + self.letters[self.selection2] + self.letters[self.selection3])
+                                let name = (self.letters[self.selection1] + self.letters[self.selection2] + self.letters[self.selection3])
+                                
+                                let submission = USApost(time: self.time, name: name)
+                                submission.submitToServer(reference: self.ref)
                                 
                                 UserDefaults.standard.set(self.selection1, forKey: "initial1")
                                 UserDefaults.standard.set(self.selection2, forKey: "initial2")

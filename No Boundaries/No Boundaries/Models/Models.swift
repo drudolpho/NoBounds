@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import FirebaseDatabase
 
 struct StateData: Codable {
     var state: [SingleStateData]
@@ -53,3 +54,40 @@ struct RoundedCorner: Shape {
         return Path(path.cgPath)
     }
 }
+
+class USApost: Codable {
+    
+    let time: Int
+    let name: String
+    let id: String
+    
+    init(time: Int, name: String, id: String = UUID().uuidString) {
+        self.time = time
+        self.name = name
+        self.id = id
+    }
+    
+    convenience init?(dictionary: [String: Any]) {
+        guard let time = dictionary["time"] as? Int,
+            let name = dictionary["name"] as? String,
+            let id = dictionary["id"] as? String else { return nil }
+
+        self.init(time: time, name: name, id: id)
+    }
+    
+    var dictionaryRepresentation: [String: Any] {
+        return ["time": time, "name": name, "id": id]
+      }
+    
+    func submitToServer(reference: DatabaseReference) {
+        reference.child("USA").child(id).setValue(dictionaryRepresentation) { (error:Error?, ref:DatabaseReference) in
+            if let error = error {
+                print("Data could not be saved: \(error).")
+                return
+            } else {
+                print("Data saved successfully!")
+            }
+        }
+    }
+}
+
