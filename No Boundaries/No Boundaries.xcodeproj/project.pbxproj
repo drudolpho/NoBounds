@@ -19,6 +19,9 @@
 		68BB273024A3A4A10076BBE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68BB272F24A3A4A10076BBE0 /* Assets.xcassets */; };
 		68BB273324A3A4A10076BBE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68BB273224A3A4A10076BBE0 /* Preview Assets.xcassets */; };
 		68BB273624A3A4A10076BBE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BB273424A3A4A10076BBE0 /* LaunchScreen.storyboard */; };
+		68D9848524C5FCA200ABD2CB /* ScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9848424C5FCA200ABD2CB /* ScoresView.swift */; };
+		68D9848724C635A800ABD2CB /* HighscoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9848624C635A800ABD2CB /* HighscoresView.swift */; };
+		68D9848924C63B1400ABD2CB /* MyScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9848824C63B1400ABD2CB /* MyScoresView.swift */; };
 		68D9A13724C239E3007EDD17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68D9A13624C239E3007EDD17 /* GoogleService-Info.plist */; };
 		68D9A13924C2499D007EDD17 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9A13824C2499D007EDD17 /* Keys.swift */; };
 		68D9D1B424BF8DE900318717 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9D1B324BF8DE900318717 /* PreferenceView.swift */; };
@@ -47,6 +50,9 @@
 		68BB273224A3A4A10076BBE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		68BB273524A3A4A10076BBE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68BB273724A3A4A10076BBE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68D9848424C5FCA200ABD2CB /* ScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresView.swift; sourceTree = "<group>"; };
+		68D9848624C635A800ABD2CB /* HighscoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresView.swift; sourceTree = "<group>"; };
+		68D9848824C63B1400ABD2CB /* MyScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScoresView.swift; sourceTree = "<group>"; };
 		68D9A13624C239E3007EDD17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		68D9A13824C2499D007EDD17 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = Resources/Keys.swift; sourceTree = "<group>"; };
 		68D9D1B324BF8DE900318717 /* PreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
@@ -77,6 +83,9 @@
 				6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */,
 				68F719DC24B52CF5005D3388 /* BottomView.swift */,
 				68EB877D24C0ED18001C2A18 /* SubmitView.swift */,
+				68D9848424C5FCA200ABD2CB /* ScoresView.swift */,
+				68D9848624C635A800ABD2CB /* HighscoresView.swift */,
+				68D9848824C63B1400ABD2CB /* MyScoresView.swift */,
 				68D9D1B524BFBA1500318717 /* SlideViews */,
 			);
 			path = Views;
@@ -324,13 +333,16 @@
 				6879B9DD24AA829B007A9A0D /* GoogleMapsView.swift in Sources */,
 				68F719DD24B52CF5005D3388 /* BottomView.swift in Sources */,
 				68BB272A24A3A4A00076BBE0 /* AppDelegate.swift in Sources */,
+				68D9848724C635A800ABD2CB /* HighscoresView.swift in Sources */,
 				68926E3524AE361000DD16F1 /* StatesViewModel.swift in Sources */,
+				68D9848524C5FCA200ABD2CB /* ScoresView.swift in Sources */,
 				68940DFC24AE38BB00181045 /* Models.swift in Sources */,
 				68BB272C24A3A4A00076BBE0 /* SceneDelegate.swift in Sources */,
 				68D9D1B424BF8DE900318717 /* PreferenceView.swift in Sources */,
 				68F719DB24B4CC9D005D3388 /* ControlView.swift in Sources */,
 				68BB272E24A3A4A00076BBE0 /* ContentView.swift in Sources */,
 				68EB877E24C0ED18001C2A18 /* SubmitView.swift in Sources */,
+				68D9848924C63B1400ABD2CB /* MyScoresView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

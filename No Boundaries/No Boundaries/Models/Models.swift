@@ -55,7 +55,7 @@ struct RoundedCorner: Shape {
     }
 }
 
-class USApost: Codable {
+class USApost: Codable, Identifiable {
     
     let time: Int
     let name: String
@@ -91,3 +91,38 @@ class USApost: Codable {
     }
 }
 
+class NetworkController: ObservableObject {
+    var ref: DatabaseReference = Database.database().reference()
+    @Published var posts: [USApost] = []
+    var myScores: [(Int, String, Date)] {
+        get {
+            return UserDefaults.standard.array(forKey: "scores") as? [(Int, String, Date)] ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "scores")
+        }
+    }
+    
+    func fetchUSA() {
+        
+        ref.child("USA").queryOrdered(byChild: "time").observe(.value) { (snapshot) in
+            self.posts = []
+            for snap in snapshot.children.allObjects as! [DataSnapshot] {
+                if let postRep = snap.value as? [String: Any] {
+                    if let post = USApost(dictionary: postRep) {
+                        self.posts.append(post)
+                    }
+                } else {
+                    print("error fetching data")
+                }
+            }
+        }
+    }
+}
+
+struct UserScores: Codable, Identifiable {
+    var id: String
+    var time: Int
+    var name: String
+    var date: Date
+}

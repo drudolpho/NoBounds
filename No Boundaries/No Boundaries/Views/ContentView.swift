@@ -13,6 +13,7 @@ import GoogleMaps
 struct ContentView: View {
     
     @ObservedObject var statesVM = StatesViewModel()
+    @ObservedObject var networkController = NetworkController()
     @State private var bottomSheetShown = false
     @State var time = 0
     @State private var currentMode = 0
@@ -21,36 +22,45 @@ struct ContentView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                GoogleMapsView(statesVM: self.statesVM, currentMode: self.$currentMode)
-                    .edgesIgnoringSafeArea(.all)
-                    .zIndex(0)
-                
-                VStack {
-                    Spacer()
+        NavigationView {
+            
+            GeometryReader { geometry in
+                ZStack {
+                    GoogleMapsView(statesVM: self.statesVM, currentMode: self.$currentMode)
+                        .edgesIgnoringSafeArea(.all)
+                        .zIndex(0)
                     
-                    BottomSheetView(
-                        isOpen: self.$bottomSheetShown,
-                        maxHeight: geometry.size.height * 0.7
-                    ) {
-                        VStack{
-                            ControlView(statesVM: self.statesVM, time: self.$time, bottomSheetShown: self.$bottomSheetShown, gameMode: self.$currentMode)
-                                .frame(width: geometry.size.width, height: geometry.size.height * 0.18)
-                            
-                            PreferenceView(currentMode: self.$currentMode)
-                            
-                            GuideView()
-                            
-                            Spacer()
+                    VStack {
+                        Spacer()
+                        
+                        BottomSheetView(
+                            isOpen: self.$bottomSheetShown,
+                            maxHeight: geometry.size.height * 0.7
+                        ) {
+                            VStack{
+                                ControlView(statesVM: self.statesVM, time: self.$time, bottomSheetShown: self.$bottomSheetShown, gameMode: self.$currentMode)
+                                    .frame(width: geometry.size.width, height: geometry.size.height * 0.18)
+                                
+                                PreferenceView(currentMode: self.$currentMode)
+                                
+                                NavigationLink(destination: ScoresView(networkController: self.networkController).onAppear {
+                                    self.networkController.fetchUSA()
+                                }) {
+                                    Text("View Highscores")
+                                }
+                                
+                                GuideView()
+                                
+                                Spacer()
+                            }
                         }
+                    }.edgesIgnoringSafeArea(.all).zIndex(1)
+                    
+                    if self.statesVM.gameStatus == .win {
+                        SubmitView(statesVM: self.statesVM, time: self.$time, width: geometry.size.width * 0.85 , height: geometry.size.height * 0.24, submitting: false)
+                            .transition(AnyTransition.scale.animation(.spring()))
+                            .zIndex(2)
                     }
-                }.edgesIgnoringSafeArea(.all).zIndex(1)
-                
-                if self.statesVM.gameStatus == .win {
-                    SubmitView(statesVM: self.statesVM, time: self.$time, width: geometry.size.width * 0.85 , height: geometry.size.height * 0.24, submitting: false)
-                        .transition(AnyTransition.scale.animation(.spring()))
-                        .zIndex(2)
                 }
             }
         }

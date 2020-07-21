@@ -85,9 +85,25 @@ struct SubmitView: View {
                                 let submission = USApost(time: self.time, name: name)
                                 submission.submitToServer(reference: self.ref)
                                 
+                                //Saves users initials to UD
                                 UserDefaults.standard.set(self.selection1, forKey: "initial1")
                                 UserDefaults.standard.set(self.selection2, forKey: "initial2")
                                 UserDefaults.standard.set(self.selection3, forKey: "initial3")
+                                
+                                //Saves users scores to UD
+                                if let data = UserDefaults.standard.value(forKey:"scores") as? Data {
+                                    var scores = try? PropertyListDecoder().decode(Array<UserScores>.self, from: data)
+                                    scores?.append(UserScores(id: UUID().uuidString, time: self.time, name: name, date: Date()))
+                                    UserDefaults.standard.set(try? PropertyListEncoder().encode(scores), forKey:"scores")
+                                } else {
+                                    let score = UserScores(id: UUID().uuidString, time: self.time, name: name, date: Date())
+                                    UserDefaults.standard.set(try? PropertyListEncoder().encode([score]), forKey:"scores")
+                                }
+                                
+                                if let data = UserDefaults.standard.value(forKey:"scores") as? Data {
+                                    let scores = try? PropertyListDecoder().decode(Array<UserScores>.self, from: data)
+                                    print("\(String(describing: scores?.count))")
+                                }
                                 
                                 self.statesVM.gameStatus = .before
                                 self.statesVM.resetGameData()
