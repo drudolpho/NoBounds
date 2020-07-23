@@ -76,17 +76,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68205A4324CA0A1F0065313B /* Scores */ = {
+			isa = PBXGroup;
+			children = (
+				68D9848424C5FCA200ABD2CB /* ScoresView.swift */,
+				68D9848624C635A800ABD2CB /* HighscoresView.swift */,
+				68D9848824C63B1400ABD2CB /* MyScoresView.swift */,
+			);
+			path = Scores;
+			sourceTree = "<group>";
+		};
+		68205A4424CA0A510065313B /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				68EB877D24C0ED18001C2A18 /* SubmitView.swift */,
+				682A965424BE1D3C00703EFD /* GuideView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		68205A4524CA0A6A0065313B /* Bottom */ = {
+			isa = PBXGroup;
+			children = (
+				68F719DC24B52CF5005D3388 /* BottomView.swift */,
+				68F719DA24B4CC9D005D3388 /* ControlView.swift */,
+				68D9D1B324BF8DE900318717 /* PreferenceView.swift */,
+			);
+			path = Bottom;
+			sourceTree = "<group>";
+		};
 		68926E3624AE365400DD16F1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				68BB272D24A3A4A00076BBE0 /* ContentView.swift */,
 				6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */,
-				68F719DC24B52CF5005D3388 /* BottomView.swift */,
-				68EB877D24C0ED18001C2A18 /* SubmitView.swift */,
-				68D9848424C5FCA200ABD2CB /* ScoresView.swift */,
-				68D9848624C635A800ABD2CB /* HighscoresView.swift */,
-				68D9848824C63B1400ABD2CB /* MyScoresView.swift */,
-				68D9D1B524BFBA1500318717 /* SlideViews */,
+				68205A4524CA0A6A0065313B /* Bottom */,
+				68205A4424CA0A510065313B /* SubViews */,
+				68205A4324CA0A1F0065313B /* Scores */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -150,16 +176,6 @@
 				68BB273224A3A4A10076BBE0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		68D9D1B524BFBA1500318717 /* SlideViews */ = {
-			isa = PBXGroup;
-			children = (
-				68F719DA24B4CC9D005D3388 /* ControlView.swift */,
-				68D9D1B324BF8DE900318717 /* PreferenceView.swift */,
-				682A965424BE1D3C00703EFD /* GuideView.swift */,
-			);
-			path = SlideViews;
 			sourceTree = "<group>";
 		};
 		68EA3FC624ABED6B00185A6B /* Resources */ = {

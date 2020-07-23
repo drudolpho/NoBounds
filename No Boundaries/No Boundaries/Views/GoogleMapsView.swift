@@ -52,6 +52,7 @@ struct GoogleMapsView: UIViewRepresentable {
             } catch {
                 NSLog("One or more of the map styles failed to load. \(error)")
             }
+            mapView.camera = GMSCameraPosition.camera(withLatitude: 40, longitude: -95.5, zoom: 3.0)
         }
         
         

@@ -95,7 +95,8 @@ struct ContentView: View {
                     
                     
                     if self.statesVM.gameStatus == .win {
-                        SubmitView(statesVM: self.statesVM, time: self.$time, refreshScores: self.$refreshScores, width: geometry.size.width * 0.85 , height: geometry.size.height * 0.3, submitting: false)
+                        SubmitView(statesVM: self.statesVM, time: self.$time, refreshScores: self.$refreshScores, currentMode: self.$currentMode)
+                            .frame(width: geometry.size.width * 0.85, height: geometry.size.height * 0.8)
                             .transition(AnyTransition.scale.animation(.spring()))
                             .zIndex(3)
                     }
