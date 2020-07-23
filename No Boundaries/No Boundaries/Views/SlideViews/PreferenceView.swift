@@ -27,7 +27,7 @@ struct PreferenceView: View {
             ForEach(0..<self.mode.count) { index in
                 Text(self.mode[index]).tag(index)
             }
-        }.padding([.bottom], 30.0).padding([.leading, .trailing], 20.0).pickerStyle(SegmentedPickerStyle())
+        }.padding([.bottom, .top], 30.0).padding([.leading, .trailing], 20.0).pickerStyle(SegmentedPickerStyle())
     }
 }
 

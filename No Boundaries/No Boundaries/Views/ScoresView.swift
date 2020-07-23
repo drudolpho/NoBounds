@@ -12,6 +12,8 @@ import FirebaseDatabase
 struct ScoresView: View {
     
     @ObservedObject var networkController: NetworkController
+    @Binding var navBarHidden : Bool
+    @Binding var refreshScores: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -31,18 +33,20 @@ struct ScoresView: View {
                         .padding(.leading, 30.0)
                     Spacer()
                 }
-                MyScoresView()
+                MyScoresView(refreshScores: self.$refreshScores)
                     .frame(width: geometry.size.width * 0.9, height: geometry.size.height / 4)
                     .cornerRadius(20)
-            
+                
+            }.navigationBarTitle("Highscores")
+                .onAppear() {
+                    self.navBarHidden = false
             }
         }
-//        .background(Color.init(UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)))
     }
 }
 
-struct ScoresView_Previews: PreviewProvider {
-    static var previews: some View {
-        ScoresView(networkController: NetworkController())
-    }
-}
+//struct ScoresView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ScoresView(networkController: NetworkController(), navBarHidden: false)
+//    }
+//}

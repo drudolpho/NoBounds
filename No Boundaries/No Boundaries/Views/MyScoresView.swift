@@ -10,6 +10,8 @@ import SwiftUI
 
 struct MyScoresView: View {
     
+    @Binding var refreshScores: Bool
+    
     var scores: [UserScores] {
         if let data = UserDefaults.standard.value(forKey:"scores") as? Data {
             guard let scores = try? PropertyListDecoder().decode(Array<UserScores>.self, from: data) else { return [] }
@@ -26,7 +28,7 @@ struct MyScoresView: View {
     }()
     
     var body: some View {
-        List(scores) { score in
+        List(scores.reversed()) { score in
             HStack {
                 Text("\(score.date, formatter: Self.taskDateFormat)")
                 Spacer()
@@ -38,10 +40,10 @@ struct MyScoresView: View {
     }
 }
 
-struct MyScoresView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyScoresView()
-    }
-}
+//struct MyScoresView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyScoresView()
+//    }
+//}
 
 

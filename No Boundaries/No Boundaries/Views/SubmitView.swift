@@ -13,6 +13,7 @@ struct SubmitView: View {
     
     @ObservedObject var statesVM: StatesViewModel
     @Binding var time: Int
+    @Binding var refreshScores: Bool
     @State var width: CGFloat
     @State var height: CGFloat
     @State var submitting: Bool
@@ -28,7 +29,7 @@ struct SubmitView: View {
         VStack {
             if self.submitting {
                 GeometryReader { geometry in
-                    VStack(spacing: 0) {
+                    VStack(spacing: 8) {
                         HStack {
                             Spacer()
                             Text("🌎")
@@ -108,6 +109,7 @@ struct SubmitView: View {
                                 self.statesVM.gameStatus = .before
                                 self.statesVM.resetGameData()
                                 self.time = 0
+                                self.refreshScores.toggle()
                             }) {
                                 Text("Submit")
                                     .font(.headline)
@@ -119,37 +121,38 @@ struct SubmitView: View {
                     }
                 }
             } else {
-                Text("Congrats! 🎉")
-                    .padding([.top, .leading, .trailing])
-                    .font(.title)
-                Text("Would you like to submit your score to the leaderboards?")
-                    .multilineTextAlignment(.center)
-                    .padding()
-                HStack {
-                    Button(action: {
-                        self.statesVM.gameStatus = .before
-                        self.statesVM.resetGameData()
-                        self.time = 0
-                    }) {
-                        Text("No")
-                            .font(.headline)
-                            .frame(width: 80, height: 40, alignment: .center)
-                        
-                    }.background(Color.white).cornerRadius(10)
-                    Button(action: {
-                        self.submitting = true
-                        withAnimation {
-                            self.height *= 1.3
-                        }
-                        
-                    }) {
-                        Text("Yes")
-                            .font(.headline)
-                            .frame(width: 80, height: 40, alignment: .center)
-                        
-                    }.background(Color.white).cornerRadius(10)
+                VStack {
+                    Text("Congrats! 🎉")
+                        .padding([.top, .leading, .trailing])
+                        .font(.title)
+                    Text("Would you like to submit your score to the leaderboards?")
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    HStack {
+                        Button(action: {
+                            self.statesVM.gameStatus = .before
+                            self.statesVM.resetGameData()
+                            self.time = 0
+                        }) {
+                            Text("No")
+                                .font(.headline)
+                                .frame(width: 80, height: 40, alignment: .center)
+                            
+                        }.background(Color.white).cornerRadius(10)
+                        Button(action: {
+                            self.submitting = true
+                            withAnimation {
+                                self.height *= 1.3
+                            }
+                            
+                        }) {
+                            Text("Yes")
+                                .font(.headline)
+                                .frame(width: 80, height: 40, alignment: .center)
+                            
+                        }.background(Color.white).cornerRadius(10)
+                    }
                 }
-                Spacer()
             }
         }.frame(width: self.width, height: self.height).background(Color.white).cornerRadius(20)
     }

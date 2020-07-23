@@ -103,7 +103,7 @@ struct ControlView: View {
                         .shadow(radius: 0)
                         .transition(.opacity)
                         .id(self.statesVM.getButtonText())
-                }.padding(.vertical, 20.0)
+                }.padding(.top, 20.0)
             }
         }
     }

@@ -24,7 +24,6 @@ struct HighscoresView: View {
                 Text("\(post.time) sec")
             }
         }
-        .navigationBarTitle("Highscores")
     }
     
     func getRankemoji(index: Int) -> String {
