@@ -11,7 +11,7 @@ import FirebaseDatabase
 
 struct SubmitView: View {
     
-    @ObservedObject var statesVM: StatesViewModel
+    @ObservedObject var regionVM: RegionViewModel
     @Binding var time: Int
     @Binding var refreshScores: Bool
     @Binding var currentMode: Int
@@ -67,8 +67,8 @@ struct SubmitView: View {
                         let name = (self.letters[self.selection1] + self.letters[self.selection2] + self.letters[self.selection3])
                         
                         self.saveToUD(name: name)
-                        self.statesVM.gameStatus = .before
-                        self.statesVM.resetGameData()
+                        self.regionVM.gameStatus = .before
+                        self.regionVM.resetGameData()
                         self.time = 0
                         self.refreshScores.toggle()
                     }) {
@@ -88,8 +88,8 @@ struct SubmitView: View {
                         
                         self.saveToUD(name: name)
                         
-                        self.statesVM.gameStatus = .before
-                        self.statesVM.resetGameData()
+                        self.regionVM.gameStatus = .before
+                        self.regionVM.resetGameData()
                         self.time = 0
                         self.refreshScores.toggle()
                     }) {

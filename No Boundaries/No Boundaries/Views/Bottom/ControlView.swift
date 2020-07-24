@@ -10,25 +10,26 @@ import SwiftUI
 
 struct ControlView: View {
     
-    @ObservedObject var statesVM: StatesViewModel
+    @ObservedObject var regionVM: RegionViewModel
     @Binding var time: Int
     @Binding var bottomSheetShown: Bool
     @Binding var gameMode: Int
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let challengeName = ["United States", "Europe", "Africa", "World", "Asia", "South America"]
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
                 HStack(alignment: .lastTextBaseline) {
                     
-                    if self.statesVM.gameStatus == .during {
+                    if self.regionVM.gameStatus == .during {
                         
-                        Text(self.statesVM.promptedState?.name ?? "")
+                        Text(self.regionVM.promptedRegion?.name ?? "")
                             
                             .bold()
                             .font(.title)
                             .transition(.opacity)
-                            .id(self.statesVM.promptedState?.name ?? "")
+                            .id(self.regionVM.promptedRegion?.name ?? "")
                         
                         Spacer()
                         Text("\(self.time)")
@@ -47,40 +48,46 @@ struct ControlView: View {
                             .font(.headline)
                             .padding(.trailing)
                         
-                    } else if self.statesVM.gameStatus == .before {
-                        Text("United States")
+                    } else if self.regionVM.gameStatus == .before {
+                        Text("\(self.challengeName[self.regionVM.challenge.rawValue])")
                             .bold()
                             .font(.title)
                         Spacer()
-                        Text("\(UserDefaults.standard.integer(forKey: "score"))")
-                            .foregroundColor(.gray)
-                            .font(.headline)
-                            .padding([.leading])
-                        Text("sec")
-                            .foregroundColor(.gray)
-                            .font(.headline)
-                            .padding(.trailing)
+                        Button(action: {
+                            self.nextChallenge()
+                        }) {
+                            Text("Next")
+                                .font(.headline)
+                        }
+//                        Text("\(UserDefaults.standard.integer(forKey: "score"))")
+//                            .foregroundColor(.gray)
+//                            .font(.headline)
+//                            .padding([.leading])
+//                        Text("sec")
+//                            .foregroundColor(.gray)
+//                            .font(.headline)
+//                            .padding(.trailing)
                         
-                    } else if self.statesVM.gameStatus == .lost {
+                    } else if self.regionVM.gameStatus == .lost {
                         Text("Game Over")
                             .bold()
                             .font(.title)
                         Spacer()
-                        Text("\(self.statesVM.scoredStates)/50 States")
+                        Text("\(self.regionVM.scoredRegions)/50 States")
                             .foregroundColor(.gray)
                             .font(.headline)
                             .padding([.leading, .trailing])
                         
-                    } else if self.statesVM.gameStatus == .win {
-                        Text(self.statesVM.promptedState?.name ?? "")
+                    } else if self.regionVM.gameStatus == .win {
+                        Text(self.regionVM.promptedRegion?.name ?? "")
                             
                             .bold()
                             .font(.title)
                             .transition(.opacity)
-                            .id(self.statesVM.promptedState?.name ?? "")
+                            .id(self.regionVM.promptedRegion?.name ?? "")
                         
                         Spacer()
-                        Text("\(self.statesVM.getSetScore(time: self.time, mode: self.gameMode))")
+                        Text("\(self.regionVM.getSetScore(time: self.time, mode: self.gameMode))")
                             .foregroundColor(.gray)
                             .font(.headline)
                             .padding([.leading])
@@ -93,7 +100,7 @@ struct ControlView: View {
                 }.padding(.horizontal, 35.0)
                 
                 Button(action: self.buttonTapped) {
-                    Text(self.statesVM.getButtonText())
+                    Text(self.regionVM.getButtonText())
                         .font(.title)
                         .fontWeight(.medium)
                         .frame(width: geometry.size.width/1.2, height: geometry.size.height/3.5)
@@ -102,9 +109,31 @@ struct ControlView: View {
                         .cornerRadius(15)
                         .shadow(radius: 0)
                         .transition(.opacity)
-                        .id(self.statesVM.getButtonText())
+                        .id(self.regionVM.getButtonText())
                 }.padding(.top, 20.0)
             }
+        }
+    }
+    
+    func nextChallenge() {
+        switch self.regionVM.challenge {
+        case .USA:
+            
+            self.regionVM.challenge = .Europe
+        case .Europe:
+            
+            self.regionVM.challenge = .USA
+        case .Africa:
+            
+            return
+        case .World:
+            
+            return
+        case .Asia:
+            
+            return
+        case .SouthAmerica:
+            return
         }
     }
     
@@ -113,14 +142,14 @@ struct ControlView: View {
     }
     
     func buttonTapped() {
-        if statesVM.gameStatus == .before {
+        if regionVM.gameStatus == .before {
             self.bottomSheetShown = false
-            statesVM.setPromptedState()
-            self.statesVM.gameStatus = .during
+            regionVM.setPromptedRegion()
+            self.regionVM.gameStatus = .during
         } else {
-            statesVM.resetGameData()
+            regionVM.resetGameData()
             resetTimer()
-            self.statesVM.gameStatus = .before
+            self.regionVM.gameStatus = .before
         }
     }
 }

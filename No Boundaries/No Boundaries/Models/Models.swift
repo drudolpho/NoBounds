@@ -10,23 +10,16 @@ import Foundation
 import SwiftUI
 import FirebaseDatabase
 
-struct StateData: Codable {
-    var state: [SingleStateData]
-}
-struct SingleStateData: Codable {
-    var point: [CoordData]
-    var _name: String
-    var _colour: String
+
+
+struct Region: Codable {
+    var name: String
+    var borders: [[CoordData]]
 }
 
 struct CoordData: Codable {
-    var _lat: String
-    var _lng: String
-}
-
-struct USState {
-    var name: String
-    var borders: [CoordData]
+    var lat: Double
+    var lon: Double
 }
 
 enum GameStatus {
@@ -35,6 +28,7 @@ enum GameStatus {
     case lost
     case win
 }
+
 
 //For rounding corners
 
@@ -120,9 +114,23 @@ class NetworkController: ObservableObject {
     }
 }
 
+//Saving scores to user defaults
+
 struct UserScores: Codable, Identifiable {
     var id: String
     var time: Int
     var name: String
     var date: Date
 }
+
+
+enum Challenge: Int{
+    case USA = 0
+    case Europe = 1
+    case Africa = 2
+    case World = 3
+    case Asia = 4
+    case SouthAmerica = 5
+}
+
+

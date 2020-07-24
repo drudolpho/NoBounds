@@ -11,7 +11,7 @@ import GoogleMaps
 
 struct GoogleMapsView: UIViewRepresentable {
     
-    @ObservedObject var statesVM: StatesViewModel
+    @ObservedObject var regionVM: RegionViewModel
     @Binding var currentMode: Int
     
     func makeUIView(context: Self.Context) -> GMSMapView {
@@ -31,7 +31,7 @@ struct GoogleMapsView: UIViewRepresentable {
     }
     
     func updateUIView(_ mapView: GMSMapView, context: Context) {
-        if statesVM.gameStatus == .before {
+        if regionVM.gameStatus == .before {
             var styleFileName = "teststyle"
             
             switch currentMode {
@@ -59,54 +59,55 @@ struct GoogleMapsView: UIViewRepresentable {
         //New
         
         //Clears board on on reset
-        guard let _ = self.statesVM.promptedState else {
+        guard let _ = self.regionVM.promptedRegion else {
             mapView.clear()
             return
         }
         
-        if let borderData = statesVM.selectedState?.0.borders {
-            let color = (statesVM.selectedState?.1 == true) ? UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5) : UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.5)
+        if let borderData = regionVM.selectedRegion?.0.borders {
+            let color = (regionVM.selectedRegion?.1 == true) ? UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5) : UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.5)
 
-            self.createStateBorderPolygon(borderData: borderData, color: color, mapView: mapView)
+            self.createRegionPolygons(borderData: borderData, color: color, mapView: mapView)
             
-            self.statesVM.selectedStateHasBeenDrawn()
+            self.regionVM.selectedRegionHasBeenDrawn()
         }
     }
     
-    func createStateBorderPolygon(borderData: [CoordData], color: UIColor, mapView: GMSMapView) {
-        let rect = GMSMutablePath()
-        for coord in borderData {
-            guard let lat = CLLocationDegrees(exactly: Double(coord._lat) ?? 0), let lon = CLLocationDegrees(exactly: Double(coord._lng) ?? 0) else {
-                print("Problem with coordinates")
-                return
+    func createRegionPolygons(borderData: [[CoordData]], color: UIColor, mapView: GMSMapView) {
+        for poly in borderData {
+            let rect = GMSMutablePath()
+            for coord in poly {
+                guard let lat = CLLocationDegrees(exactly: coord.lat), let lon = CLLocationDegrees(exactly: coord.lon) else {
+                    print("Problem with coordinates")
+                    return
+                }
+                rect.add(CLLocationCoordinate2D(latitude: lat, longitude: lon))
             }
-            rect.add(CLLocationCoordinate2D(latitude: lat, longitude: lon))
+            let polygon = GMSPolygon(path: rect)
+            polygon.fillColor = color
+            polygon.strokeColor = .black
+            polygon.strokeWidth = 2
+            polygon.map = mapView
         }
-        
-        let polygon = GMSPolygon(path: rect)
-        polygon.fillColor = color
-        polygon.strokeColor = .black
-        polygon.strokeWidth = 2
-        polygon.map = mapView
     }
     
     class Coordinator: NSObject, GMSMapViewDelegate {
         
-        @ObservedObject var statesVM: StatesViewModel
+        @ObservedObject var statesVM: RegionViewModel
         var parent: GoogleMapsView
         
-        init(_ parent: GoogleMapsView, viewModel: StatesViewModel) {
+        init(_ parent: GoogleMapsView, viewModel: RegionViewModel) {
             self.parent = parent
             self.statesVM = viewModel
         }
         
         func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-            statesVM.handleState(coordinate: coordinate)
+            statesVM.handleTapAt(coordinate: coordinate)
         }
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, viewModel: statesVM)
+        Coordinator(self, viewModel: regionVM)
     }
 }
 

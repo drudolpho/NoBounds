@@ -12,7 +12,7 @@ import GoogleMaps
 
 struct ContentView: View {
     
-    @ObservedObject var statesVM = StatesViewModel()
+    @ObservedObject var regionVM = RegionViewModel()
     @ObservedObject var networkController = NetworkController()
     @State private var bottomSheetShowing = false
     @State private var instructionsShowing = false
@@ -30,7 +30,7 @@ struct ContentView: View {
                 
             GeometryReader { geometry in
                 ZStack {
-                    GoogleMapsView(statesVM: self.statesVM, currentMode: self.$currentMode)
+                    GoogleMapsView(regionVM: self.regionVM, currentMode: self.$currentMode)
                         .edgesIgnoringSafeArea(.all)
                         .zIndex(0)
                     
@@ -56,7 +56,7 @@ struct ContentView: View {
                             maxHeight: geometry.size.height * 0.70
                         ) {
                             VStack(spacing: 0){
-                                ControlView(statesVM: self.statesVM, time: self.$time, bottomSheetShown: self.$bottomSheetShowing, gameMode: self.$currentMode)
+                                ControlView(regionVM: self.regionVM, time: self.$time, bottomSheetShown: self.$bottomSheetShowing, gameMode: self.$currentMode)
                                     .frame(width: geometry.size.width, height: geometry.size.height * 0.18)
                                 
                                 VStack {
@@ -94,8 +94,8 @@ struct ContentView: View {
                     
                     
                     
-                    if self.statesVM.gameStatus == .win {
-                        SubmitView(statesVM: self.statesVM, time: self.$time, refreshScores: self.$refreshScores, currentMode: self.$currentMode)
+                    if self.regionVM.gameStatus == .win {
+                        SubmitView(regionVM: self.regionVM, time: self.$time, refreshScores: self.$refreshScores, currentMode: self.$currentMode)
                             .frame(width: geometry.size.width * 0.85, height: geometry.size.height * 0.8)
                             .transition(AnyTransition.scale.animation(.spring()))
                             .zIndex(3)
@@ -137,10 +137,10 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         var view = ContentView()
         
-        let statesvm = StatesViewModel()
+        let statesvm = RegionViewModel()
         statesvm.gameStatus = .win
-        statesvm.promptedState = USState(name: "Kansas", borders: [])
-        view.statesVM = statesvm
+        statesvm.promptedRegion = Region(name: "Kansas", borders: [])
+        view.regionVM = statesvm
         return view
     }
 }
