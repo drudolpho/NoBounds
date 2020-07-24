@@ -15,7 +15,6 @@ struct ControlView: View {
     @Binding var bottomSheetShown: Bool
     @Binding var gameMode: Int
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    let challengeName = ["United States", "Europe", "Africa", "World", "Asia", "South America"]
     
     var body: some View {
         GeometryReader { geometry in
@@ -49,12 +48,15 @@ struct ControlView: View {
                             .padding(.trailing)
                         
                     } else if self.regionVM.gameStatus == .before {
-                        Text("\(self.challengeName[self.regionVM.challenge.rawValue])")
+                        Text("\(self.regionVM.challenge.rawValue)")
                             .bold()
                             .font(.title)
+                            .transition(.opacity)
+                            .id(self.regionVM.challenge.rawValue)
                         Spacer()
                         Button(action: {
                             self.nextChallenge()
+                            self.regionVM.resetGameData()
                         }) {
                             Text("Next")
                                 .font(.headline)
@@ -118,19 +120,14 @@ struct ControlView: View {
     func nextChallenge() {
         switch self.regionVM.challenge {
         case .USA:
-            
-            self.regionVM.challenge = .Europe
+            self.regionVM.challenge = .World
         case .Europe:
-            
-            self.regionVM.challenge = .USA
+            return
         case .Africa:
-            
             return
         case .World:
-            
-            return
+            self.regionVM.challenge = .USA
         case .Asia:
-            
             return
         case .SouthAmerica:
             return

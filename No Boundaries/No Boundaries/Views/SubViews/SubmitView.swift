@@ -84,7 +84,7 @@ struct SubmitView: View {
                         let name = (self.letters[self.selection1] + self.letters[self.selection2] + self.letters[self.selection3])
                         
                         let submission = USApost(time: self.time, name: name)
-                        submission.submitToServer(reference: self.ref)
+                        submission.submitToServer(reference: self.ref, challenge: self.regionVM.challenge)
                         
                         self.saveToUD(name: name)
                         
@@ -113,13 +113,13 @@ struct SubmitView: View {
         guard self.currentMode == 0 else { return }
 
         //Saves users scores to UD
-        if let data = UserDefaults.standard.value(forKey:"scores") as? Data {
+        if let data = UserDefaults.standard.value(forKey:"scores\(self.regionVM.challenge.rawValue)") as? Data {
             var scores = try? PropertyListDecoder().decode(Array<UserScores>.self, from: data)
             scores?.append(UserScores(id: UUID().uuidString, time: self.time, name: name, date: Date()))
-            UserDefaults.standard.set(try? PropertyListEncoder().encode(scores), forKey:"scores")
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(scores), forKey:"scores\(self.regionVM.challenge.rawValue)")
         } else {
             let score = UserScores(id: UUID().uuidString, time: self.time, name: name, date: Date())
-            UserDefaults.standard.set(try? PropertyListEncoder().encode([score]), forKey:"scores")
+            UserDefaults.standard.set(try? PropertyListEncoder().encode([score]), forKey:"scores\(self.regionVM.challenge.rawValue)")
         }
     }
 }

@@ -28,10 +28,10 @@ class RegionViewModel: ObservableObject {
     }
     
     func setPromptedRegion() {
-        let randomState = remainingRegions.values.randomElement()
-        promptedRegion = randomState
-        let stateName = randomState?.name
-        remainingRegions[stateName ?? ""] = nil
+        let randomRegion = remainingRegions.values.randomElement()
+        promptedRegion = randomRegion
+        let regionName = randomRegion?.name
+        remainingRegions[regionName ?? ""] = nil
     }
     
     func selectedRegionHasBeenDrawn() {
@@ -44,10 +44,28 @@ class RegionViewModel: ObservableObject {
         scoredRegions = 0
         remainingRegions = [:]
   
-        remainingRegions = stateList
+        setRemainingRegions()
         tabbedRegions = [:]
         promptedRegion = nil
         selectedRegion = nil
+    }
+    
+    func setRemainingRegions() {
+        switch self.challenge {
+        case .USA:
+            self.remainingRegions = stateList
+        case .Europe:
+            return
+        case .Africa:
+            return
+        case .World:
+            self.remainingRegions = worldList
+//            print("World list set (setRemainingRegions) \(remainingRegions.first?.value.name)")
+        case .Asia:
+            return
+        case .SouthAmerica:
+            return
+        }
     }
     
     func getSetScore(time: Int, mode: Int) -> Int {
@@ -71,7 +89,7 @@ class RegionViewModel: ObservableObject {
     }
     
     func handleTapAt(coordinate: CLLocationCoordinate2D) {
-//        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
+        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
@@ -80,16 +98,22 @@ class RegionViewModel: ObservableObject {
             } else {
                 let pm = placemarks! as [CLPlacemark]
                 if pm.count > 0 {
-                    guard let stateInitials = pm[0].administrativeArea,
-                        let tappedState = self.stateList[self.initialsDictionary[stateInitials] ?? ""] else { return }
+                    
+                    if self.challenge == .USA {
+                        
+                    } else {
+                        
+                    }
+                    guard let regionIdentifier = self.challenge == .USA ? pm[0].administrativeArea : pm[0].country,
+                        let tappedRegion = self.challenge == .USA ? self.stateList[self.initialsDictionary[regionIdentifier] ?? ""] : self.worldList[regionIdentifier] else { return }
                     
                     
                     if self.gameStatus == .during || self.gameStatus == .lost {
-                        if self.tabbedRegions[tappedState.name] == nil {
-                            self.selectedRegion = (tappedState, false)
+                        if self.tabbedRegions[tappedRegion.name] == nil {
+                            self.selectedRegion = (tappedRegion, false)
                             let status = self.checkRegionCorrectness()
                             self.selectedRegion?.1 = status
-                            self.tabbedRegions[tappedState.name] = false
+                            self.tabbedRegions[tappedRegion.name] = false
                             if self.gameStatus == .during {
                                 self.scoredRegions += 1
                                 if self.scoredRegions == 3 { //should be self.stateList.count, lower for testing
@@ -119,7 +143,6 @@ class RegionViewModel: ObservableObject {
                     stateList[temp.name] = temp
                     remainingRegions[temp.name] = temp
                 }
-                return
             } catch {
                 print("error:\(error) with state list")
             }
@@ -136,7 +159,6 @@ class RegionViewModel: ObservableObject {
                     let temp = Region(name: region.name, borders: region.borders)
                     worldList[temp.name] = temp
                 }
-                return
             } catch {
                 print("error:\(error) with world list")
             }

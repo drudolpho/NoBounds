@@ -11,6 +11,7 @@ import FirebaseDatabase
 
 struct ScoresView: View {
     
+    @ObservedObject var regionVM: RegionViewModel
     @ObservedObject var networkController: NetworkController
     @Binding var navBarHidden : Bool
     @Binding var refreshScores: Bool
@@ -33,7 +34,7 @@ struct ScoresView: View {
                         .padding(.leading, 30.0)
                     Spacer()
                 }
-                MyScoresView(refreshScores: self.$refreshScores)
+                MyScoresView(regionVM: self.regionVM, refreshScores: self.$refreshScores)
                     .frame(width: geometry.size.width * 0.9, height: geometry.size.height / 4)
                     .cornerRadius(20)
                 

@@ -10,10 +10,11 @@ import SwiftUI
 
 struct MyScoresView: View {
     
+    @ObservedObject var regionVM: RegionViewModel
     @Binding var refreshScores: Bool
     
     var scores: [UserScores] {
-        if let data = UserDefaults.standard.value(forKey:"scores") as? Data {
+        if let data = UserDefaults.standard.value(forKey:"scores\(self.regionVM.challenge.rawValue)") as? Data {
             guard let scores = try? PropertyListDecoder().decode(Array<UserScores>.self, from: data) else { return [] }
             return scores
         } else {

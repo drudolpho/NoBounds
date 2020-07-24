@@ -77,15 +77,15 @@ struct ContentView: View {
                                             .foregroundColor(Color.gray)
                                             .padding(.horizontal)
                                         Spacer()
-                                        NavigationLink(destination: ScoresView(networkController: self.networkController, navBarHidden: self.$navBarHidden, refreshScores: self.$refreshScores).onAppear {
-                                            self.networkController.fetchUSA()
+                                        NavigationLink(destination: ScoresView(regionVM: self.regionVM, networkController: self.networkController, navBarHidden: self.$navBarHidden, refreshScores: self.$refreshScores).onAppear {
+                                            self.networkController.fetchPostsof(challenge: self.regionVM.challenge)
                                         }) {
                                             Text("View Highscores")
                                         }.padding(.horizontal)
                                     }
                                     Divider()
                                 }
-                                MyScoresView(refreshScores: self.$refreshScores)
+                                MyScoresView(regionVM: self.regionVM, refreshScores: self.$refreshScores)
                                     .frame(width: geometry.size.width * 0.9)
                                 Spacer()
                             }

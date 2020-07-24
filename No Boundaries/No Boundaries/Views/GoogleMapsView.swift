@@ -52,7 +52,21 @@ struct GoogleMapsView: UIViewRepresentable {
             } catch {
                 NSLog("One or more of the map styles failed to load. \(error)")
             }
-            mapView.camera = GMSCameraPosition.camera(withLatitude: 40, longitude: -95.5, zoom: 3.0)
+            
+            switch self.regionVM.challenge {
+            case .USA:
+                mapView.camera = GMSCameraPosition.camera(withLatitude: 40, longitude: -95.5, zoom: 3.0)
+            case .Europe:
+                return
+            case .Africa:
+                return
+            case .World:
+                mapView.camera = GMSCameraPosition.camera(withLatitude: 10, longitude: -90.5, zoom: 0)
+            case .Asia:
+                return
+            case .SouthAmerica:
+                return
+            }
         }
         
         

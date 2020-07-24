@@ -73,8 +73,8 @@ class USApost: Codable, Identifiable {
         return ["time": time, "name": name, "id": id]
       }
     
-    func submitToServer(reference: DatabaseReference) {
-        reference.child("USA").child(id).setValue(dictionaryRepresentation) { (error:Error?, ref:DatabaseReference) in
+    func submitToServer(reference: DatabaseReference, challenge: Challenge) {
+        reference.child(challenge.rawValue).child(id).setValue(dictionaryRepresentation) { (error:Error?, ref:DatabaseReference) in
             if let error = error {
                 print("Data could not be saved: \(error).")
                 return
@@ -97,9 +97,9 @@ class NetworkController: ObservableObject {
         }
     }
     
-    func fetchUSA() {
+    func fetchPostsof(challenge: Challenge) {
         
-        ref.child("USA").queryOrdered(byChild: "time").observe(.value) { (snapshot) in
+        ref.child(challenge.rawValue).queryOrdered(byChild: "time").observe(.value) { (snapshot) in
             self.posts = []
             for snap in snapshot.children.allObjects as! [DataSnapshot] {
                 if let postRep = snap.value as? [String: Any] {
@@ -124,13 +124,13 @@ struct UserScores: Codable, Identifiable {
 }
 
 
-enum Challenge: Int{
-    case USA = 0
-    case Europe = 1
-    case Africa = 2
-    case World = 3
-    case Asia = 4
-    case SouthAmerica = 5
+enum Challenge: String {
+    case USA = "United States"
+    case Europe = "Europe"
+    case Africa = "Africa"
+    case World = "World"
+    case Asia = "Asia"
+    case SouthAmerica = "South America"
 }
 
 
