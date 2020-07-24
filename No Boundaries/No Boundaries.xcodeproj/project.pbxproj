@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68205A6F24CA83CE0065313B /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 68205A6E24CA83CE0065313B /* countries.json */; };
 		682A965524BE1D3C00703EFD /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682A965424BE1D3C00703EFD /* GuideView.swift */; };
 		6879B9DD24AA829B007A9A0D /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */; };
 		6879B9DF24AA856D007A9A0D /* teststyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 6879B9DE24AA856D007A9A0D /* teststyle.json */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		4322F1A370A1500DDBE1180C /* Pods_No_Boundaries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_No_Boundaries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B5574CAEB14989801475DFB /* Pods-No Boundaries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-No Boundaries.debug.xcconfig"; path = "Target Support Files/Pods-No Boundaries/Pods-No Boundaries.debug.xcconfig"; sourceTree = "<group>"; };
+		68205A6E24CA83CE0065313B /* countries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		682A965424BE1D3C00703EFD /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		6879B9DE24AA856D007A9A0D /* teststyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = teststyle.json; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				68D9D1B624C0901300318717 /* practicestyle.json */,
 				68D9D1B824C091B500318717 /* studystyle.json */,
 				6879B9E024AA9C9E007A9A0D /* states.json */,
+				68205A6E24CA83CE0065313B /* countries.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				6879B9E124AA9C9E007A9A0D /* states.json in Resources */,
 				68D9A13724C239E3007EDD17 /* GoogleService-Info.plist in Resources */,
 				68BB273624A3A4A10076BBE0 /* LaunchScreen.storyboard in Resources */,
+				68205A6F24CA83CE0065313B /* countries.json in Resources */,
 				68D9D1B924C091B500318717 /* studystyle.json in Resources */,
 				68D9D1B724C0901300318717 /* practicestyle.json in Resources */,
 				68BB273324A3A4A10076BBE0 /* Preview Assets.xcassets in Resources */,
