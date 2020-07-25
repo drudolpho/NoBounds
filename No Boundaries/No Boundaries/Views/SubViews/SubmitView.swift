@@ -83,7 +83,7 @@ struct SubmitView: View {
                         //handle the submission
                         let name = (self.letters[self.selection1] + self.letters[self.selection2] + self.letters[self.selection3])
                         
-                        let submission = USApost(time: self.time, name: name)
+                        let submission = Post(time: self.time, name: name)
                         submission.submitToServer(reference: self.ref, challenge: self.regionVM.challenge)
                         
                         self.saveToUD(name: name)

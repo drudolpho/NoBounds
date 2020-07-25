@@ -14,7 +14,7 @@ struct HighscoresView: View {
     
     var body: some View {
         let withIndex = networkController.posts.enumerated().map({ $0 })
-        return List(withIndex, id: \.element.name) { index, post in
+        return List(withIndex, id: \.element.id) { index, post in
             HStack {
                 Text("\(index + 1).")
                 Spacer()

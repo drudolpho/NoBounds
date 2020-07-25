@@ -120,17 +120,17 @@ struct ControlView: View {
     func nextChallenge() {
         switch self.regionVM.challenge {
         case .USA:
-            self.regionVM.challenge = .World
+            self.regionVM.challenge = .Europe
         case .Europe:
-            return
+            self.regionVM.challenge = .Africa
         case .Africa:
-            return
+            self.regionVM.challenge = .Asia
         case .World:
             self.regionVM.challenge = .USA
         case .Asia:
-            return
+            self.regionVM.challenge = .SouthAmerica
         case .SouthAmerica:
-            return
+            self.regionVM.challenge = .World
         }
     }
     

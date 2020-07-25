@@ -50,7 +50,7 @@ struct RoundedCorner: Shape {
     }
 }
 
-class USApost: Codable, Identifiable {
+class Post: Codable, Identifiable {
     
     let time: Int
     let name: String
@@ -88,7 +88,7 @@ class USApost: Codable, Identifiable {
 
 class NetworkController: ObservableObject {
     var ref: DatabaseReference = Database.database().reference()
-    @Published var posts: [USApost] = []
+    @Published var posts: [Post] = []
     var myScores: [(Int, String, Date)] {
         get {
             return UserDefaults.standard.array(forKey: "scores") as? [(Int, String, Date)] ?? []
@@ -104,7 +104,7 @@ class NetworkController: ObservableObject {
             self.posts = []
             for snap in snapshot.children.allObjects as! [DataSnapshot] {
                 if let postRep = snap.value as? [String: Any] {
-                    if let post = USApost(dictionary: postRep) {
+                    if let post = Post(dictionary: postRep) {
                         self.posts.append(post)
                     }
                 } else {

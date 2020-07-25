@@ -57,17 +57,28 @@ class RegionViewModel: ObservableObject {
             self.remainingRegions = stateList
             self.totalRegions = stateList.count
         case .Europe:
-            return
+            for iso in self.euISO {
+                remainingRegions[iso] = worldList[iso]
+            }
+            self.totalRegions = remainingRegions.count
         case .Africa:
-            return
+            for iso in self.afISO {
+                remainingRegions[iso] = worldList[iso]
+            }
+            self.totalRegions = remainingRegions.count
         case .World:
             self.remainingRegions = worldList
             self.totalRegions = worldList.count
-//            print("World list set (setRemainingRegions) \(remainingRegions.first?.value.name)")
         case .Asia:
-            return
+            for iso in self.asISO {
+                remainingRegions[iso] = worldList[iso]
+            }
+            self.totalRegions = remainingRegions.count
         case .SouthAmerica:
-            return
+            for iso in self.saISO {
+                remainingRegions[iso] = worldList[iso]
+            }
+            self.totalRegions = remainingRegions.count
         }
     }
     
@@ -92,7 +103,7 @@ class RegionViewModel: ObservableObject {
     }
     
     func handleTapAt(coordinate: CLLocationCoordinate2D) {
-//        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
+        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
         
         
         //Google Geocoder
@@ -119,9 +130,7 @@ class RegionViewModel: ObservableObject {
                     guard let regionIdentifier = self.challenge == .USA ? pm[0].administrativeArea : pm[0].isoCountryCode,
                         let tappedRegion = self.challenge == .USA ? self.stateList[regionIdentifier] : self.worldList[regionIdentifier] else { return }
                     print("ID:   \(regionIdentifier) !!!")
-                    
-                    
-                    
+
                     if self.gameStatus == .during || self.gameStatus == .lost {
                         if self.tabbedRegions[tappedRegion.name] == nil {
                             self.selectedRegion = (tappedRegion, false)
@@ -191,6 +200,13 @@ class RegionViewModel: ObservableObject {
         }
     }
     
+    let saISO = ["AR","CL","UY","BR","BO","PE","CO","VE","GY","SR","EC","PY", "GF"]
+    
+    let asISO = ["KZ","UZ","ID","TL","IL","LB","PS","JO","AE","QA","KW","IQ","OM","KH","TH", "LA","MM","VN","KP", "KR","MN","IN","BD","BT", "NP","PK","AF","TJ","KG","TM","IR", "SY","AM","TR","LK","CN", "TW","AZ","GE","PH", "MY","BN","JP","YE", "SA","-99","CY"]
+    
+    let afISO = ["TZ","EH","CD","SO","KE","SD","TD","ZA","LS","ZW","BW","NA","SN","ML","MR","BJ","NE","NG","CM","TG","GH", "CI","GN","GW","LR","SL","BF","CF","CG","GA","GQ","ZM","MW","MZ","SZ","AO","BI","MG","GM","TN","DZ","ER","MA", "EG","LY","ET","DJ","-99","UG","RW","SS"]
+    
+    let euISO = ["RU","FR","NO","SE","BY","UA","PL","AT","HU","MD","RO","LT","LV","EE","DE","BG","GR","AL","HR","CH", "LU","BE","NL","PT","ES","IE","IT","DK","GB","IS","SI","FI","SK","CZ","BA","MK","RS","ME","XK"]
     
     let europeanCountries = ["Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus","Belgium", "Bosnia and Herzegovina", "Bulgaria","Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Georgia", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Malta", "Moldova", "Monaco", "Montenegro", "The Netherlands", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Turkey", "Ukraine", "United Kingdom", "Vatican City",]
     

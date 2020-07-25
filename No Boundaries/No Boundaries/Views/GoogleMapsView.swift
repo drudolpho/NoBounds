@@ -32,6 +32,7 @@ struct GoogleMapsView: UIViewRepresentable {
     
     func updateUIView(_ mapView: GMSMapView, context: Context) {
         if regionVM.gameStatus == .before {
+            mapView.clear()
             var styleFileName = "teststyle"
             
             switch currentMode {
@@ -57,15 +58,15 @@ struct GoogleMapsView: UIViewRepresentable {
             case .USA:
                 mapView.camera = GMSCameraPosition.camera(withLatitude: 40, longitude: -95.5, zoom: 3.0)
             case .Europe:
-                return
+                mapView.camera = GMSCameraPosition.camera(withLatitude: 55, longitude: 13, zoom: 3.2)
             case .Africa:
-                return
+                mapView.camera = GMSCameraPosition.camera(withLatitude: 4, longitude: 16, zoom: 2.7)
             case .World:
                 mapView.camera = GMSCameraPosition.camera(withLatitude: 10, longitude: -90.5, zoom: 0)
             case .Asia:
-                return
+                mapView.camera = GMSCameraPosition.camera(withLatitude: 45, longitude: 90, zoom: 2.2)
             case .SouthAmerica:
-                return
+                mapView.camera = GMSCameraPosition.camera(withLatitude: -25, longitude: -61, zoom: 3.0)
             }
         }
         
@@ -73,10 +74,10 @@ struct GoogleMapsView: UIViewRepresentable {
         //New
         
         //Clears board on on reset
-        guard let _ = self.regionVM.promptedRegion else {
-            mapView.clear()
-            return
-        }
+//        guard let _ = self.regionVM.promptedRegion else {
+//            mapView.clear()
+//            return
+//        }
         
         if let borderData = regionVM.selectedRegion?.0.borders {
             let color = (regionVM.selectedRegion?.1 == true) ? UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5) : UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.5)
