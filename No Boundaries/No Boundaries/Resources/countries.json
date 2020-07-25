@@ -1,6 +1,7 @@
 [
   {
     "name": "Fiji",
+    "iso": "FJ",
     "borders": [
       [
         {
@@ -100,6 +101,7 @@
   },
   {
     "name": "Tanzania",
+    "iso": "TZ",
     "borders": [
       [
         {
@@ -315,6 +317,7 @@
   },
   {
     "name": "Western Sahara",
+    "iso": "EH",
     "borders": [
       [
         {
@@ -434,6 +437,7 @@
   },
   {
     "name": "Canada",
+    "iso": "CA",
     "borders": [
       [
         {
@@ -3675,6 +3679,7 @@
   },
   {
     "name": "United States of America",
+    "iso": "US",
     "borders": [
       [
         {
@@ -5488,6 +5493,7 @@
   },
   {
     "name": "Kazakhstan",
+    "iso": "KZ",
     "borders": [
       [
         {
@@ -5943,6 +5949,7 @@
   },
   {
     "name": "Uzbekistan",
+    "iso": "UZ",
     "borders": [
       [
         {
@@ -6166,6 +6173,7 @@
   },
   {
     "name": "Papua New Guinea",
+    "iso": "PG",
     "borders": [
       [
         {
@@ -6503,6 +6511,7 @@
   },
   {
     "name": "Indonesia",
+    "iso": "ID",
     "borders": [
       [
         {
@@ -7534,6 +7543,7 @@
   },
   {
     "name": "Argentina",
+    "iso": "AR",
     "borders": [
       [
         {
@@ -8027,6 +8037,7 @@
   },
   {
     "name": "Chile",
+    "iso": "CL",
     "borders": [
       [
         {
@@ -8492,6 +8503,7 @@
   },
   {
     "name": "Democratic Republic of the Congo",
+    "iso": "CD",
     "borders": [
       [
         {
@@ -8995,6 +9007,7 @@
   },
   {
     "name": "Somalia",
+    "iso": "SO",
     "borders": [
       [
         {
@@ -9145,11 +9158,118 @@
           "lat": -1.68325,
           "lon": 41.58513
         }
+      ],
+      [
+        {
+          "lat": 11.41061728169797,
+          "lon": 48.94820475850985
+        },
+        {
+          "lat": 11.410617281697963,
+          "lon": 48.94820475850974
+        },
+        {
+          "lat": 11.394266058798138,
+          "lon": 48.94200524271835
+        },
+        {
+          "lat": 10.982327378783467,
+          "lon": 48.938491245322496
+        },
+        {
+          "lat": 9.973500067581512,
+          "lon": 48.93823286316103
+        },
+        {
+          "lat": 9.451748968946617,
+          "lon": 48.93812951029645
+        },
+        {
+          "lat": 8.837626247589995,
+          "lon": 48.48673587422695
+        },
+        {
+          "lat": 8.003,
+          "lon": 47.78942
+        },
+        {
+          "lat": 7.99688,
+          "lon": 46.94834
+        },
+        {
+          "lat": 9.18358000000012,
+          "lon": 43.67875
+        },
+        {
+          "lat": 9.540480000000173,
+          "lon": 43.29699000000011
+        },
+        {
+          "lat": 10.021940000000143,
+          "lon": 42.92812
+        },
+        {
+          "lat": 10.57258000000013,
+          "lon": 42.55876
+        },
+        {
+          "lat": 10.92687856693442,
+          "lon": 42.77685184100096
+        },
+        {
+          "lat": 11.462039699748857,
+          "lon": 43.14530480324214
+        },
+        {
+          "lat": 11.277709865763882,
+          "lon": 43.470659620951665
+        },
+        {
+          "lat": 10.86416921634816,
+          "lon": 43.66666832863484
+        },
+        {
+          "lat": 10.445538438351605,
+          "lon": 44.11780358254282
+        },
+        {
+          "lat": 10.442205308468942,
+          "lon": 44.614259067570856
+        },
+        {
+          "lat": 10.698029486529776,
+          "lon": 45.55694054543915
+        },
+        {
+          "lat": 10.816549383991173,
+          "lon": 46.645401238803004
+        },
+        {
+          "lat": 11.12722809492999,
+          "lon": 47.525657586462785
+        },
+        {
+          "lat": 11.193063869669743,
+          "lon": 48.02159630716778
+        },
+        {
+          "lat": 11.375481675660126,
+          "lon": 48.37878380716927
+        },
+        {
+          "lat": 11.41062164961852,
+          "lon": 48.94820641459347
+        },
+        {
+          "lat": 11.41061728169797,
+          "lon": 48.94820475850985
+        }
       ]
     ]
   },
   {
     "name": "Kenya",
+    "iso": "KE",
     "borders": [
       [
         {
@@ -9305,6 +9425,7 @@
   },
   {
     "name": "Sudan",
+    "iso": "SD",
     "borders": [
       [
         {
@@ -9636,6 +9757,7 @@
   },
   {
     "name": "Chad",
+    "iso": "TD",
     "borders": [
       [
         {
@@ -9875,6 +9997,7 @@
   },
   {
     "name": "Haiti",
+    "iso": "HT",
     "borders": [
       [
         {
@@ -9966,6 +10089,7 @@
   },
   {
     "name": "Dominican Republic",
+    "iso": "DO",
     "borders": [
       [
         {
@@ -10077,6 +10201,7 @@
   },
   {
     "name": "Russia",
+    "iso": "RU",
     "borders": [
       [
         {
@@ -12610,6 +12735,7 @@
   },
   {
     "name": "The Bahamas",
+    "iso": "BS",
     "borders": [
       [
         {
@@ -12705,6 +12831,7 @@
   },
   {
     "name": "Falkland Islands",
+    "iso": "FK",
     "borders": [
       [
         {
@@ -12752,6 +12879,7 @@
   },
   {
     "name": "Norway",
+    "iso": "NO",
     "borders": [
       [
         {
@@ -13117,6 +13245,7 @@
   },
   {
     "name": "Greenland",
+    "iso": "GL",
     "borders": [
       [
         {
@@ -13652,6 +13781,7 @@
   },
   {
     "name": "French Southern and Antarctic Lands",
+    "iso": "TF",
     "borders": [
       [
         {
@@ -13695,6 +13825,7 @@
   },
   {
     "name": "East Timor",
+    "iso": "TL",
     "borders": [
       [
         {
@@ -13746,6 +13877,7 @@
   },
   {
     "name": "South Africa",
+    "iso": "ZA",
     "borders": [
       [
         {
@@ -14131,6 +14263,7 @@
   },
   {
     "name": "Lesotho",
+    "iso": "LS",
     "borders": [
       [
         {
@@ -14186,6 +14319,7 @@
   },
   {
     "name": "Mexico",
+    "iso": "MX",
     "borders": [
       [
         {
@@ -14873,6 +15007,7 @@
   },
   {
     "name": "Uruguay",
+    "iso": "UY",
     "borders": [
       [
         {
@@ -14964,6 +15099,7 @@
   },
   {
     "name": "Brazil",
+    "iso": "BR",
     "borders": [
       [
         {
@@ -15783,6 +15919,7 @@
   },
   {
     "name": "Bolivia",
+    "iso": "BO",
     "borders": [
       [
         {
@@ -16030,6 +16167,7 @@
   },
   {
     "name": "Peru",
+    "iso": "PE",
     "borders": [
       [
         {
@@ -16341,6 +16479,7 @@
   },
   {
     "name": "Colombia",
+    "iso": "CO",
     "borders": [
       [
         {
@@ -16748,6 +16887,7 @@
   },
   {
     "name": "Panama",
+    "iso": "PA",
     "borders": [
       [
         {
@@ -16963,6 +17103,7 @@
   },
   {
     "name": "Costa Rica",
+    "iso": "CR",
     "borders": [
       [
         {
@@ -17114,6 +17255,7 @@
   },
   {
     "name": "Nicaragua",
+    "iso": "NI",
     "borders": [
       [
         {
@@ -17329,6 +17471,7 @@
   },
   {
     "name": "Honduras",
+    "iso": "HN",
     "borders": [
       [
         {
@@ -17564,6 +17707,7 @@
   },
   {
     "name": "El Salvador",
+    "iso": "SV",
     "borders": [
       [
         {
@@ -17651,6 +17795,7 @@
   },
   {
     "name": "Guatemala",
+    "iso": "GT",
     "borders": [
       [
         {
@@ -17798,6 +17943,7 @@
   },
   {
     "name": "Belize",
+    "iso": "BZ",
     "borders": [
       [
         {
@@ -17885,6 +18031,7 @@
   },
   {
     "name": "Venezuela",
+    "iso": "VE",
     "borders": [
       [
         {
@@ -18260,6 +18407,7 @@
   },
   {
     "name": "Guyana",
+    "iso": "GY",
     "borders": [
       [
         {
@@ -18427,6 +18575,7 @@
   },
   {
     "name": "Suriname",
+    "iso": "SR",
     "borders": [
       [
         {
@@ -18538,6 +18687,7 @@
   },
   {
     "name": "France",
+    "iso": "FR",
     "borders": [
       [
         {
@@ -18845,6 +18995,7 @@
   },
   {
     "name": "Ecuador",
+    "iso": "EC",
     "borders": [
       [
         {
@@ -18984,6 +19135,7 @@
   },
   {
     "name": "Puerto Rico",
+    "iso": "PR",
     "borders": [
       [
         {
@@ -19027,6 +19179,7 @@
   },
   {
     "name": "Jamaica",
+    "iso": "JM",
     "borders": [
       [
         {
@@ -19078,6 +19231,7 @@
   },
   {
     "name": "Cuba",
+    "iso": "CU",
     "borders": [
       [
         {
@@ -19253,6 +19407,7 @@
   },
   {
     "name": "Zimbabwe",
+    "iso": "ZW",
     "borders": [
       [
         {
@@ -19408,6 +19563,7 @@
   },
   {
     "name": "Botswana",
+    "iso": "BW",
     "borders": [
       [
         {
@@ -19575,6 +19731,7 @@
   },
   {
     "name": "Namibia",
+    "iso": "NA",
     "borders": [
       [
         {
@@ -19758,6 +19915,7 @@
   },
   {
     "name": "Senegal",
+    "iso": "SN",
     "borders": [
       [
         {
@@ -19941,6 +20099,7 @@
   },
   {
     "name": "Mali",
+    "iso": "ML",
     "borders": [
       [
         {
@@ -20252,6 +20411,7 @@
   },
   {
     "name": "Mauritania",
+    "iso": "MR",
     "borders": [
       [
         {
@@ -20415,6 +20575,7 @@
   },
   {
     "name": "Benin",
+    "iso": "BJ",
     "borders": [
       [
         {
@@ -20522,6 +20683,7 @@
   },
   {
     "name": "Niger",
+    "iso": "NE",
     "borders": [
       [
         {
@@ -20761,6 +20923,7 @@
   },
   {
     "name": "Nigeria",
+    "iso": "NG",
     "borders": [
       [
         {
@@ -21000,6 +21163,7 @@
   },
   {
     "name": "Cameroon",
+    "iso": "CM",
     "borders": [
       [
         {
@@ -21251,6 +21415,7 @@
   },
   {
     "name": "Togo",
+    "iso": "TG",
     "borders": [
       [
         {
@@ -21334,6 +21499,7 @@
   },
   {
     "name": "Ghana",
+    "iso": "GH",
     "borders": [
       [
         {
@@ -21441,6 +21607,7 @@
   },
   {
     "name": "Ivory Coast",
+    "iso": "CI",
     "borders": [
       [
         {
@@ -21632,6 +21799,7 @@
   },
   {
     "name": "Guinea",
+    "iso": "GN",
     "borders": [
       [
         {
@@ -21919,6 +22087,7 @@
   },
   {
     "name": "Guinea-Bissau",
+    "iso": "GW",
     "borders": [
       [
         {
@@ -22002,6 +22171,7 @@
   },
   {
     "name": "Liberia",
+    "iso": "LR",
     "borders": [
       [
         {
@@ -22117,6 +22287,7 @@
   },
   {
     "name": "Sierra Leone",
+    "iso": "SL",
     "borders": [
       [
         {
@@ -22212,6 +22383,7 @@
   },
   {
     "name": "Burkina Faso",
+    "iso": "BF",
     "borders": [
       [
         {
@@ -22375,6 +22547,7 @@
   },
   {
     "name": "Central African Republic",
+    "iso": "CF",
     "borders": [
       [
         {
@@ -22630,6 +22803,7 @@
   },
   {
     "name": "Republic of the Congo",
+    "iso": "CG",
     "borders": [
       [
         {
@@ -22833,6 +23007,7 @@
   },
   {
     "name": "Gabon",
+    "iso": "GA",
     "borders": [
       [
         {
@@ -22964,6 +23139,7 @@
   },
   {
     "name": "Equatorial Guinea",
+    "iso": "GQ",
     "borders": [
       [
         {
@@ -22999,6 +23175,7 @@
   },
   {
     "name": "Zambia",
+    "iso": "ZM",
     "borders": [
       [
         {
@@ -23250,6 +23427,7 @@
   },
   {
     "name": "Malawi",
+    "iso": "MW",
     "borders": [
       [
         {
@@ -23369,6 +23547,7 @@
   },
   {
     "name": "Mozambique",
+    "iso": "MZ",
     "borders": [
       [
         {
@@ -23692,6 +23871,7 @@
   },
   {
     "name": "eSwatini",
+    "iso": "SZ",
     "borders": [
       [
         {
@@ -23743,6 +23923,7 @@
   },
   {
     "name": "Angola",
+    "iso": "AO",
     "borders": [
       [
         {
@@ -24052,6 +24233,7 @@
   },
   {
     "name": "Burundi",
+    "iso": "BI",
     "borders": [
       [
         {
@@ -24111,6 +24293,7 @@
   },
   {
     "name": "Israel",
+    "iso": "IL",
     "borders": [
       [
         {
@@ -24222,6 +24405,7 @@
   },
   {
     "name": "Lebanon",
+    "iso": "LB",
     "borders": [
       [
         {
@@ -24273,6 +24457,7 @@
   },
   {
     "name": "Madagascar",
+    "iso": "MG",
     "borders": [
       [
         {
@@ -24476,6 +24661,7 @@
   },
   {
     "name": "Palestine",
+    "iso": "PS",
     "borders": [
       [
         {
@@ -24519,6 +24705,7 @@
   },
   {
     "name": "The Gambia",
+    "iso": "GM",
     "borders": [
       [
         {
@@ -24590,6 +24777,7 @@
   },
   {
     "name": "Tunisia",
+    "iso": "TN",
     "borders": [
       [
         {
@@ -24721,6 +24909,7 @@
   },
   {
     "name": "Algeria",
+    "iso": "DZ",
     "borders": [
       [
         {
@@ -24976,6 +25165,7 @@
   },
   {
     "name": "Jordan",
+    "iso": "JO",
     "borders": [
       [
         {
@@ -25059,6 +25249,7 @@
   },
   {
     "name": "United Arab Emirates",
+    "iso": "AE",
     "borders": [
       [
         {
@@ -25154,6 +25345,7 @@
   },
   {
     "name": "Qatar",
+    "iso": "QA",
     "borders": [
       [
         {
@@ -25197,6 +25389,7 @@
   },
   {
     "name": "Kuwait",
+    "iso": "KW",
     "borders": [
       [
         {
@@ -25240,6 +25433,7 @@
   },
   {
     "name": "Iraq",
+    "iso": "IQ",
     "borders": [
       [
         {
@@ -25367,6 +25561,7 @@
   },
   {
     "name": "Oman",
+    "iso": "OM",
     "borders": [
       [
         {
@@ -25564,6 +25759,7 @@
   },
   {
     "name": "Vanuatu",
+    "iso": "VU",
     "borders": [
       [
         {
@@ -25621,6 +25817,7 @@
   },
   {
     "name": "Cambodia",
+    "iso": "KH",
     "borders": [
       [
         {
@@ -25696,6 +25893,7 @@
   },
   {
     "name": "Thailand",
+    "iso": "TH",
     "borders": [
       [
         {
@@ -25959,6 +26157,7 @@
   },
   {
     "name": "Laos",
+    "iso": "LA",
     "borders": [
       [
         {
@@ -26114,6 +26313,7 @@
   },
   {
     "name": "Myanmar",
+    "iso": "MM",
     "borders": [
       [
         {
@@ -26401,6 +26601,7 @@
   },
   {
     "name": "Vietnam",
+    "iso": "VN",
     "borders": [
       [
         {
@@ -26584,6 +26785,7 @@
   },
   {
     "name": "North Korea",
+    "iso": "KP",
     "borders": [
       [
         {
@@ -26785,6 +26987,7 @@
   },
   {
     "name": "South Korea",
+    "iso": "KR",
     "borders": [
       [
         {
@@ -26868,6 +27071,7 @@
   },
   {
     "name": "Mongolia",
+    "iso": "MN",
     "borders": [
       [
         {
@@ -27175,6 +27379,7 @@
   },
   {
     "name": "India",
+    "iso": "IN",
     "borders": [
       [
         {
@@ -27726,6 +27931,7 @@
   },
   {
     "name": "Bangladesh",
+    "iso": "BD",
     "borders": [
       [
         {
@@ -27877,6 +28083,7 @@
   },
   {
     "name": "Bhutan",
+    "iso": "BT",
     "borders": [
       [
         {
@@ -27936,6 +28143,7 @@
   },
   {
     "name": "Nepal",
+    "iso": "NP",
     "borders": [
       [
         {
@@ -28035,6 +28243,7 @@
   },
   {
     "name": "Pakistan",
+    "iso": "PK",
     "borders": [
       [
         {
@@ -28306,6 +28515,7 @@
   },
   {
     "name": "Afghanistan",
+    "iso": "AF",
     "borders": [
       [
         {
@@ -28589,6 +28799,7 @@
   },
   {
     "name": "Tajikistan",
+    "iso": "TJ",
     "borders": [
       [
         {
@@ -28760,6 +28971,7 @@
   },
   {
     "name": "Kyrgyzstan",
+    "iso": "KG",
     "borders": [
       [
         {
@@ -28907,6 +29119,7 @@
   },
   {
     "name": "Turkmenistan",
+    "iso": "TM",
     "borders": [
       [
         {
@@ -29130,6 +29343,7 @@
   },
   {
     "name": "Iran",
+    "iso": "IR",
     "borders": [
       [
         {
@@ -29441,6 +29655,7 @@
   },
   {
     "name": "Syria",
+    "iso": "SY",
     "borders": [
       [
         {
@@ -29556,6 +29771,7 @@
   },
   {
     "name": "Armenia",
+    "iso": "AM",
     "borders": [
       [
         {
@@ -29643,6 +29859,7 @@
   },
   {
     "name": "Sweden",
+    "iso": "SE",
     "borders": [
       [
         {
@@ -29810,6 +30027,7 @@
   },
   {
     "name": "Belarus",
+    "iso": "BY",
     "borders": [
       [
         {
@@ -29997,6 +30215,7 @@
   },
   {
     "name": "Ukraine",
+    "iso": "UA",
     "borders": [
       [
         {
@@ -30376,6 +30595,7 @@
   },
   {
     "name": "Poland",
+    "iso": "PL",
     "borders": [
       [
         {
@@ -30563,6 +30783,7 @@
   },
   {
     "name": "Austria",
+    "iso": "AT",
     "borders": [
       [
         {
@@ -30718,6 +30939,7 @@
   },
   {
     "name": "Hungary",
+    "iso": "HU",
     "borders": [
       [
         {
@@ -30853,6 +31075,7 @@
   },
   {
     "name": "Moldova",
+    "iso": "MD",
     "borders": [
       [
         {
@@ -30968,6 +31191,7 @@
   },
   {
     "name": "Romania",
+    "iso": "RO",
     "borders": [
       [
         {
@@ -31151,6 +31375,7 @@
   },
   {
     "name": "Lithuania",
+    "iso": "LT",
     "borders": [
       [
         {
@@ -31234,6 +31459,7 @@
   },
   {
     "name": "Latvia",
+    "iso": "LV",
     "borders": [
       [
         {
@@ -31329,6 +31555,7 @@
   },
   {
     "name": "Estonia",
+    "iso": "EE",
     "borders": [
       [
         {
@@ -31412,6 +31639,7 @@
   },
   {
     "name": "Germany",
+    "iso": "DE",
     "borders": [
       [
         {
@@ -31651,6 +31879,7 @@
   },
   {
     "name": "Bulgaria",
+    "iso": "BG",
     "borders": [
       [
         {
@@ -31770,6 +31999,7 @@
   },
   {
     "name": "Greece",
+    "iso": "GR",
     "borders": [
       [
         {
@@ -31995,6 +32225,7 @@
   },
   {
     "name": "Turkey",
+    "iso": "TR",
     "borders": [
       [
         {
@@ -32276,6 +32507,7 @@
   },
   {
     "name": "Albania",
+    "iso": "AL",
     "borders": [
       [
         {
@@ -32379,6 +32611,7 @@
   },
   {
     "name": "Croatia",
+    "iso": "HR",
     "borders": [
       [
         {
@@ -32558,6 +32791,7 @@
   },
   {
     "name": "Switzerland",
+    "iso": "CH",
     "borders": [
       [
         {
@@ -32661,6 +32895,7 @@
   },
   {
     "name": "Luxembourg",
+    "iso": "LU",
     "borders": [
       [
         {
@@ -32696,6 +32931,7 @@
   },
   {
     "name": "Belgium",
+    "iso": "BE",
     "borders": [
       [
         {
@@ -32771,6 +33007,7 @@
   },
   {
     "name": "Netherlands",
+    "iso": "NL",
     "borders": [
       [
         {
@@ -32838,6 +33075,7 @@
   },
   {
     "name": "Portugal",
+    "iso": "PT",
     "borders": [
       [
         {
@@ -32977,6 +33215,7 @@
   },
   {
     "name": "Spain",
+    "iso": "ES",
     "borders": [
       [
         {
@@ -33188,6 +33427,7 @@
   },
   {
     "name": "Ireland",
+    "iso": "IE",
     "borders": [
       [
         {
@@ -33247,6 +33487,7 @@
   },
   {
     "name": "New Caledonia",
+    "iso": "NC",
     "borders": [
       [
         {
@@ -33306,6 +33547,7 @@
   },
   {
     "name": "Solomon Islands",
+    "iso": "SB",
     "borders": [
       [
         {
@@ -33469,6 +33711,7 @@
   },
   {
     "name": "New Zealand",
+    "iso": "NZ",
     "borders": [
       [
         {
@@ -33742,6 +33985,7 @@
   },
   {
     "name": "Australia",
+    "iso": "AU",
     "borders": [
       [
         {
@@ -34715,6 +34959,7 @@
   },
   {
     "name": "Sri Lanka",
+    "iso": "LK",
     "borders": [
       [
         {
@@ -34762,6 +35007,7 @@
   },
   {
     "name": "People's Republic of China",
+    "iso": "CN",
     "borders": [
       [
         {
@@ -35731,6 +35977,7 @@
   },
   {
     "name": "Taiwan",
+    "iso": "TW",
     "borders": [
       [
         {
@@ -35774,6 +36021,7 @@
   },
   {
     "name": "Italy",
+    "iso": "IT",
     "borders": [
       [
         {
@@ -36133,6 +36381,7 @@
   },
   {
     "name": "Denmark",
+    "iso": "DK",
     "borders": [
       [
         {
@@ -36238,6 +36487,7 @@
   },
   {
     "name": "United Kingdom",
+    "iso": "GB",
     "borders": [
       [
         {
@@ -36471,6 +36721,7 @@
   },
   {
     "name": "Iceland",
+    "iso": "IS",
     "borders": [
       [
         {
@@ -36558,6 +36809,7 @@
   },
   {
     "name": "Azerbaijan",
+    "iso": "AZ",
     "borders": [
       [
         {
@@ -36743,6 +36995,7 @@
   },
   {
     "name": "Georgia",
+    "iso": "GE",
     "borders": [
       [
         {
@@ -36846,6 +37099,7 @@
   },
   {
     "name": "Philippines",
+    "iso": "PH",
     "borders": [
       [
         {
@@ -37305,6 +37559,7 @@
   },
   {
     "name": "Malaysia",
+    "iso": "MY",
     "borders": [
       [
         {
@@ -37562,6 +37817,7 @@
   },
   {
     "name": "Brunei",
+    "iso": "BN",
     "borders": [
       [
         {
@@ -37601,6 +37857,7 @@
   },
   {
     "name": "Slovenia",
+    "iso": "SI",
     "borders": [
       [
         {
@@ -37680,6 +37937,7 @@
   },
   {
     "name": "Finland",
+    "iso": "FI",
     "borders": [
       [
         {
@@ -37847,6 +38105,7 @@
   },
   {
     "name": "Slovakia",
+    "iso": "SK",
     "borders": [
       [
         {
@@ -37986,6 +38245,7 @@
   },
   {
     "name": "Czech Republic",
+    "iso": "CZ",
     "borders": [
       [
         {
@@ -38133,6 +38393,7 @@
   },
   {
     "name": "Eritrea",
+    "iso": "ER",
     "borders": [
       [
         {
@@ -38252,6 +38513,7 @@
   },
   {
     "name": "Japan",
+    "iso": "JP",
     "borders": [
       [
         {
@@ -38523,6 +38785,7 @@
   },
   {
     "name": "Paraguay",
+    "iso": "PY",
     "borders": [
       [
         {
@@ -38662,6 +38925,7 @@
   },
   {
     "name": "Yemen",
+    "iso": "YE",
     "borders": [
       [
         {
@@ -38845,6 +39109,7 @@
   },
   {
     "name": "Saudi Arabia",
+    "iso": "SA",
     "borders": [
       [
         {
@@ -39156,6 +39421,7 @@
   },
   {
     "name": "Antarctica",
+    "iso": "AQ",
     "borders": [
       [
         {
@@ -41821,6 +42087,7 @@
   },
   {
     "name": "Turkish Republic of Northern Cyprus",
+    "iso": "-99",
     "borders": [
       [
         {
@@ -41892,6 +42159,7 @@
   },
   {
     "name": "Cyprus",
+    "iso": "CY",
     "borders": [
       [
         {
@@ -41959,6 +42227,7 @@
   },
   {
     "name": "Morocco",
+    "iso": "MA",
     "borders": [
       [
         {
@@ -42218,6 +42487,7 @@
   },
   {
     "name": "Egypt",
+    "iso": "EG",
     "borders": [
       [
         {
@@ -42401,6 +42671,7 @@
   },
   {
     "name": "Libya",
+    "iso": "LY",
     "borders": [
       [
         {
@@ -42632,6 +42903,7 @@
   },
   {
     "name": "Ethiopia",
+    "iso": "ET",
     "borders": [
       [
         {
@@ -42875,6 +43147,7 @@
   },
   {
     "name": "Djibouti",
+    "iso": "DJ",
     "borders": [
       [
         {
@@ -42941,118 +43214,8 @@
     ]
   },
   {
-    "name": "Somaliland",
-    "borders": [
-      [
-        {
-          "lat": 11.41061728169797,
-          "lon": 48.94820475850985
-        },
-        {
-          "lat": 11.410617281697963,
-          "lon": 48.94820475850974
-        },
-        {
-          "lat": 11.394266058798138,
-          "lon": 48.94200524271835
-        },
-        {
-          "lat": 10.982327378783467,
-          "lon": 48.938491245322496
-        },
-        {
-          "lat": 9.973500067581512,
-          "lon": 48.93823286316103
-        },
-        {
-          "lat": 9.451748968946617,
-          "lon": 48.93812951029645
-        },
-        {
-          "lat": 8.837626247589995,
-          "lon": 48.48673587422695
-        },
-        {
-          "lat": 8.003,
-          "lon": 47.78942
-        },
-        {
-          "lat": 7.99688,
-          "lon": 46.94834
-        },
-        {
-          "lat": 9.18358000000012,
-          "lon": 43.67875
-        },
-        {
-          "lat": 9.540480000000173,
-          "lon": 43.29699000000011
-        },
-        {
-          "lat": 10.021940000000143,
-          "lon": 42.92812
-        },
-        {
-          "lat": 10.57258000000013,
-          "lon": 42.55876
-        },
-        {
-          "lat": 10.92687856693442,
-          "lon": 42.77685184100096
-        },
-        {
-          "lat": 11.462039699748857,
-          "lon": 43.14530480324214
-        },
-        {
-          "lat": 11.277709865763882,
-          "lon": 43.470659620951665
-        },
-        {
-          "lat": 10.86416921634816,
-          "lon": 43.66666832863484
-        },
-        {
-          "lat": 10.445538438351605,
-          "lon": 44.11780358254282
-        },
-        {
-          "lat": 10.442205308468942,
-          "lon": 44.614259067570856
-        },
-        {
-          "lat": 10.698029486529776,
-          "lon": 45.55694054543915
-        },
-        {
-          "lat": 10.816549383991173,
-          "lon": 46.645401238803004
-        },
-        {
-          "lat": 11.12722809492999,
-          "lon": 47.525657586462785
-        },
-        {
-          "lat": 11.193063869669743,
-          "lon": 48.02159630716778
-        },
-        {
-          "lat": 11.375481675660126,
-          "lon": 48.37878380716927
-        },
-        {
-          "lat": 11.41062164961852,
-          "lon": 48.94820641459347
-        },
-        {
-          "lat": 11.41061728169797,
-          "lon": 48.94820475850985
-        }
-      ]
-    ]
-  },
-  {
     "name": "Uganda",
+    "iso": "UG",
     "borders": [
       [
         {
@@ -43172,6 +43335,7 @@
   },
   {
     "name": "Rwanda",
+    "iso": "RW",
     "borders": [
       [
         {
@@ -43235,6 +43399,7 @@
   },
   {
     "name": "Bosnia and Herzegovina",
+    "iso": "BA",
     "borders": [
       [
         {
@@ -43334,6 +43499,7 @@
   },
   {
     "name": "Republic of Macedonia",
+    "iso": "MK",
     "borders": [
       [
         {
@@ -43413,6 +43579,7 @@
   },
   {
     "name": "Serbia",
+    "iso": "RS",
     "borders": [
       [
         {
@@ -43612,6 +43779,7 @@
   },
   {
     "name": "Montenegro",
+    "iso": "ME",
     "borders": [
       [
         {
@@ -43691,6 +43859,7 @@
   },
   {
     "name": "Kosovo",
+    "iso": "XK",
     "borders": [
       [
         {
@@ -43782,6 +43951,7 @@
   },
   {
     "name": "Trinidad and Tobago",
+    "iso": "TT",
     "borders": [
       [
         {
@@ -43821,6 +43991,7 @@
   },
   {
     "name": "South Sudan",
+    "iso": "SS",
     "borders": [
       [
         {

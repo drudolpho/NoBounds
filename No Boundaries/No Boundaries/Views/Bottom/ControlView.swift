@@ -75,7 +75,7 @@ struct ControlView: View {
                             .bold()
                             .font(.title)
                         Spacer()
-                        Text("\(self.regionVM.scoredRegions)/50 States")
+                        Text("\(self.regionVM.scoredRegions)/\(self.regionVM.totalRegions) States")
                             .foregroundColor(.gray)
                             .font(.headline)
                             .padding([.leading, .trailing])
