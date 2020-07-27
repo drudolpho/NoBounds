@@ -67,8 +67,10 @@ class RegionViewModel: ObservableObject {
             }
             self.totalRegions = remainingRegions.count
         case .World:
-            self.remainingRegions = worldList
-            self.totalRegions = worldList.count
+            for iso in self.wdISO {
+                remainingRegions[iso] = worldList[iso]
+            }
+            self.totalRegions = remainingRegions.count
         case .Asia:
             for iso in self.asISO {
                 remainingRegions[iso] = worldList[iso]
@@ -103,7 +105,7 @@ class RegionViewModel: ObservableObject {
     }
     
     func handleTapAt(coordinate: CLLocationCoordinate2D) {
-        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
+        print("{\n\"lat\": \(coordinate.latitude),\n\"lon\": \(coordinate.longitude)\n},")
         
         
         //Google Geocoder
@@ -126,10 +128,10 @@ class RegionViewModel: ObservableObject {
             } else {
                 let pm = placemarks! as [CLPlacemark]
                 if pm.count > 0 {
-                    print("\nAdministrativeArea: \(pm[0].administrativeArea ?? "")\nCountry: \(pm[0].country ?? "")\nISO: \(pm[0].isoCountryCode ?? "")\nName: \(pm[0].name ?? "")\n")
+//                    print("\nAdministrativeArea: \(pm[0].administrativeArea ?? "")\nCountry: \(pm[0].country ?? "")\nISO: \(pm[0].isoCountryCode ?? "")\nName: \(pm[0].name ?? "")\n")
                     guard let regionIdentifier = self.challenge == .USA ? pm[0].administrativeArea : pm[0].isoCountryCode,
                         let tappedRegion = self.challenge == .USA ? self.stateList[regionIdentifier] : self.worldList[regionIdentifier] else { return }
-                    print("ID:   \(regionIdentifier) !!!")
+//                    print("ID:   \(regionIdentifier) !!!")
 
                     if self.gameStatus == .during || self.gameStatus == .lost {
                         if self.tabbedRegions[tappedRegion.name] == nil {
@@ -202,13 +204,16 @@ class RegionViewModel: ObservableObject {
     
     let saISO = ["AR","CL","UY","BR","BO","PE","CO","VE","GY","SR","EC","PY", "GF"]
     
-    let asISO = ["KZ","UZ","ID","TL","IL","LB","PS","JO","AE","QA","KW","IQ","OM","KH","TH", "LA","MM","VN","KP", "KR","MN","IN","BD","BT", "NP","PK","AF","TJ","KG","TM","IR", "SY","AM","TR","LK","CN", "TW","AZ","GE","PH", "MY","BN","JP","YE", "SA","-99","CY"]
+    let asISO = ["RU","KZ","UZ","ID","TL","IL","LB","JO","AE","QA","KW","IQ","OM","KH","TH", "LA","MM","VN","KP", "KR","MN","IN","BD","BT", "NP","PK","AF","TJ","KG","TM","IR", "SY","AM","TR","LK","CN", "TW","AZ","GE","PH", "MY","BN","JP","YE", "SA","CY", "PG"]
     
-    let afISO = ["TZ","EH","CD","SO","KE","SD","TD","ZA","LS","ZW","BW","NA","SN","ML","MR","BJ","NE","NG","CM","TG","GH", "CI","GN","GW","LR","SL","BF","CF","CG","GA","GQ","ZM","MW","MZ","SZ","AO","BI","MG","GM","TN","DZ","ER","MA", "EG","LY","ET","DJ","-99","UG","RW","SS"]
+    let afISO = ["TZ","CD","SO","KE","SD","TD","ZA","LS","ZW","BW","NA","SN","ML","MR","BJ","NE","NG","CM","TG","GH", "CI","GN","GW","LR", "SL","BF","CF","CG","GA","GQ","ZM", "MW","MZ", "SZ", "AO","BI","MG","GM","TN","DZ","ER","MA", "EG","LY","ET","DJ","UG","RW","SS"]
     
-    let euISO = ["RU","FR","NO","SE","BY","UA","PL","AT","HU","MD","RO","LT","LV","EE","DE","BG","GR","AL","HR","CH", "LU","BE","NL","PT","ES","IE","IT","DK","GB","IS","SI","FI","SK","CZ","BA","MK","RS","ME","XK"]
+    let euISO = ["FR","NO","SE","BY","UA","PL","AT","HU","MD","RO","LT","LV","EE","DE","BG","GR","AL","HR","CH", "LU","BE","NL","PT","ES","IE","IT","DK","GB","IS","SI","FI","SK", "CZ","BA","MK","RS","ME"]
     
-    let europeanCountries = ["Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus","Belgium", "Bosnia and Herzegovina", "Bulgaria","Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Georgia", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Malta", "Moldova", "Monaco", "Montenegro", "The Netherlands", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Turkey", "Ukraine", "United Kingdom", "Vatican City",]
+    let wdISO = ["US","CA","MX", "AR","CL","UY","BR","BO","PE","CO","VE","GY", "SR","EC","PY", "GF","TZ","CD","SO","KE","SD","TD","ZA", "LS","ZW","BW","NA","SN","ML","MR","BJ","NE","NG","CM","TG","GH", "CI","GN","GW","LR", "SL","BF","CF","CG","GA","GQ","ZM", "MW","MZ", "SZ", "AO","BI","MG","GM","TN","DZ","ER","MA", "EG","LY","ET","DJ","UG","RW","SS", "RU","KZ","UZ","ID","TL","IL","LB", "JO","AE","QA", "KW","IQ","OM","KH","TH", "LA","MM","VN","KP", "KR","MN","IN","BD","BT", "NP","PK","AF","TJ","KG","TM","IR", "SY","AM","TR","LK","CN", "TW","AZ","GE","PH", "MY","BN","JP","YE", "SA","CY", "PG", "FR","NO","SE","BY","UA","PL","AT","HU", "MD","RO","LT","LV","EE", "DE","BG","GR","AL","HR","CH", "LU","BE","NL","PT","ES","IE", "IT","DK","GB","IS","SI","FI","SK", "CZ","BA","MK","RS","ME", "AU", "NZ", "AQ", "CU", "DO", "HT", "JM", "BS", "BZ", "GT", "HN", "SV", "NI", "CR", "PA", "GL"]
     
-    let initialsDictionary: [String: String] = ["NM": "New Mexico", "SD": "South Dakota", "TN": "Tennessee", "VT": "Vermont", "WY": "Wyoming", "OR": "Oregon", "MI": "Michigan", "MS": "Mississippi", "WA": "Washington", "ID": "Idaho", "ND": "North Dakota", "GA": "Georgia", "UT": "Utah", "OH": "Ohio", "DE": "Delaware", "NC": "North Carolina", "NJ": "New Jersey", "IN": "Indiana", "IL": "Illinois", "HI": "Hawaii", "NH": "New Hampshire", "MO": "Missouri", "MD": "Maryland", "WV": "West Virginia", "MA": "Massachusetts", "IA": "Iowa", "KY": "Kentucky", "NE": "Nebraska", "SC": "South Carolina", "AZ": "Arizona", "KS": "Kansas", "NV": "Nevada", "WI": "Wisconsin", "RI": "Rhode Island", "FL": "Florida", "TX": "Texas", "AL": "Alabama", "CO": "Colorado", "AK": "Alaska", "VA": "Virginia", "AR": "Arkansas", "CA": "California", "LA": "Louisiana", "CT": "Connecticut", "NY": "New York", "MN": "Minnesota", "MT": "Montana", "OK": "Oklahoma", "PA": "Pennsylvania", "ME": "Maine"]
+    
+//    let europeanCountries = ["Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus","Belgium", "Bosnia and Herzegovina", "Bulgaria","Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Georgia", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Malta", "Moldova", "Monaco", "Montenegro", "The Netherlands", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Turkey", "Ukraine", "United Kingdom", "Vatican City",]
+//
+//    let initialsDictionary: [String: String] = ["NM": "New Mexico", "SD": "South Dakota", "TN": "Tennessee", "VT": "Vermont", "WY": "Wyoming", "OR": "Oregon", "MI": "Michigan", "MS": "Mississippi", "WA": "Washington", "ID": "Idaho", "ND": "North Dakota", "GA": "Georgia", "UT": "Utah", "OH": "Ohio", "DE": "Delaware", "NC": "North Carolina", "NJ": "New Jersey", "IN": "Indiana", "IL": "Illinois", "HI": "Hawaii", "NH": "New Hampshire", "MO": "Missouri", "MD": "Maryland", "WV": "West Virginia", "MA": "Massachusetts", "IA": "Iowa", "KY": "Kentucky", "NE": "Nebraska", "SC": "South Carolina", "AZ": "Arizona", "KS": "Kansas", "NV": "Nevada", "WI": "Wisconsin", "RI": "Rhode Island", "FL": "Florida", "TX": "Texas", "AL": "Alabama", "CO": "Colorado", "AK": "Alaska", "VA": "Virginia", "AR": "Arkansas", "CA": "California", "LA": "Louisiana", "CT": "Connecticut", "NY": "New York", "MN": "Minnesota", "MT": "Montana", "OK": "Oklahoma", "PA": "Pennsylvania", "ME": "Maine"]
 }

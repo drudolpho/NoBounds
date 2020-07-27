@@ -38,7 +38,7 @@ struct ControlView: View {
                             .transition(.opacity)
                             .id("\(self.time)")
                             .onReceive(self.timer) { _ in
-                                if self.time < 999 {
+                                if self.time < 9999 {
                                     self.time += 1
                                 }
                         }
@@ -106,7 +106,7 @@ struct ControlView: View {
                         .font(.title)
                         .fontWeight(.medium)
                         .frame(width: geometry.size.width/1.2, height: geometry.size.height/3.5)
-                        .background(Color.green)
+                        .background(Color.blue)
                         .foregroundColor(Color.white)
                         .cornerRadius(15)
                         .shadow(radius: 0)
