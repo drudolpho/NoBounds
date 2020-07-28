@@ -15,6 +15,7 @@ struct SubmitView: View {
     @Binding var time: Int
     @Binding var refreshScores: Bool
     @Binding var currentMode: Int
+    @Binding var animateControlButton: Bool
     @State var selection1: Int = UserDefaults.standard.integer(forKey: "initial1")
     @State var selection2: Int = UserDefaults.standard.integer(forKey: "initial2")
     @State var selection3: Int = UserDefaults.standard.integer(forKey: "initial3")
@@ -71,6 +72,7 @@ struct SubmitView: View {
                         self.regionVM.resetGameData()
                         self.time = 0
                         self.refreshScores.toggle()
+                        self.animateControlButton.toggle()
                     }) {
                         Text("Cancel")
                             .font(.headline)
@@ -92,6 +94,7 @@ struct SubmitView: View {
                         self.regionVM.resetGameData()
                         self.time = 0
                         self.refreshScores.toggle()
+                        self.animateControlButton.toggle()
                     }) {
                         Text("Submit 🌎")
                             .font(.headline)

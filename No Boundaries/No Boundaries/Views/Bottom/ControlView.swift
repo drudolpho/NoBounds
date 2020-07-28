@@ -14,6 +14,7 @@ struct ControlView: View {
     @Binding var time: Int
     @Binding var bottomSheetShown: Bool
     @Binding var gameMode: Int
+    @Binding var animateControlButton: Bool
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -24,28 +25,12 @@ struct ControlView: View {
                     if self.regionVM.gameStatus == .during {
                         
                         Text(self.regionVM.promptedRegion?.name ?? "")
-                            
                             .bold()
                             .font(.title)
                             .transition(.opacity)
                             .id(self.regionVM.promptedRegion?.name ?? "")
                         
                         Spacer()
-                        Text("\(self.time)")
-                            .foregroundColor(.gray)
-                            .font(.headline)
-                            .padding([.leading])
-                            .transition(.opacity)
-                            .id("\(self.time)")
-                            .onReceive(self.timer) { _ in
-                                if self.time < 9999 {
-                                    self.time += 1
-                                }
-                        }
-                        Text("sec")
-                            .foregroundColor(.gray)
-                            .font(.headline)
-                            .padding(.trailing)
                         
                     } else if self.regionVM.gameStatus == .before {
                         Text("\(self.regionVM.challenge.rawValue)")
@@ -54,31 +39,37 @@ struct ControlView: View {
                             .transition(.opacity)
                             .id(self.regionVM.challenge.rawValue)
                         Spacer()
-                        Button(action: {
-                            self.nextChallenge()
-                            self.regionVM.resetGameData()
-                        }) {
-                            Text("Next")
-                                .font(.headline)
+                        HStack {
+                            Button(action: {
+                                self.lastChallenge()
+                                self.regionVM.resetGameData()
+                            }) {
+                                Image(systemName: "chevron.left")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height:16)
+                                    .padding(.horizontal)
+                                
+                            }
+//                            Divider()
+                            Button(action: {
+                                self.nextChallenge()
+                                self.regionVM.resetGameData()
+                            }) {
+                                Image(systemName: "chevron.right")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height:16)
+                                    .padding(.horizontal)
+                            }
                         }
-//                        Text("\(UserDefaults.standard.integer(forKey: "score"))")
-//                            .foregroundColor(.gray)
-//                            .font(.headline)
-//                            .padding([.leading])
-//                        Text("sec")
-//                            .foregroundColor(.gray)
-//                            .font(.headline)
-//                            .padding(.trailing)
+                        
                         
                     } else if self.regionVM.gameStatus == .lost {
                         Text("Game Over")
                             .bold()
                             .font(.title)
                         Spacer()
-                        Text("\(self.regionVM.scoredRegions)/\(self.regionVM.totalRegions) States")
-                            .foregroundColor(.gray)
-                            .font(.headline)
-                            .padding([.leading, .trailing])
                         
                     } else if self.regionVM.gameStatus == .win {
                         Text(self.regionVM.promptedRegion?.name ?? "")
@@ -89,32 +80,75 @@ struct ControlView: View {
                             .id(self.regionVM.promptedRegion?.name ?? "")
                         
                         Spacer()
-                        Text("\(self.regionVM.getSetScore(time: self.time, mode: self.gameMode))")
-                            .foregroundColor(.gray)
-                            .font(.headline)
-                            .padding([.leading])
-                            
-                        Text("sec")
-                            .foregroundColor(.gray)
-                            .font(.headline)
-                            .padding(.trailing)
                     }
-                }.padding(.horizontal, 35.0)
+                }.padding(.horizontal, 40.0)
                 
-                Button(action: self.buttonTapped) {
-                    Text(self.regionVM.getButtonText())
-                        .font(.title)
-                        .fontWeight(.medium)
-                        .frame(width: geometry.size.width/1.2, height: geometry.size.height/3.5)
-                        .background(Color.blue)
-                        .foregroundColor(Color.white)
-                        .cornerRadius(15)
-                        .shadow(radius: 0)
-                        .transition(.opacity)
-                        .id(self.regionVM.getButtonText())
-                }.padding(.top, 20.0)
+                ZStack (alignment: .center) {
+                    if self.regionVM.gameStatus != .before {
+                        HStack {
+                            HStack {
+                                
+                                Text("\(self.formatTime())")
+                                .fixedSize(horizontal: true, vertical: false)
+                                    .frame(width: geometry.size.width/9,alignment: .leading)
+                                    .foregroundColor(.gray)
+                                    .font(.system(size: 12))
+                                    .padding(.horizontal, 8.0)
+                                    .transition(.opacity)
+                                    .id("\(self.time)")
+                                    .onReceive(self.timer) { _ in
+                                        if self.time < 9999 && self.regionVM.gameStatus == .during {
+                                            self.time += 1
+                                        }
+                                }
+                                
+                                Divider()
+                                
+                                
+                                Text("\(self.regionVM.scoredRegions)/\(self.regionVM.totalRegions)")
+                                    .frame(width: geometry.size.width/9,alignment: .center)
+                                    .foregroundColor(.gray)
+                                    .font(.system(size: 12))
+                                    .padding(.horizontal, 8.0)
+                                    .transition(.opacity)
+                                    .id("\(self.regionVM.scoredRegions)/\(self.regionVM.totalRegions)")
+                                
+                            }.frame(width:  geometry.size.width/2.4, height: geometry.size.height/3.4).background(Color(red: 0.9, green: 0.9, blue: 0.9, opacity: 1.0)).cornerRadius(15)
+                            Spacer()
+                        }
+                        .padding(.leading, 35.0)
+                    }
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            self.buttonTapped()
+                            withAnimation {
+                                self.animateControlButton.toggle()
+                            }
+                        }) {
+                            Text(self.regionVM.getButtonText())
+                                .font(.title)
+                                .fontWeight(.medium)
+                                .frame(width: self.animateControlButton ? geometry.size.width/2.5 : geometry.size.width - 40, height: geometry.size.height/3.5)
+                                .background(self.animateControlButton ? Color.blue : Color.green)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(15)
+                                .shadow(radius: 0)
+                                .transition(.identity)
+                                .id(self.regionVM.getButtonText())
+                        }.padding([.leading, .trailing], 20.0).animation(.default)
+                        //Animation.easeIn(duration: 3)
+                    }
+                }
             }
         }
+    }
+    
+    func formatTime() -> String {
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%02i:%02i", minutes, seconds)
     }
     
     func nextChallenge() {
@@ -131,6 +165,23 @@ struct ControlView: View {
             self.regionVM.challenge = .SouthAmerica
         case .SouthAmerica:
             self.regionVM.challenge = .World
+        }
+    }
+    
+    func lastChallenge() {
+        switch self.regionVM.challenge {
+        case .USA:
+            self.regionVM.challenge = .World
+        case .Europe:
+            self.regionVM.challenge = .USA
+        case .Africa:
+            self.regionVM.challenge = .Europe
+        case .World:
+            self.regionVM.challenge = .SouthAmerica
+        case .Asia:
+            self.regionVM.challenge = .Africa
+        case .SouthAmerica:
+            self.regionVM.challenge = .Asia
         }
     }
     

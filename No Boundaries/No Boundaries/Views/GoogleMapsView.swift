@@ -56,15 +56,15 @@ struct GoogleMapsView: UIViewRepresentable {
             
             switch self.regionVM.challenge {
             case .USA:
-                mapView.camera = GMSCameraPosition.camera(withLatitude: 40, longitude: -95.5, zoom: 3.0)
+                mapView.camera = GMSCameraPosition.camera(withLatitude: 38, longitude: -95.5, zoom: 3.0)
             case .Europe:
-                mapView.camera = GMSCameraPosition.camera(withLatitude: 55, longitude: 13, zoom: 3.2)
+                mapView.camera = GMSCameraPosition.camera(withLatitude: 53, longitude: 13, zoom: 3.2)
                 createRegionPolygons(borderData: self.regionVM.worldList["XK"]?.borders ?? [], color: .gray, mapView: mapView, border: false)
             case .Africa:
-                mapView.camera = GMSCameraPosition.camera(withLatitude: 4, longitude: 16, zoom: 2.7)
+                mapView.camera = GMSCameraPosition.camera(withLatitude: 2, longitude: 16, zoom: 2.7)
                 createRegionPolygons(borderData: self.regionVM.worldList["EH"]?.borders ?? [], color: .gray, mapView: mapView, border: false)
             case .World:
-                mapView.camera = GMSCameraPosition.camera(withLatitude: 10, longitude: -90.5, zoom: 0)
+                mapView.camera = GMSCameraPosition.camera(withLatitude: 7, longitude: -90.5, zoom: 0)
                 createRegionPolygons(borderData: self.regionVM.worldList["XK"]?.borders ?? [], color: .gray, mapView: mapView, border: false)
                 createRegionPolygons(borderData: self.regionVM.worldList["EH"]?.borders ?? [], color: .gray, mapView: mapView, border: false)
                 createRegionPolygons(borderData: self.regionVM.worldList["01"]?.borders ?? [], color: .gray, mapView: mapView, border: false)
@@ -74,7 +74,7 @@ struct GoogleMapsView: UIViewRepresentable {
                 createRegionPolygons(borderData: self.regionVM.worldList["01"]?.borders ?? [], color: .gray, mapView: mapView, border: false)
                 createRegionPolygons(borderData: self.regionVM.worldList["02"]?.borders ?? [], color: .gray, mapView: mapView, border: false)
             case .SouthAmerica:
-                mapView.camera = GMSCameraPosition.camera(withLatitude: -25, longitude: -61, zoom: 3.0)
+                mapView.camera = GMSCameraPosition.camera(withLatitude: -28, longitude: -61, zoom: 3.0)
             }
         }
         

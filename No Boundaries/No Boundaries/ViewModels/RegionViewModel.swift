@@ -106,19 +106,7 @@ class RegionViewModel: ObservableObject {
     
     func handleTapAt(coordinate: CLLocationCoordinate2D) {
         print("{\n\"lat\": \(coordinate.latitude),\n\"lon\": \(coordinate.longitude)\n},")
-        
-        
-        //Google Geocoder
-//        let geo = GMSGeocoder()
-//        geo.reverseGeocodeCoordinate(coordinate) { (response, error) in
-//            if let error = error {
-//                print(error)
-//            }
-//            if let address: GMSAddress = (response?.firstResult()) {
-//                print(address.country)
-//            }
-//        }
-        
+
         // Apple Geocoder
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
@@ -131,7 +119,6 @@ class RegionViewModel: ObservableObject {
 //                    print("\nAdministrativeArea: \(pm[0].administrativeArea ?? "")\nCountry: \(pm[0].country ?? "")\nISO: \(pm[0].isoCountryCode ?? "")\nName: \(pm[0].name ?? "")\n")
                     guard let regionIdentifier = self.challenge == .USA ? pm[0].administrativeArea : pm[0].isoCountryCode,
                         let tappedRegion = self.challenge == .USA ? self.stateList[regionIdentifier] : self.worldList[regionIdentifier] else { return }
-//                    print("ID:   \(regionIdentifier) !!!")
 
                     if self.gameStatus == .during || self.gameStatus == .lost {
                         if self.tabbedRegions[tappedRegion.name] == nil {
@@ -202,6 +189,7 @@ class RegionViewModel: ObservableObject {
         }
     }
     
+    //Countries for each challenge by ISO
     let saISO = ["AR","CL","UY","BR","BO","PE","CO","VE","GY","SR","EC","PY", "GF"]
     
     let asISO = ["RU","KZ","UZ","ID","TL","IL","LB","JO","AE","QA","KW","IQ","OM","KH","TH", "LA","MM","VN","KP", "KR","MN","IN","BD","BT", "NP","PK","AF","TJ","KG","TM","IR", "SY","AM","TR","LK","CN", "TW","AZ","GE","PH", "MY","BN","JP","YE", "SA","CY", "PG"]

@@ -20,6 +20,7 @@ struct ContentView: View {
     @State private var refreshScores = Bool()
     @State var time = 0
     @State private var currentMode = 0
+    @State var animateControlButton = false
     
         
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -56,7 +57,7 @@ struct ContentView: View {
                             maxHeight: geometry.size.height * 0.70
                         ) {
                             VStack(spacing: 0){
-                                ControlView(regionVM: self.regionVM, time: self.$time, bottomSheetShown: self.$bottomSheetShowing, gameMode: self.$currentMode)
+                                ControlView(regionVM: self.regionVM, time: self.$time, bottomSheetShown: self.$bottomSheetShowing, gameMode: self.$currentMode, animateControlButton: self.$animateControlButton)
                                     .frame(width: geometry.size.width, height: geometry.size.height * 0.18)
                                 
                                 VStack {
@@ -95,7 +96,7 @@ struct ContentView: View {
                     
                     
                     if self.regionVM.gameStatus == .win {
-                        SubmitView(regionVM: self.regionVM, time: self.$time, refreshScores: self.$refreshScores, currentMode: self.$currentMode)
+                        SubmitView(regionVM: self.regionVM, time: self.$time, refreshScores: self.$refreshScores, currentMode: self.$currentMode, animateControlButton: self.$animateControlButton)
                             .frame(width: geometry.size.width * 0.85, height: geometry.size.height * 0.8)
                             .transition(AnyTransition.scale.animation(.spring()))
                             .zIndex(3)
