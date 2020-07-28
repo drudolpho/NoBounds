@@ -35,9 +35,15 @@ struct MyScoresView: View {
                 Spacer()
                 Text(score.name)
                 Spacer()
-                Text("\(score.time) sec")
+                Text("\(self.formatTime(time: score.time))")
             }
         }
+    }
+    
+    func formatTime(time: Int) -> String {
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%01i:%02i", minutes, seconds)
     }
 }
 

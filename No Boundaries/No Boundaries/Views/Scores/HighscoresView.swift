@@ -21,9 +21,15 @@ struct HighscoresView: View {
                 Text("\(post.name) \(self.getRankemoji(index: index))")
              
                 Spacer()
-                Text("\(post.time) sec")
+                Text("\(self.formatTime(time: post.time))")
             }
         }
+    }
+    
+    func formatTime(time: Int) -> String {
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%01i:%02i", minutes, seconds)
     }
     
     func getRankemoji(index: Int) -> String {
@@ -33,8 +39,8 @@ struct HighscoresView: View {
             return "🥈"
         } else if index == 2 {
             return "🥉"
-        } else if 3...4 ~= index {
-            return "🎗"
+//        } else if 3...9 ~= index {
+//            return "🎗"
         } else {
             return ""
         }

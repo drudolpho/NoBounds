@@ -140,7 +140,7 @@ struct ContentView_Previews: PreviewProvider {
         
         let statesvm = RegionViewModel()
         statesvm.gameStatus = .win
-        statesvm.promptedRegion = Region(name: "Kansas", iso: "KS", borders: [])
+        statesvm.promptedRegion = Region(name: "Kansas", iso: "KS", center: CoordData(lat: 0, lon: 0), borders: [])
         view.regionVM = statesvm
         return view
     }

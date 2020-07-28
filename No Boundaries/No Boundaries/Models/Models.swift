@@ -15,6 +15,7 @@ import FirebaseDatabase
 struct Region: Codable {
     var name: String
     var iso: String
+    var center: CoordData
     var borders: [[CoordData]]
 }
 

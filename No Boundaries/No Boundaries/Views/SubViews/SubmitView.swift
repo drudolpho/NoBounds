@@ -33,7 +33,7 @@ struct SubmitView: View {
                         .font(.title)
                         .bold()
                     Spacer()
-                    Text("Time: \(self.time)")
+                    Text("Time: \(self.formatTime())")
                         .foregroundColor(.gray)
                         .font(.headline)
                     Spacer()
@@ -105,6 +105,12 @@ struct SubmitView: View {
                 }
             }.background(Color.white).cornerRadius(20)
         }
+    }
+    
+    func formatTime() -> String {
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%01i:%02i", minutes, seconds)
     }
     
     func saveToUD(name: String) {

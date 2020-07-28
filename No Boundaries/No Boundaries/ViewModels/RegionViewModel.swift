@@ -40,6 +40,11 @@ class RegionViewModel: ObservableObject {
         tabbedRegions[name] = true
     }
     
+    func correctedRegionHasBeenDrawn() {
+        guard let name = promptedRegion?.name else { return }
+        tabbedRegions[name] = true
+    }
+    
     func resetGameData() {
         self.gameStatus = .before
         scoredRegions = 0
@@ -151,7 +156,7 @@ class RegionViewModel: ObservableObject {
                 let jsonData = try decoder.decode([Region].self, from: data)
                 
                 for region in jsonData {
-                    let temp = Region(name: region.name, iso: region.iso, borders: region.borders)
+                    let temp = Region(name: region.name, iso: region.iso, center: region.center, borders: region.borders)
                     stateList[temp.iso] = temp
                     remainingRegions[temp.iso] = temp
                     totalRegions = stateList.count
@@ -169,7 +174,7 @@ class RegionViewModel: ObservableObject {
                 let jsonData = try decoder.decode([Region].self, from: data)
                 
                 for region in jsonData {
-                    let temp = Region(name: region.name, iso: region.iso, borders: region.borders)
+                    let temp = Region(name: region.name, iso: region.iso, center: region.center, borders: region.borders)
                     worldList[temp.iso] = temp
                 }
             } catch {

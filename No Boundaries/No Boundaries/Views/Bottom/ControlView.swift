@@ -92,8 +92,8 @@ struct ControlView: View {
                                 .fixedSize(horizontal: true, vertical: false)
                                     .frame(width: geometry.size.width/9,alignment: .leading)
                                     .foregroundColor(.gray)
-                                    .font(.system(size: 12))
-                                    .padding(.horizontal, 8.0)
+                                    .font(.system(size: 13))
+                                    .padding(.leading, 8.0)
                                     .transition(.opacity)
                                     .id("\(self.time)")
                                     .onReceive(self.timer) { _ in
@@ -148,7 +148,7 @@ struct ControlView: View {
     func formatTime() -> String {
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
-        return String(format:"%02i:%02i", minutes, seconds)
+        return String(format:"%01i:%02i", minutes, seconds)
     }
     
     func nextChallenge() {
