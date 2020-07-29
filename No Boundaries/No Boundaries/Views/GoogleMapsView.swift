@@ -54,38 +54,29 @@ struct GoogleMapsView: UIViewRepresentable {
                 NSLog("One or more of the map styles failed to load. \(error)")
             }
             
+            //draw out of bounds areas
+            createRegionPolygons(borderData: self.regionVM.worldList["XK"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
+            createRegionPolygons(borderData: self.regionVM.worldList["EH"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
+            createRegionPolygons(borderData: self.regionVM.worldList["01"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
+            createRegionPolygons(borderData: self.regionVM.worldList["02"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
+            
+            //moves camera to challenge zone
             switch self.regionVM.challenge {
             case .USA:
-                mapView.camera = GMSCameraPosition.camera(withLatitude: 38, longitude: -95.5, zoom: 3.0)
+                moveTo(map: mapView, lat: 38, lon: -95.5, zoom: 3)
             case .Europe:
-                mapView.camera = GMSCameraPosition.camera(withLatitude: 53, longitude: 13, zoom: 3.2)
-                createRegionPolygons(borderData: self.regionVM.worldList["XK"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
+                moveTo(map: mapView, lat: 53, lon: 13, zoom: 3.2)
             case .Africa:
-                mapView.camera = GMSCameraPosition.camera(withLatitude: 2, longitude: 16, zoom: 2.7)
-                createRegionPolygons(borderData: self.regionVM.worldList["EH"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
+                moveTo(map: mapView, lat: 2, lon: 16, zoom: 2.7)
             case .World:
-                mapView.camera = GMSCameraPosition.camera(withLatitude: 7, longitude: -90.5, zoom: 0)
-                createRegionPolygons(borderData: self.regionVM.worldList["XK"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
-                createRegionPolygons(borderData: self.regionVM.worldList["EH"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
-                createRegionPolygons(borderData: self.regionVM.worldList["01"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
-                createRegionPolygons(borderData: self.regionVM.worldList["02"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
+                moveTo(map: mapView, lat: 7, lon: -90.5, zoom: 0)
             case .Asia:
-                mapView.camera = GMSCameraPosition.camera(withLatitude: 45, longitude: 90, zoom: 2.2)
-                createRegionPolygons(borderData: self.regionVM.worldList["01"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
-                createRegionPolygons(borderData: self.regionVM.worldList["02"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
+                moveTo(map: mapView, lat: 45, lon: 90, zoom: 2.2)
             case .SouthAmerica:
-                mapView.camera = GMSCameraPosition.camera(withLatitude: -28, longitude: -61, zoom: 3.0)
+                moveTo(map: mapView, lat: -28, lon: -61, zoom: 3)
             }
         }
-        
-        
-        //New
-        
-        //Clears board on on reset
-//        guard let _ = self.regionVM.promptedRegion else {
-//            mapView.clear()
-//            return
-//        }
+
         
         if let borderData = regionVM.selectedRegion?.0.borders {
             let color = (regionVM.selectedRegion?.1 == true) ? UIColor(red: 0, green: 0.25, blue: 0, alpha: 0.5) : UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.5)
@@ -100,12 +91,15 @@ struct GoogleMapsView: UIViewRepresentable {
             guard let promptedRegion = self.regionVM.promptedRegion else { return }
             guard self.regionVM.tabbedRegions[promptedRegion.name] == nil else { return }
             
-
-            mapView.animate(toLocation: CLLocationCoordinate2D(latitude: promptedRegion.center.lat, longitude: promptedRegion.center.lon))
-            mapView.animate(toZoom: 4)
+            moveTo(map: mapView, lat: promptedRegion.center.lat, lon: promptedRegion.center.lon, zoom: 4)
             createRegionPolygons(borderData: promptedRegion.borders, color: UIColor(red: 0, green: 0, blue: 0.25, alpha: 0.5), mapView: mapView, border: true)
             self.regionVM.correctedRegionHasBeenDrawn()
         }
+    }
+    
+    func moveTo(map: GMSMapView, lat: Double, lon: Double, zoom: Float) {
+        map.animate(toLocation: CLLocationCoordinate2D(latitude: lat, longitude: lon))
+        map.animate(toZoom: zoom)
     }
     
     func createRegionPolygons(borderData: [[CoordData]], color: UIColor, mapView: GMSMapView, border: Bool) {

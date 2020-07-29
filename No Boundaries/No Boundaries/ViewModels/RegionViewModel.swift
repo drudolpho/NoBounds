@@ -110,7 +110,7 @@ class RegionViewModel: ObservableObject {
     }
     
     func handleTapAt(coordinate: CLLocationCoordinate2D) {
-        print("{\n\"lat\": \(coordinate.latitude),\n\"lon\": \(coordinate.longitude)\n},")
+//        print("{\n\"lat\": \(coordinate.latitude),\n\"lon\": \(coordinate.longitude)\n},")
 
         // Apple Geocoder
         let geoCoder = CLGeocoder()
@@ -204,9 +204,5 @@ class RegionViewModel: ObservableObject {
     let euISO = ["FR","NO","SE","BY","UA","PL","AT","HU","MD","RO","LT","LV","EE","DE","BG","GR","AL","HR","CH", "LU","BE","NL","PT","ES","IE","IT","DK","GB","IS","SI","FI","SK", "CZ","BA","MK","RS","ME"]
     
     let wdISO = ["US","CA","MX", "AR","CL","UY","BR","BO","PE","CO","VE","GY", "SR","EC","PY", "GF","TZ","CD","SO","KE","SD","TD","ZA", "LS","ZW","BW","NA","SN","ML","MR","BJ","NE","NG","CM","TG","GH", "CI","GN","GW","LR", "SL","BF","CF","CG","GA","GQ","ZM", "MW","MZ", "SZ", "AO","BI","MG","GM","TN","DZ","ER","MA", "EG","LY","ET","DJ","UG","RW","SS", "RU","KZ","UZ","ID","TL","IL","LB", "JO","AE","QA", "KW","IQ","OM","KH","TH", "LA","MM","VN","KP", "KR","MN","IN","BD","BT", "NP","PK","AF","TJ","KG","TM","IR", "SY","AM","TR","LK","CN", "TW","AZ","GE","PH", "MY","BN","JP","YE", "SA","CY", "PG", "FR","NO","SE","BY","UA","PL","AT","HU", "MD","RO","LT","LV","EE", "DE","BG","GR","AL","HR","CH", "LU","BE","NL","PT","ES","IE", "IT","DK","GB","IS","SI","FI","SK", "CZ","BA","MK","RS","ME", "AU", "NZ", "AQ", "CU", "DO", "HT", "JM", "BS", "BZ", "GT", "HN", "SV", "NI", "CR", "PA", "GL"]
-    
-    
-//    let europeanCountries = ["Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus","Belgium", "Bosnia and Herzegovina", "Bulgaria","Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Georgia", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Malta", "Moldova", "Monaco", "Montenegro", "The Netherlands", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Turkey", "Ukraine", "United Kingdom", "Vatican City",]
-//
-//    let initialsDictionary: [String: String] = ["NM": "New Mexico", "SD": "South Dakota", "TN": "Tennessee", "VT": "Vermont", "WY": "Wyoming", "OR": "Oregon", "MI": "Michigan", "MS": "Mississippi", "WA": "Washington", "ID": "Idaho", "ND": "North Dakota", "GA": "Georgia", "UT": "Utah", "OH": "Ohio", "DE": "Delaware", "NC": "North Carolina", "NJ": "New Jersey", "IN": "Indiana", "IL": "Illinois", "HI": "Hawaii", "NH": "New Hampshire", "MO": "Missouri", "MD": "Maryland", "WV": "West Virginia", "MA": "Massachusetts", "IA": "Iowa", "KY": "Kentucky", "NE": "Nebraska", "SC": "South Carolina", "AZ": "Arizona", "KS": "Kansas", "NV": "Nevada", "WI": "Wisconsin", "RI": "Rhode Island", "FL": "Florida", "TX": "Texas", "AL": "Alabama", "CO": "Colorado", "AK": "Alaska", "VA": "Virginia", "AR": "Arkansas", "CA": "California", "LA": "Louisiana", "CT": "Connecticut", "NY": "New York", "MN": "Minnesota", "MT": "Montana", "OK": "Oklahoma", "PA": "Pennsylvania", "ME": "Maine"]
+
 }
