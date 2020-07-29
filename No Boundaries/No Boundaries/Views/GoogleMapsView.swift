@@ -55,10 +55,10 @@ struct GoogleMapsView: UIViewRepresentable {
             }
             
             //draw out of bounds areas
-            createRegionPolygons(borderData: self.regionVM.worldList["XK"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
-            createRegionPolygons(borderData: self.regionVM.worldList["EH"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
-            createRegionPolygons(borderData: self.regionVM.worldList["01"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
-            createRegionPolygons(borderData: self.regionVM.worldList["02"]?.borders ?? [], color: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5), mapView: mapView, border: false)
+            createRegionPolygons(borderData: self.regionVM.worldList["XK"]?.borders ?? [], color: UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 0.5), mapView: mapView, border: false)
+            createRegionPolygons(borderData: self.regionVM.worldList["EH"]?.borders ?? [], color: UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.5), mapView: mapView, border: false)
+            createRegionPolygons(borderData: self.regionVM.worldList["01"]?.borders ?? [], color: UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 0.5), mapView: mapView, border: false)
+            createRegionPolygons(borderData: self.regionVM.worldList["02"]?.borders ?? [], color: UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 0.5), mapView: mapView, border: false)
             
             //moves camera to challenge zone
             switch self.regionVM.challenge {
