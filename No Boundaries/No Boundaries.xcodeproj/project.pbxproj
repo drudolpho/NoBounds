@@ -12,8 +12,11 @@
 		6879B9DD24AA829B007A9A0D /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */; };
 		6879B9DF24AA856D007A9A0D /* teststyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 6879B9DE24AA856D007A9A0D /* teststyle.json */; };
 		6879B9E124AA9C9E007A9A0D /* states.json in Resources */ = {isa = PBXBuildFile; fileRef = 6879B9E024AA9C9E007A9A0D /* states.json */; };
+		688B83DD24D1CA8000E93A19 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B83DC24D1CA8000E93A19 /* NetworkController.swift */; };
+		688B83DF24D1CAAD00E93A19 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B83DE24D1CAAD00E93A19 /* Post.swift */; };
+		688B83E124D1CADD00E93A19 /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B83E024D1CADD00E93A19 /* Region.swift */; };
 		68926E3524AE361000DD16F1 /* RegionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68926E3424AE361000DD16F1 /* RegionViewModel.swift */; };
-		68940DFC24AE38BB00181045 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68940DFB24AE38BB00181045 /* Models.swift */; };
+		68940DFC24AE38BB00181045 /* EnumsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68940DFB24AE38BB00181045 /* EnumsExt.swift */; };
 		68BB272A24A3A4A00076BBE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB272924A3A4A00076BBE0 /* AppDelegate.swift */; };
 		68BB272C24A3A4A00076BBE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB272B24A3A4A00076BBE0 /* SceneDelegate.swift */; };
 		68BB272E24A3A4A00076BBE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB272D24A3A4A00076BBE0 /* ContentView.swift */; };
@@ -42,8 +45,11 @@
 		6879B9DC24AA829B007A9A0D /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		6879B9DE24AA856D007A9A0D /* teststyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = teststyle.json; sourceTree = "<group>"; };
 		6879B9E024AA9C9E007A9A0D /* states.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = states.json; sourceTree = "<group>"; };
+		688B83DC24D1CA8000E93A19 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		688B83DE24D1CAAD00E93A19 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		688B83E024D1CADD00E93A19 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		68926E3424AE361000DD16F1 /* RegionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionViewModel.swift; sourceTree = "<group>"; };
-		68940DFB24AE38BB00181045 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		68940DFB24AE38BB00181045 /* EnumsExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumsExt.swift; sourceTree = "<group>"; };
 		68BB272624A3A4A00076BBE0 /* No Bounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No Bounds.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BB272924A3A4A00076BBE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68BB272B24A3A4A00076BBE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,7 +136,10 @@
 		68940DFD24AE38D300181045 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				68940DFB24AE38BB00181045 /* Models.swift */,
+				688B83E024D1CADD00E93A19 /* Region.swift */,
+				688B83DE24D1CAAD00E93A19 /* Post.swift */,
+				688B83DC24D1CA8000E93A19 /* NetworkController.swift */,
+				68940DFB24AE38BB00181045 /* EnumsExt.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -348,15 +357,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				688B83DD24D1CA8000E93A19 /* NetworkController.swift in Sources */,
 				682A965524BE1D3C00703EFD /* GuideView.swift in Sources */,
 				68D9A13924C2499D007EDD17 /* Keys.swift in Sources */,
 				6879B9DD24AA829B007A9A0D /* GoogleMapsView.swift in Sources */,
+				688B83DF24D1CAAD00E93A19 /* Post.swift in Sources */,
 				68F719DD24B52CF5005D3388 /* BottomView.swift in Sources */,
 				68BB272A24A3A4A00076BBE0 /* AppDelegate.swift in Sources */,
 				68D9848724C635A800ABD2CB /* HighscoresView.swift in Sources */,
 				68926E3524AE361000DD16F1 /* RegionViewModel.swift in Sources */,
+				688B83E124D1CADD00E93A19 /* Region.swift in Sources */,
 				68D9848524C5FCA200ABD2CB /* ScoresView.swift in Sources */,
-				68940DFC24AE38BB00181045 /* Models.swift in Sources */,
+				68940DFC24AE38BB00181045 /* EnumsExt.swift in Sources */,
 				68BB272C24A3A4A00076BBE0 /* SceneDelegate.swift in Sources */,
 				68D9D1B424BF8DE900318717 /* PreferenceView.swift in Sources */,
 				68F719DB24B4CC9D005D3388 /* ControlView.swift in Sources */,
@@ -511,7 +523,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.DennisRudolph.NoBounds;
 				PRODUCT_NAME = "No Bounds";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -532,7 +544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.DennisRudolph.NoBounds;
 				PRODUCT_NAME = "No Bounds";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
