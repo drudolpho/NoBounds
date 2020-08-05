@@ -5,8 +5,8 @@ You can find the deployed project on the [App Store](https://apps.apple.com/us/a
 ## Contributors
 
 
-|                                       [Dennis Rudolph](https://github.com/drudolpho)                                         |
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
+|                                       [Dennis Rudolph](https://github.com/drudolpho)                                        |
+| :-----------------------------------------------------------------------------------------------------------: |
 |                      [<img src="https://i.ibb.co/6mN3Qm3/IMG-20190124-WA0000.jpg" width = "200" />](https://github.com/)                       |
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/drudolpho)                 |
 | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/dennis-rudolph-279797169/) |
