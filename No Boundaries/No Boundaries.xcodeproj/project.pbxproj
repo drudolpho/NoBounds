@@ -27,10 +27,10 @@
 		68D9848724C635A800ABD2CB /* HighscoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9848624C635A800ABD2CB /* HighscoresView.swift */; };
 		68D9848924C63B1400ABD2CB /* MyScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9848824C63B1400ABD2CB /* MyScoresView.swift */; };
 		68D9A13724C239E3007EDD17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68D9A13624C239E3007EDD17 /* GoogleService-Info.plist */; };
-		68D9A13924C2499D007EDD17 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9A13824C2499D007EDD17 /* Keys.swift */; };
 		68D9D1B424BF8DE900318717 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9D1B324BF8DE900318717 /* PreferenceView.swift */; };
 		68D9D1B724C0901300318717 /* practicestyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 68D9D1B624C0901300318717 /* practicestyle.json */; };
 		68D9D1B924C091B500318717 /* studystyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 68D9D1B824C091B500318717 /* studystyle.json */; };
+		68DC54F924DB3F9C00DE05C5 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DC54F824DB3F9C00DE05C5 /* Keys.swift */; };
 		68EB877E24C0ED18001C2A18 /* SubmitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EB877D24C0ED18001C2A18 /* SubmitView.swift */; };
 		68F719DB24B4CC9D005D3388 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F719DA24B4CC9D005D3388 /* ControlView.swift */; };
 		68F719DD24B52CF5005D3388 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F719DC24B52CF5005D3388 /* BottomView.swift */; };
@@ -62,10 +62,10 @@
 		68D9848624C635A800ABD2CB /* HighscoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresView.swift; sourceTree = "<group>"; };
 		68D9848824C63B1400ABD2CB /* MyScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScoresView.swift; sourceTree = "<group>"; };
 		68D9A13624C239E3007EDD17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		68D9A13824C2499D007EDD17 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = Resources/Keys.swift; sourceTree = "<group>"; };
 		68D9D1B324BF8DE900318717 /* PreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
 		68D9D1B624C0901300318717 /* practicestyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = practicestyle.json; sourceTree = "<group>"; };
 		68D9D1B824C091B500318717 /* studystyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = studystyle.json; sourceTree = "<group>"; };
+		68DC54F824DB3F9C00DE05C5 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		68EB877D24C0ED18001C2A18 /* SubmitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitView.swift; sourceTree = "<group>"; };
 		68F719DA24B4CC9D005D3388 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		68F719DC24B52CF5005D3388 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 				68926E3624AE365400DD16F1 /* Views */,
 				68EA3FC624ABED6B00185A6B /* Resources */,
 				68BB272F24A3A4A10076BBE0 /* Assets.xcassets */,
-				68D9A13824C2499D007EDD17 /* Keys.swift */,
+				68DC54F824DB3F9C00DE05C5 /* Keys.swift */,
 				68BB273424A3A4A10076BBE0 /* LaunchScreen.storyboard */,
 				68BB273724A3A4A10076BBE0 /* Info.plist */,
 				68D9A13624C239E3007EDD17 /* GoogleService-Info.plist */,
@@ -359,12 +359,12 @@
 			files = (
 				688B83DD24D1CA8000E93A19 /* NetworkController.swift in Sources */,
 				682A965524BE1D3C00703EFD /* GuideView.swift in Sources */,
-				68D9A13924C2499D007EDD17 /* Keys.swift in Sources */,
 				6879B9DD24AA829B007A9A0D /* GoogleMapsView.swift in Sources */,
 				688B83DF24D1CAAD00E93A19 /* Post.swift in Sources */,
 				68F719DD24B52CF5005D3388 /* BottomView.swift in Sources */,
 				68BB272A24A3A4A00076BBE0 /* AppDelegate.swift in Sources */,
 				68D9848724C635A800ABD2CB /* HighscoresView.swift in Sources */,
+				68DC54F924DB3F9C00DE05C5 /* Keys.swift in Sources */,
 				68926E3524AE361000DD16F1 /* RegionViewModel.swift in Sources */,
 				688B83E124D1CADD00E93A19 /* Region.swift in Sources */,
 				68D9848524C5FCA200ABD2CB /* ScoresView.swift in Sources */,
