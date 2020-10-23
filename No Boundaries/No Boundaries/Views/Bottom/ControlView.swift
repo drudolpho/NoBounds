@@ -130,15 +130,15 @@ struct ControlView: View {
                             Text(self.regionVM.getButtonText())
                                 .font(.title)
                                 .fontWeight(.medium)
-                                .frame(width: self.animateControlButton ? geometry.size.width/2.5 : geometry.size.width - 40, height: geometry.size.height/3.5)
+                                .frame(width: abs(self.animateControlButton ? geometry.size.width/2.5 : geometry.size.width - 40), height: abs(geometry.size.height/3.5))
                                 .background(self.animateControlButton ? Color.blue : Color.green)
                                 .foregroundColor(Color.white)
                                 .cornerRadius(15)
                                 .shadow(radius: 0)
                                 .transition(.identity)
                                 .id(self.regionVM.getButtonText())
-                        }.padding([.leading, .trailing], 20.0).animation(.default)
-                        //Animation.easeIn(duration: 3)
+                        }.padding([.leading, .trailing], 20.0)
+//                        Animation.easeIn(duration: 3)
                     }
                 }
             }

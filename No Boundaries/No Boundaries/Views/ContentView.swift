@@ -44,6 +44,7 @@ struct ContentView: View {
                                 Text("?")
                                     .font(.title)
                                     .foregroundColor(Color.gray)
+                                    .frame(width: 100, height: 100).background(Color.white).cornerRadius(10)
                                 }.frame(width: 30, height: 30).background(Color.white).cornerRadius(10)
                         }
                         Spacer()
